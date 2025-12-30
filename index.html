@@ -1,8 +1,242 @@
-<h1
-    <head>
-        <title>My Website</title>
-    </head>
-    <body>
-        <h1>Welcome to my website</h1>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Portfolio | AJ Mendes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">AJ</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="grid-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="line">Building</span>
+                    <span class="line">Digital</span>
+                    <span class="line highlight">Solutions</span>
+                </h1>
+                <p class="hero-subtitle">Full-stack developer & creative technologist</p>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="code-header">
+                        <span class="code-dot"></span>
+                        <span class="code-dot"></span>
+                        <span class="code-dot"></span>
+                    </div>
+                    <div class="code-content">
+                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+  <span class="code-property">name</span>: <span class="code-string">'AJ Mendes'</span>,
+  <span class="code-property">role</span>: <span class="code-string">'Full-Stack Developer'</span>,
+  <span class="code-property">passion</span>: <span class="code-string">'Building innovative solutions'</span>
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        I'm a developer passionate about creating elegant solutions to complex problems.
+                        My work spans across web development, software engineering, and digital innovation.
+                    </p>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">⚡</div>
+                            <h3>Frontend</h3>
+                            <p>React, Vue, TypeScript, CSS</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">🔧</div>
+                            <h3>Backend</h3>
+                            <p>Node.js, Python, APIs, Databases</p>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">🚀</div>
+                            <h3>Tools</h3>
+                            <p>Git, Docker, CI/CD, Cloud</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-project="1">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <span class="project-icon">💻</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Web Application</span>
+                        <h3 class="project-title">Project Name</h3>
+                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="2">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <span class="project-icon">📱</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Mobile App</span>
+                        <h3 class="project-title">Project Name</h3>
+                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <div class="project-tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="3">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <span class="project-icon">🤖</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">AI/ML</span>
+                        <h3 class="project-title">Project Name</h3>
+                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="4">
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <span class="project-icon">🌐</span>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Full Stack</span>
+                        <h3 class="project-title">Project Name</h3>
+                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">PostgreSQL</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h3>Let's work together</h3>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com" class="contact-link">
+                        <span class="contact-icon">✉️</span>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://github.com/ajmendes17" target="_blank" class="contact-link">
+                        <span class="contact-icon">💻</span>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="contact-link">
+                        <span class="contact-icon">💼</span>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 AJ Mendes. Built with passion and precision.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
