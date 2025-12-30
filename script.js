@@ -103,74 +103,6 @@ projectCards.forEach(card => {
     });
 });
 
-// Cursor effect (optional enhancement)
-let cursor = null;
-let cursorFollower = null;
-
-function createCursor() {
-    cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    cursor.style.cssText = `
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--accent);
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.1s ease;
-        display: none;
-    `;
-    
-    cursorFollower = document.createElement('div');
-    cursorFollower.className = 'cursor-follower';
-    cursorFollower.style.cssText = `
-        width: 30px;
-        height: 30px;
-        border: 2px solid var(--accent);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9998;
-        transition: all 0.3s ease;
-        opacity: 0.5;
-        display: none;
-    `;
-    
-    document.body.appendChild(cursor);
-    document.body.appendChild(cursorFollower);
-}
-
-// Enable cursor effect on desktop only
-if (window.innerWidth > 768) {
-    createCursor();
-    
-    document.addEventListener('mousemove', (e) => {
-        if (cursor && cursorFollower) {
-            cursor.style.left = e.clientX - 5 + 'px';
-            cursor.style.top = e.clientY - 5 + 'px';
-            cursor.style.display = 'block';
-            
-            cursorFollower.style.left = e.clientX - 15 + 'px';
-            cursorFollower.style.top = e.clientY - 15 + 'px';
-            cursorFollower.style.display = 'block';
-        }
-    });
-    
-    // Cursor hover effects on interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-item');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            if (cursor) cursor.style.transform = 'scale(1.5)';
-            if (cursorFollower) cursorFollower.style.transform = 'scale(1.5)';
-        });
-        el.addEventListener('mouseleave', () => {
-            if (cursor) cursor.style.transform = 'scale(1)';
-            if (cursorFollower) cursorFollower.style.transform = 'scale(1)';
-        });
-    });
-}
-
 // Typing effect for hero title (optional enhancement)
 function typeWriter(element, text, speed = 100) {
     let i = 0;
@@ -187,17 +119,101 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Add subtle animation to code window
+// Typewriter effect for code window
 const codeContent = document.querySelector('.code-content');
 if (codeContent) {
-    const codeLines = codeContent.querySelectorAll('span');
-    codeLines.forEach((line, index) => {
-        line.style.opacity = '0';
+    const codeElement = codeContent.querySelector('code');
+    if (codeElement) {
+        // Store the original HTML structure
+        const originalHTML = codeElement.innerHTML;
+        
+        // Clear the content
+        codeElement.innerHTML = '';
+        
+        // Define the code structure as segments
+        const codeSegments = [
+            { type: 'keyword', text: 'const' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'developer' },
+            { type: 'text', text: ' = {\n  ' },
+            { type: 'property', text: 'name' },
+            { type: 'text', text: ': ' },
+            { type: 'string', text: "'AJ Mendes'" },
+            { type: 'text', text: ',\n  ' },
+            { type: 'property', text: 'role' },
+            { type: 'text', text: ': ' },
+            { type: 'string', text: "'Full-Stack Developer'" },
+            { type: 'text', text: ',\n  ' },
+            { type: 'property', text: 'passion' },
+            { type: 'text', text: ': ' },
+            { type: 'string', text: "'Building innovative solutions'" },
+            { type: 'text', text: '\n};' }
+        ];
+        
+        let segmentIndex = 0;
+        let charIndex = 0;
+        let currentHTML = '';
+        
+        function getClassForType(type) {
+            const classMap = {
+                'keyword': 'code-keyword',
+                'variable': 'code-variable',
+                'property': 'code-property',
+                'string': 'code-string'
+            };
+            return classMap[type] || '';
+        }
+        
+        function typeCode() {
+            if (segmentIndex < codeSegments.length) {
+                const segment = codeSegments[segmentIndex];
+                
+                if (charIndex < segment.text.length) {
+                    const char = segment.text[charIndex];
+                    
+                    if (segment.type === 'text') {
+                        // Regular text
+                        currentHTML += char;
+                    } else {
+                        // Styled text - need to handle opening/closing tags
+                        if (charIndex === 0) {
+                            // Open the span tag
+                            currentHTML += `<span class="${getClassForType(segment.type)}">`;
+                        }
+                        currentHTML += char;
+                        
+                        if (charIndex === segment.text.length - 1) {
+                            // Close the span tag
+                            currentHTML += '</span>';
+                        }
+                    }
+                    
+                    codeElement.innerHTML = currentHTML;
+                    charIndex++;
+                    
+                    // Variable speed: slower for keywords and strings
+                    let speed = 40;
+                    if (segment.type === 'keyword' || segment.type === 'string') {
+                        speed = 60; // Slower for keywords and strings
+                    } else if (char === ' ' || char === '\n') {
+                        speed = 20; // Faster for whitespace
+                    }
+                    
+                    setTimeout(typeCode, speed);
+                } else {
+                    // Move to next segment
+                    segmentIndex++;
+                    charIndex = 0;
+                    setTimeout(typeCode, 30);
+                }
+            }
+        }
+        
+        // Start typing after a short delay
         setTimeout(() => {
-            line.style.transition = 'opacity 0.3s ease';
-            line.style.opacity = '1';
-        }, 1500 + (index * 100));
-    });
+            typeCode();
+        }, 1500);
+    }
 }
 
 // Active navigation link highlighting
