@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Chat Application | AJ Mendes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span class="logo-text">AJ</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Header -->
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">
+                ← Back to Projects
+            </a>
+            <div class="project-header-content">
+                <span class="project-category">Cybersecurity</span>
+                <h1 class="project-main-title">Secure Chat Application</h1>
+                <p class="project-subtitle">End-to-end encrypted messaging with RSA and AES-GCM hybrid encryption</p>
+                <div class="project-header-tags">
+                    <span class="tag">RSA</span>
+                    <span class="tag">AES-GCM</span>
+                    <span class="tag">Cryptography</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Socket Programming</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Details -->
+    <section class="project-details">
+        <div class="container">
+            <div class="project-content">
+                <!-- Overview -->
+                <div class="project-section">
+                    <h2 class="section-title">Overview</h2>
+                    <p class="project-text">
+                        The Secure Chat Application is a real-time messaging system that implements industry-standard 
+                        cryptographic protocols to ensure secure communication. The application uses a hybrid encryption 
+                        approach, combining the strengths of RSA for secure key exchange and AES-GCM for efficient 
+                        symmetric encryption of messages.
+                    </p>
+                    <p class="project-text">
+                        This project demonstrates practical implementation of cryptographic principles, secure key 
+                        management, and authenticated encryption to protect message confidentiality and integrity 
+                        against various attack vectors.
+                    </p>
+                </div>
+
+                <!-- Features -->
+                <div class="project-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">🔐</div>
+                            <h3>Hybrid Encryption</h3>
+                            <p>RSA-2048 for key exchange and AES-256-GCM for message encryption, providing both security and performance.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔑</div>
+                            <h3>Secure Key Management</h3>
+                            <p>Automatic key generation, secure key exchange protocol, and proper key lifecycle management.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✅</div>
+                            <h3>Authenticated Encryption</h3>
+                            <p>AES-GCM provides both encryption and authentication, ensuring message integrity and preventing tampering.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <h3>End-to-End Security</h3>
+                            <p>Messages are encrypted on the client side and can only be decrypted by the intended recipient.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Implementation -->
+                <div class="project-section">
+                    <h2 class="section-title">Technical Implementation</h2>
+                    <div class="tech-details">
+                        <h3>Encryption Architecture</h3>
+                        <p class="project-text">
+                            The application implements a hybrid encryption scheme that combines asymmetric and symmetric 
+                            cryptography. When two users establish a connection:
+                        </p>
+                        <ol class="project-list">
+                            <li>Each client generates an RSA key pair (public and private keys)</li>
+                            <li>Public keys are exchanged securely between clients</li>
+                            <li>A random AES-256 key is generated for each session</li>
+                            <li>The AES key is encrypted with the recipient's RSA public key</li>
+                            <li>Messages are encrypted using AES-GCM with the session key</li>
+                            <li>The encrypted key and ciphertext are transmitted together</li>
+                        </ol>
+
+                        <h3>Code Example</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-filename">encryption.py</span>
+                            </div>
+                            <div class="code-content">
+                                <pre><code><span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives</span> <span class="code-keyword">import</span> <span class="code-variable">hashes</span>
+<span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives.asymmetric</span> <span class="code-keyword">import</span> <span class="code-variable">rsa</span>, <span class="code-variable">padding</span>
+<span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives.ciphers.aead</span> <span class="code-keyword">import</span> <span class="code-variable">AESGCM</span>
+<span class="code-keyword">import</span> <span class="code-variable">os</span>
+
+<span class="code-keyword">def</span> <span class="code-variable">encrypt_message</span>(<span class="code-variable">message</span>, <span class="code-variable">public_key</span>):
+    <span class="code-comment"># Generate AES key for this session</span>
+    <span class="code-variable">aes_key</span> = <span class="code-function">AESGCM</span>.<span class="code-function">generate_key</span>(<span class="code-variable">bit_length</span>=<span class="code-number">256</span>)
+    <span class="code-variable">aesgcm</span> = <span class="code-function">AESGCM</span>(<span class="code-variable">aes_key</span>)
+    <span class="code-variable">nonce</span> = <span class="code-function">os.urandom</span>(<span class="code-number">12</span>)
+    
+    <span class="code-comment"># Encrypt message with AES-GCM</span>
+    <span class="code-variable">ciphertext</span> = <span class="code-variable">aesgcm</span>.<span class="code-function">encrypt</span>(<span class="code-variable">nonce</span>, <span class="code-variable">message</span>.<span class="code-function">encode</span>(), <span class="code-variable">None</span>)
+    
+    <span class="code-comment"># Encrypt AES key with RSA</span>
+    <span class="code-variable">encrypted_key</span> = <span class="code-variable">public_key</span>.<span class="code-function">encrypt</span>(
+        <span class="code-variable">aes_key</span>,
+        <span class="code-function">padding.OAEP</span>(
+            <span class="code-variable">mgf</span>=<span class="code-function">padding.MGF1</span>(<span class="code-variable">algorithm</span>=<span class="code-function">hashes.SHA256</span>()),
+            <span class="code-variable">algorithm</span>=<span class="code-function">hashes.SHA256</span>(),
+            <span class="code-variable">label</span>=<span class="code-variable">None</span>
+        )
+    )
+    
+    <span class="code-keyword">return</span> {
+        <span class="code-string">'encrypted_key'</span>: <span class="code-variable">encrypted_key</span>,
+        <span class="code-string">'nonce'</span>: <span class="code-variable">nonce</span>,
+        <span class="code-string">'ciphertext'</span>: <span class="code-variable">ciphertext</span>
+    }</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Considerations -->
+                <div class="project-section">
+                    <h2 class="section-title">Security Considerations</h2>
+                    <div class="security-list">
+                        <div class="security-item">
+                            <h3>Key Exchange Security</h3>
+                            <p>RSA-2048 provides strong security for key exchange, with keys being properly validated before use.</p>
+                        </div>
+                        <div class="security-item">
+                            <h3>Forward Secrecy</h3>
+                            <p>Each session uses a unique AES key, ensuring that compromise of one session doesn't affect others.</p>
+                        </div>
+                        <div class="security-item">
+                            <h3>Message Authentication</h3>
+                            <p>AES-GCM's built-in authentication tag prevents message tampering and ensures data integrity.</p>
+                        </div>
+                        <div class="security-item">
+                            <h3>Nonce Management</h3>
+                            <p>Cryptographically secure random nonces are generated for each encryption operation to prevent replay attacks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technologies Used -->
+                <div class="project-section">
+                    <h2 class="section-title">Technologies & Tools</h2>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h3>Cryptography</h3>
+                            <div class="tech-tags">
+                                <span class="tag">RSA-2048</span>
+                                <span class="tag">AES-256-GCM</span>
+                                <span class="tag">OAEP Padding</span>
+                                <span class="tag">SHA-256</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3>Programming</h3>
+                            <div class="tech-tags">
+                                <span class="tag">Python 3</span>
+                                <span class="tag">Cryptography Library</span>
+                                <span class="tag">Socket Programming</span>
+                                <span class="tag">Threading</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Links -->
+                <div class="project-section">
+                    <h2 class="section-title">Project Links</h2>
+                    <div class="project-links">
+                        <a href="https://github.com/ajmendes17" target="_blank" class="project-link-btn">
+                            <span>View on GitHub →</span>
+                        </a>
+                        <a href="index.html#projects" class="project-link-btn secondary">
+                            <span>Back to Projects</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AJ Mendes. Built with passion and precision.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
