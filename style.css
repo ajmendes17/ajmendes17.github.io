@@ -25,6 +25,10 @@ html {
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background-color: var(--bg-primary);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(0, 255, 136, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0, 204, 255, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -147,6 +151,21 @@ body {
     background-size: 50px 50px;
     opacity: 0.5;
     animation: gridMove 20s linear infinite;
+    position: relative;
+}
+
+.grid-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 136, 0.03) 2px, rgba(0, 255, 136, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 255, 136, 0.03) 2px, rgba(0, 255, 136, 0.03) 4px);
+    background-size: 20px 20px;
+    pointer-events: none;
 }
 
 @keyframes gridMove {
@@ -255,6 +274,19 @@ body {
     border: 1px solid var(--border-color);
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.code-window::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, transparent 100%);
+    pointer-events: none;
+    border-radius: 8px;
 }
 
 .code-header {
@@ -287,6 +319,8 @@ body {
 .code-variable { color: #82aaff; }
 .code-property { color: #7fdbca; }
 .code-string { color: #c3e88d; }
+.code-function { color: #ffcb6b; }
+.code-comment { color: #546e7a; font-style: italic; }
 
 /* Scroll Indicator */
 .scroll-indicator {
@@ -480,6 +514,11 @@ section {
     font-family: 'JetBrains Mono', monospace;
     text-transform: uppercase;
     letter-spacing: 1px;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(0, 255, 136, 0.1);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
 }
 
 .project-title {
@@ -508,6 +547,13 @@ section {
     font-size: 0.85rem;
     color: var(--text-secondary);
     font-family: 'JetBrains Mono', monospace;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0, 255, 136, 0.05);
 }
 
 /* Contact Section */

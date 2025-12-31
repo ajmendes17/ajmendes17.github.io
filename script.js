@@ -132,22 +132,48 @@ if (codeContent) {
         
         // Define the code structure as segments
         const codeSegments = [
-            { type: 'keyword', text: 'const' },
+            { type: 'keyword', text: 'def' },
             { type: 'text', text: ' ' },
-            { type: 'variable', text: 'developer' },
-            { type: 'text', text: ' = {\n  ' },
-            { type: 'property', text: 'name' },
+            { type: 'variable', text: 'encrypt_message' },
+            { type: 'text', text: '(' },
+            { type: 'variable', text: 'message' },
+            { type: 'text', text: ', ' },
+            { type: 'variable', text: 'public_key' },
+            { type: 'text', text: '):\n  ' },
+            { type: 'comment', text: '# RSA key exchange + AES-GCM encryption' },
+            { type: 'text', text: '\n  ' },
+            { type: 'variable', text: 'aes_key' },
+            { type: 'text', text: ' = ' },
+            { type: 'function', text: 'generate_key' },
+            { type: 'text', text: '()\n  ' },
+            { type: 'variable', text: 'encrypted_key' },
+            { type: 'text', text: ' = ' },
+            { type: 'function', text: 'rsa_encrypt' },
+            { type: 'text', text: '(' },
+            { type: 'variable', text: 'aes_key' },
+            { type: 'text', text: ', ' },
+            { type: 'variable', text: 'public_key' },
+            { type: 'text', text: ')\n  ' },
+            { type: 'variable', text: 'ciphertext' },
+            { type: 'text', text: ', ' },
+            { type: 'variable', text: 'tag' },
+            { type: 'text', text: ' = ' },
+            { type: 'function', text: 'aes_gcm_encrypt' },
+            { type: 'text', text: '(' },
+            { type: 'variable', text: 'message' },
+            { type: 'text', text: ', ' },
+            { type: 'variable', text: 'aes_key' },
+            { type: 'text', text: ')\n  ' },
+            { type: 'keyword', text: 'return' },
+            { type: 'text', text: ' {' },
+            { type: 'string', text: "'key'" },
             { type: 'text', text: ': ' },
-            { type: 'string', text: "'AJ Mendes'" },
-            { type: 'text', text: ',\n  ' },
-            { type: 'property', text: 'role' },
+            { type: 'variable', text: 'encrypted_key' },
+            { type: 'text', text: ', ' },
+            { type: 'string', text: "'data'" },
             { type: 'text', text: ': ' },
-            { type: 'string', text: "'Data and Security Analyst'" },
-            { type: 'text', text: ',\n  ' },
-            { type: 'property', text: 'passion' },
-            { type: 'text', text: ': ' },
-            { type: 'string', text: "'Cybersecurity, Data Science, and AI'" },
-            { type: 'text', text: '\n};' }
+            { type: 'variable', text: 'ciphertext' },
+            { type: 'text', text: '}' }
         ];
         
         let segmentIndex = 0;
@@ -159,7 +185,9 @@ if (codeContent) {
                 'keyword': 'code-keyword',
                 'variable': 'code-variable',
                 'property': 'code-property',
-                'string': 'code-string'
+                'string': 'code-string',
+                'function': 'code-function',
+                'comment': 'code-comment'
             };
             return classMap[type] || '';
         }
@@ -191,10 +219,10 @@ if (codeContent) {
                     codeElement.innerHTML = currentHTML;
                     charIndex++;
                     
-                    // Variable speed: slower for keywords and strings
+                    // Variable speed: slower for keywords, strings, and comments
                     let speed = 40;
-                    if (segment.type === 'keyword' || segment.type === 'string') {
-                        speed = 60; // Slower for keywords and strings
+                    if (segment.type === 'keyword' || segment.type === 'string' || segment.type === 'comment') {
+                        speed = 60; // Slower for keywords, strings, and comments
                     } else if (char === ' ' || char === '\n') {
                         speed = 20; // Faster for whitespace
                     }

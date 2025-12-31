@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Portfolio | AJ Mendes</title>
+    <title>CS Portfolio | AJ Mendes - Cybersecurity, Data Science & AI</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,11 +38,11 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="line">Building</span>
-                    <span class="line">Digital</span>
-                    <span class="line highlight">Solutions</span>
+                    <span class="line">Cybersecurity</span>
+                    <span class="line">Data Science</span>
+                    <span class="line highlight">AI</span>
                 </h1>
-                <p class="hero-subtitle">Full-stack developer & creative technologist</p>
+                <p class="hero-subtitle">Computer Science Specialist</p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
@@ -56,11 +56,12 @@
                         <span class="code-dot"></span>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
-  <span class="code-property">name</span>: <span class="code-string">'AJ Mendes'</span>,
-  <span class="code-property">role</span>: <span class="code-string">'Data and Security Analyst'</span>,
-  <span class="code-property">passion</span>: <span class="code-string">'Cybersecurity, Data Science, and AI'</span>
-};</code></pre>
+                        <pre><code><span class="code-keyword">def</span> <span class="code-variable">encrypt_message</span>(<span class="code-variable">message</span>, <span class="code-variable">public_key</span>):
+  <span class="code-comment"># RSA key exchange + AES-GCM encryption</span>
+  <span class="code-variable">aes_key</span> = <span class="code-function">generate_key</span>()
+  <span class="code-variable">encrypted_key</span> = <span class="code-function">rsa_encrypt</span>(<span class="code-variable">aes_key</span>, <span class="code-variable">public_key</span>)
+  <span class="code-variable">ciphertext</span>, <span class="code-variable">tag</span> = <span class="code-function">aes_gcm_encrypt</span>(<span class="code-variable">message</span>, <span class="code-variable">aes_key</span>)
+  <span class="code-keyword">return</span> {<span class="code-string">'key'</span>: <span class="code-variable">encrypted_key</span>, <span class="code-string">'data'</span>: <span class="code-variable">ciphertext</span>}</code></pre>
                     </div>
                 </div>
             </div>
@@ -80,24 +81,25 @@
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-intro">
-                        I'm a developer passionate about creating elegant solutions to complex problems.
-                        My work spans across web development, software engineering, and digital innovation.
+                        I'm a computer science specialist focused on building secure, data-driven solutions.
+                        My expertise spans cryptography, data analysis, and machine learning, with a passion for
+                        creating robust systems that protect information while extracting meaningful insights.
                     </p>
                     <div class="skills-grid">
                         <div class="skill-item">
-                            <div class="skill-icon">⚡</div>
+                            <div class="skill-icon">🔒</div>
                             <h3>Cybersecurity</h3>
-                            <p>React, Vue, TypeScript, CSS</p>
+                            <p>RSA, AES-GCM, Network Security, Cryptography, Penetration Testing</p>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-icon">🔧</div>
+                            <div class="skill-icon">📊</div>
                             <h3>Data Science</h3>
-                            <p>Node.js, Python, APIs, Databases</p>
+                            <p>Python, Pandas, NumPy, Data Analysis, Visualization, Statistical Modeling</p>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-icon">🚀</div>
-                            <h3>Tools</h3>
-                            <p>Git, Docker, CI/CD, Cloud</p>
+                            <div class="skill-icon">🤖</div>
+                            <h3>AI/ML</h3>
+                            <p>Machine Learning, Neural Networks, TensorFlow, PyTorch, Deep Learning</p>
                         </div>
                     </div>
                 </div>
@@ -116,20 +118,21 @@
                 <div class="project-card" data-project="1">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <span class="project-icon">💻</span>
+                            <span class="project-icon">🔒</span>
                         </div>
                         <div class="project-overlay">
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-category">Web Application</span>
-                        <h3 class="project-title">Project Name</h3>
-                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <span class="project-category">Cybersecurity</span>
+                        <h3 class="project-title">Secure Chat Application</h3>
+                        <p class="project-description">A secure messaging application implementing hybrid encryption with RSA for key exchange and AES-GCM for message encryption. Features end-to-end encryption, secure key management, and authenticated encryption to ensure message confidentiality and integrity.</p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
+                            <span class="tag">RSA</span>
+                            <span class="tag">AES-GCM</span>
+                            <span class="tag">Cryptography</span>
+                            <span class="tag">Python</span>
                         </div>
                     </div>
                 </div>
@@ -137,20 +140,21 @@
                 <div class="project-card" data-project="2">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <span class="project-icon">📱</span>
+                            <span class="project-icon">📊</span>
                         </div>
                         <div class="project-overlay">
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-category">Mobile App</span>
-                        <h3 class="project-title">Project Name</h3>
-                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <span class="project-category">Data Science</span>
+                        <h3 class="project-title">Data Analysis Project</h3>
+                        <p class="project-description">A comprehensive data analysis project demonstrating statistical modeling, data visualization, and predictive analytics. Utilizes advanced data processing techniques to extract meaningful insights from complex datasets.</p>
                         <div class="project-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">TypeScript</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">NumPy</span>
+                            <span class="tag">Matplotlib</span>
                         </div>
                     </div>
                 </div>
@@ -166,12 +170,13 @@
                     </div>
                     <div class="project-info">
                         <span class="project-category">AI/ML</span>
-                        <h3 class="project-title">Project Name</h3>
-                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <h3 class="project-title">Machine Learning Model</h3>
+                        <p class="project-description">An advanced machine learning project implementing neural networks for pattern recognition and predictive modeling. Features deep learning architectures, model optimization, and performance evaluation metrics.</p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
                             <span class="tag">TensorFlow</span>
-                            <span class="tag">API</span>
+                            <span class="tag">Neural Networks</span>
+                            <span class="tag">Deep Learning</span>
                         </div>
                     </div>
                 </div>
@@ -179,20 +184,20 @@
                 <div class="project-card" data-project="4">
                     <div class="project-image">
                         <div class="project-placeholder">
-                            <span class="project-icon">🌐</span>
+                            <span class="project-icon">🛡️</span>
                         </div>
                         <div class="project-overlay">
                             <a href="#" class="project-link">View Project →</a>
                         </div>
                     </div>
                     <div class="project-info">
-                        <span class="project-category">Full Stack</span>
-                        <h3 class="project-title">Project Name</h3>
-                        <p class="project-description">A brief description of your project and the technologies used.</p>
+                        <span class="project-category">Cybersecurity</span>
+                        <h3 class="project-title">Security Tool</h3>
+                        <p class="project-description">A cybersecurity tool for network analysis and vulnerability assessment. Implements security scanning, threat detection, and security protocol analysis.</p>
                         <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">AWS</span>
+                            <span class="tag">Network Security</span>
+                            <span class="tag">Penetration Testing</span>
+                            <span class="tag">Python</span>
                         </div>
                     </div>
                 </div>
@@ -209,11 +214,11 @@
             </div>
             <div class="contact-content">
                 <div class="contact-text">
-                    <h3>Let's work together</h3>
-                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    <h3>Let's collaborate</h3>
+                    <p>I'm always open to discussing cybersecurity projects, data science initiatives, AI/ML research, or opportunities to contribute to innovative technical solutions.</p>
                 </div>
                 <div class="contact-links">
-                    <a href="mailto:your.email@example.com" class="contact-link">
+                    <a href="mailto:ajmendes17@gmail.com" class="contact-link">
                         <span class="contact-icon">✉️</span>
                         <span>Email</span>
                     </a>
@@ -221,7 +226,7 @@
                         <span class="contact-icon">💻</span>
                         <span>GitHub</span>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" class="contact-link">
+                    <a href="https://www.linkedin.com/in/aj-mendes-b49709341" target="_blank" class="contact-link">
                         <span class="contact-icon">💼</span>
                         <span>LinkedIn</span>
                     </a>
@@ -233,7 +238,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 AJ Mendes. Built with passion and precision.</p>
+            <p>&copy; 2026 AJ Mendes.</p>
         </div>
     </footer>
 
