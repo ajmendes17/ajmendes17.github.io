@@ -132,18 +132,70 @@ function typeWriter(element, text, speed = 100) {
 }
 
 // Typewriter effect for code window
-const codeContent = document.querySelector('.code-content');
-if (codeContent) {
+function initTypewriterEffect() {
+    const codeContent = document.querySelector('.code-content');
+    if (!codeContent) return;
+    
     const codeElement = codeContent.querySelector('code');
-    if (codeElement) {
-        // Store the original HTML structure
-        const originalHTML = codeElement.innerHTML;
-        
-        // Clear the content
-        codeElement.innerHTML = '';
-        
-        // Define the code structure as segments
-        const codeSegments = [
+    if (!codeElement) return;
+    const isProjectPage = document.querySelector('.code-block') !== null;
+    const isMainPage = document.querySelector('.code-window') !== null;
+    const originalHTML = codeElement.innerHTML;
+    codeElement.innerHTML = '';
+    let codeSegments = [];
+    if (isMainPage) {
+        // Main page - developer object
+        codeSegments = [
+            { type: 'keyword', text: 'const' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'developer' },
+            { type: 'text', text: ' = {\n                            ' },
+            { type: 'property', text: 'name' },
+            { type: 'text', text: ': ' },
+            { type: 'string', text: "'AJ Mendes'" },
+            { type: 'text', text: ',\n                            ' },
+            { type: 'property', text: 'role' },
+            { type: 'text', text: ': ' },
+            { type: 'string', text: "'Data and Security Analyst'" },
+            { type: 'text', text: ',\n                            ' },
+            { type: 'property', text: 'passion' },
+            { type: 'text', text: ': ' },
+            { type: 'string', text: "'Cybersecurity, Data Science, and AI'" },
+            { type: 'text', text: '\n                            };' }
+        ];
+    } else if (isProjectPage) {
+        // Project page - encryption code
+        codeSegments = [
+            { type: 'keyword', text: 'from' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'cryptography.hazmat.primitives' },
+            { type: 'text', text: ' ' },
+            { type: 'keyword', text: 'import' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'hashes' },
+            { type: 'text', text: '\n' },
+            { type: 'keyword', text: 'from' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'cryptography.hazmat.primitives.asymmetric' },
+            { type: 'text', text: ' ' },
+            { type: 'keyword', text: 'import' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'rsa' },
+            { type: 'text', text: ', ' },
+            { type: 'variable', text: 'padding' },
+            { type: 'text', text: '\n' },
+            { type: 'keyword', text: 'from' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'cryptography.hazmat.primitives.ciphers.aead' },
+            { type: 'text', text: ' ' },
+            { type: 'keyword', text: 'import' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'AESGCM' },
+            { type: 'text', text: '\n' },
+            { type: 'keyword', text: 'import' },
+            { type: 'text', text: ' ' },
+            { type: 'variable', text: 'os' },
+            { type: 'text', text: '\n\n' },
             { type: 'keyword', text: 'def' },
             { type: 'text', text: ' ' },
             { type: 'variable', text: 'encrypt_message' },
@@ -151,109 +203,169 @@ if (codeContent) {
             { type: 'variable', text: 'message' },
             { type: 'text', text: ', ' },
             { type: 'variable', text: 'public_key' },
-            { type: 'text', text: '):\n  ' },
-            { type: 'comment', text: '# RSA key exchange + AES-GCM encryption' },
-            { type: 'text', text: '\n  ' },
+            { type: 'text', text: '):\n    ' },
+            { type: 'comment', text: '# Generate AES key for this session' },
+            { type: 'text', text: '\n    ' },
             { type: 'variable', text: 'aes_key' },
             { type: 'text', text: ' = ' },
+            { type: 'function', text: 'AESGCM' },
+            { type: 'text', text: '.' },
             { type: 'function', text: 'generate_key' },
-            { type: 'text', text: '()\n  ' },
-            { type: 'variable', text: 'encrypted_key' },
+            { type: 'text', text: '(' },
+            { type: 'variable', text: 'bit_length' },
+            { type: 'text', text: '=' },
+            { type: 'number', text: '256' },
+            { type: 'text', text: ')\n    ' },
+            { type: 'variable', text: 'aesgcm' },
             { type: 'text', text: ' = ' },
-            { type: 'function', text: 'rsa_encrypt' },
+            { type: 'function', text: 'AESGCM' },
             { type: 'text', text: '(' },
             { type: 'variable', text: 'aes_key' },
-            { type: 'text', text: ', ' },
-            { type: 'variable', text: 'public_key' },
-            { type: 'text', text: ')\n  ' },
-            { type: 'variable', text: 'ciphertext' },
-            { type: 'text', text: ', ' },
-            { type: 'variable', text: 'tag' },
+            { type: 'text', text: ')\n    ' },
+            { type: 'variable', text: 'nonce' },
             { type: 'text', text: ' = ' },
-            { type: 'function', text: 'aes_gcm_encrypt' },
+            { type: 'function', text: 'os.urandom' },
             { type: 'text', text: '(' },
+            { type: 'number', text: '12' },
+            { type: 'text', text: ')\n    \n    ' },
+            { type: 'comment', text: '# Encrypt message with AES-GCM' },
+            { type: 'text', text: '\n    ' },
+            { type: 'variable', text: 'ciphertext' },
+            { type: 'text', text: ' = ' },
+            { type: 'variable', text: 'aesgcm' },
+            { type: 'text', text: '.' },
+            { type: 'function', text: 'encrypt' },
+            { type: 'text', text: '(' },
+            { type: 'variable', text: 'nonce' },
+            { type: 'text', text: ', ' },
             { type: 'variable', text: 'message' },
-            { type: 'text', text: ', ' },
+            { type: 'text', text: '.' },
+            { type: 'function', text: 'encode' },
+            { type: 'text', text: '(), ' },
+            { type: 'variable', text: 'None' },
+            { type: 'text', text: ')\n    \n    ' },
+            { type: 'comment', text: '# Encrypt AES key with RSA' },
+            { type: 'text', text: '\n    ' },
+            { type: 'variable', text: 'encrypted_key' },
+            { type: 'text', text: ' = ' },
+            { type: 'variable', text: 'public_key' },
+            { type: 'text', text: '.' },
+            { type: 'function', text: 'encrypt' },
+            { type: 'text', text: '(\n        ' },
             { type: 'variable', text: 'aes_key' },
-            { type: 'text', text: ')\n  ' },
+            { type: 'text', text: ',\n        ' },
+            { type: 'function', text: 'padding.OAEP' },
+            { type: 'text', text: '(\n            ' },
+            { type: 'variable', text: 'mgf' },
+            { type: 'text', text: '=' },
+            { type: 'function', text: 'padding.MGF1' },
+            { type: 'text', text: '(' },
+            { type: 'variable', text: 'algorithm' },
+            { type: 'text', text: '=' },
+            { type: 'function', text: 'hashes.SHA256' },
+            { type: 'text', text: '()),\n            ' },
+            { type: 'variable', text: 'algorithm' },
+            { type: 'text', text: '=' },
+            { type: 'function', text: 'hashes.SHA256' },
+            { type: 'text', text: '(),\n            ' },
+            { type: 'variable', text: 'label' },
+            { type: 'text', text: '=' },
+            { type: 'variable', text: 'None' },
+            { type: 'text', text: '\n        )\n    )\n    \n    ' },
             { type: 'keyword', text: 'return' },
-            { type: 'text', text: ' {' },
-            { type: 'string', text: "'key'" },
+            { type: 'text', text: ' {\n        ' },
+            { type: 'string', text: "'encrypted_key'" },
             { type: 'text', text: ': ' },
             { type: 'variable', text: 'encrypted_key' },
-            { type: 'text', text: ', ' },
-            { type: 'string', text: "'data'" },
+            { type: 'text', text: ',\n        ' },
+            { type: 'string', text: "'nonce'" },
+            { type: 'text', text: ': ' },
+            { type: 'variable', text: 'nonce' },
+            { type: 'text', text: ',\n        ' },
+            { type: 'string', text: "'ciphertext'" },
             { type: 'text', text: ': ' },
             { type: 'variable', text: 'ciphertext' },
-            { type: 'text', text: '}' }
+            { type: 'text', text: '\n    }' }
         ];
-        
-        let segmentIndex = 0;
-        let charIndex = 0;
-        let currentHTML = '';
-        
-        function getClassForType(type) {
-            const classMap = {
-                'keyword': 'code-keyword',
-                'variable': 'code-variable',
-                'property': 'code-property',
-                'string': 'code-string',
-                'function': 'code-function',
-                'comment': 'code-comment'
-            };
-            return classMap[type] || '';
-        }
-        
-        function typeCode() {
-            if (segmentIndex < codeSegments.length) {
-                const segment = codeSegments[segmentIndex];
+    } else {
+        // No matching page, restore original and exit
+        codeElement.innerHTML = originalHTML;
+        return;
+    }
+    
+    let segmentIndex = 0;
+    let charIndex = 0;
+    let currentHTML = '';
+    
+    function getClassForType(type) {
+        const classMap = {
+            'keyword': 'code-keyword',
+            'variable': 'code-variable',
+            'property': 'code-property',
+            'string': 'code-string',
+            'function': 'code-function',
+            'comment': 'code-comment',
+            'number': 'code-number'
+        };
+        return classMap[type] || '';
+    }
+    
+    function typeCode() {
+        if (segmentIndex < codeSegments.length) {
+            const segment = codeSegments[segmentIndex];
+            
+            if (charIndex < segment.text.length) {
+                const char = segment.text[charIndex];
                 
-                if (charIndex < segment.text.length) {
-                    const char = segment.text[charIndex];
-                    
-                    if (segment.type === 'text') {
-                        // Regular text
-                        currentHTML += char;
-                    } else {
-                        // Styled text - need to handle opening/closing tags
-                        if (charIndex === 0) {
-                            // Open the span tag
-                            currentHTML += `<span class="${getClassForType(segment.type)}">`;
-                        }
-                        currentHTML += char;
-                        
-                        if (charIndex === segment.text.length - 1) {
-                            // Close the span tag
-                            currentHTML += '</span>';
-                        }
-                    }
-                    
-                    codeElement.innerHTML = currentHTML;
-                    charIndex++;
-                    
-                    // Variable speed: slower for keywords, strings, and comments
-                    let speed = 40;
-                    if (segment.type === 'keyword' || segment.type === 'string' || segment.type === 'comment') {
-                        speed = 60; // Slower for keywords, strings, and comments
-                    } else if (char === ' ' || char === '\n') {
-                        speed = 20; // Faster for whitespace
-                    }
-                    
-                    setTimeout(typeCode, speed);
+                if (segment.type === 'text') {
+                    // Regular text
+                    currentHTML += char;
                 } else {
-                    // Move to next segment
-                    segmentIndex++;
-                    charIndex = 0;
-                    setTimeout(typeCode, 30);
+                    // Styled text - need to handle opening/closing tags
+                    if (charIndex === 0) {
+                        // Open the span tag
+                        currentHTML += `<span class="${getClassForType(segment.type)}">`;
+                    }
+                    currentHTML += char;
+                    
+                    if (charIndex === segment.text.length - 1) {
+                        // Close the span tag
+                        currentHTML += '</span>';
+                    }
                 }
+                
+                codeElement.innerHTML = currentHTML;
+                charIndex++;
+                
+                // Variable speed: slower for keywords, strings, and comments
+                let speed = 40;
+                if (segment.type === 'keyword' || segment.type === 'string' || segment.type === 'comment') {
+                    speed = 60; // Slower for keywords, strings, and comments
+                } else if (char === ' ' || char === '\n') {
+                    speed = 20; // Faster for whitespace
+                }
+                
+                setTimeout(typeCode, speed);
+            } else {
+                // Move to next segment
+                segmentIndex++;
+                charIndex = 0;
+                setTimeout(typeCode, 30);
             }
         }
-        
-        // Start typing after a short delay
-        setTimeout(() => {
-            typeCode();
-        }, 1500);
     }
+    
+    // Start typing after a short delay
+    setTimeout(() => {
+        typeCode();
+    }, isProjectPage ? 500 : 1500);
+}
+
+// Initialize typewriter effect when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTypewriterEffect);
+} else {
+    initTypewriterEffect();
 }
 
 // Active navigation link highlighting
