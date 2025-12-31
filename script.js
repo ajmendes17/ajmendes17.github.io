@@ -337,52 +337,68 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Copy email to clipboard
-const copyEmailButton = document.getElementById('copy-email');
-const copyStatus = document.getElementById('copy-status');
+function initEmailCopy() {
+    const copyEmailButton = document.getElementById('copy-email');
+    const copyStatus = document.getElementById('copy-status');
 
-function setCopyStatus(message, isError = false) {
-    if (!copyStatus) return;
-    copyStatus.textContent = message;
-    copyStatus.classList.toggle('error', isError);
+    function setCopyStatus(message, isError = false) {
+        if (!copyStatus) return;
+        copyStatus.textContent = message;
+        copyStatus.classList.toggle('error', isError);
 
-    if (message) {
-        setTimeout(() => {
-            if (copyStatus.textContent === message) {
-                copyStatus.textContent = '';
-                copyStatus.classList.remove('error');
-            }
-        }, 4000);
-    }
-}
-
-async function copyEmailToClipboard(email) {
-    if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(email);
-        return;
-    }
-
-    const textarea = document.createElement('textarea');
-    textarea.value = email;
-    textarea.setAttribute('readonly', '');
-    textarea.style.position = 'absolute';
-    textarea.style.left = '-9999px';
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-}
-
-if (copyEmailButton) {
-    copyEmailButton.addEventListener('click', async () => {
-        const email = copyEmailButton.dataset.email;
-        if (!email) return;
-
-        try {
-            await copyEmailToClipboard(email);
-            setCopyStatus('Email copied to clipboard!');
-        } catch (error) {
-            console.error('Failed to copy email', error);
-            setCopyStatus('Copy failed. Please copy manually.', true);
+        if (message) {
+            setTimeout(() => {
+                if (copyStatus.textContent === message) {
+                    copyStatus.textContent = '';
+                    copyStatus.classList.remove('error');
+                }
+            }, 4000);
         }
-    });
+    }
+
+    async function copyEmailToClipboard(email) {
+        try {
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(email);
+                return;
+            }
+
+            // Fallback for older browsers
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    if (copyEmailButton) {
+        copyEmailButton.addEventListener('click', async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const email = copyEmailButton.dataset.email;
+            if (!email) return;
+
+            try {
+                await copyEmailToClipboard(email);
+                setCopyStatus('Email copied to clipboard!');
+            } catch (error) {
+                console.error('Failed to copy email', error);
+                setCopyStatus('Copy failed. Please copy manually.', true);
+            }
+        });
+    }
+}
+
+// Initialize email copy when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEmailCopy);
+} else {
+    initEmailCopy();
 }

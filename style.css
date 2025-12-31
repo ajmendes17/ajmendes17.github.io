@@ -491,17 +491,23 @@ section {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .project-card:hover .project-overlay {
     opacity: 1;
+    pointer-events: auto;
 }
+
 
 .project-link {
     color: var(--bg-primary);
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
+    pointer-events: auto;
+    z-index: 10;
+    position: relative;
 }
 
 .project-info {
@@ -600,6 +606,11 @@ section {
     min-width: 150px;
     font: inherit;
     cursor: pointer;
+}
+
+.contact-link:is(button) {
+    width: auto;
+    text-align: center;
 }
 
 .contact-link:hover {
