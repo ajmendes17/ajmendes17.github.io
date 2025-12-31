@@ -450,6 +450,11 @@ section {
     overflow: hidden;
     transition: all 0.4s ease;
     cursor: pointer;
+    position: relative;
+}
+
+.project-card[data-project-url] {
+    cursor: pointer;
 }
 
 .project-card:hover {
@@ -505,7 +510,7 @@ section {
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    pointer-events: auto;
+    pointer-events: none;
     z-index: 10;
     position: relative;
 }

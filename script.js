@@ -92,7 +92,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Project card hover effects
+// Project card hover effects and click handling
 projectCards.forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-10px) scale(1.02)';
@@ -101,6 +101,18 @@ projectCards.forEach(card => {
     card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
     });
+
+    // Make entire card clickable if it has a project URL
+    const projectUrl = card.getAttribute('data-project-url');
+    if (projectUrl) {
+        card.addEventListener('click', function(e) {
+            // Don't navigate if clicking on a link or button inside
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+                return;
+            }
+            window.location.href = projectUrl;
+        });
+    }
 });
 
 // Typing effect for hero title (optional enhancement)
