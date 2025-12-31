@@ -598,6 +598,8 @@ section {
     color: var(--text-primary);
     transition: all 0.3s ease;
     min-width: 150px;
+    font: inherit;
+    cursor: pointer;
 }
 
 .contact-link:hover {
@@ -606,8 +608,23 @@ section {
     box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
 }
 
+.contact-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 .contact-icon {
     font-size: 2rem;
+}
+
+.copy-status {
+    margin-top: 1.5rem;
+    color: var(--accent);
+    min-height: 1.25rem;
+}
+
+.copy-status.error {
+    color: #ff6b6b;
 }
 
 /* Footer */
