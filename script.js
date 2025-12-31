@@ -337,12 +337,17 @@ function initTypewriterEffect() {
                 codeElement.innerHTML = currentHTML;
                 charIndex++;
                 
-                // Variable speed: slower for keywords, strings, and comments
-                let speed = 40;
+                // Variable speed: adjust based on page type
+                // Project page types faster due to longer code
+                const baseSpeed = isProjectPage ? 15 : 40;
+                const keywordSpeed = isProjectPage ? 25 : 60;
+                const whitespaceSpeed = isProjectPage ? 8 : 20;
+                
+                let speed = baseSpeed;
                 if (segment.type === 'keyword' || segment.type === 'string' || segment.type === 'comment') {
-                    speed = 60; // Slower for keywords, strings, and comments
+                    speed = keywordSpeed; // Slower for keywords, strings, and comments
                 } else if (char === ' ' || char === '\n') {
-                    speed = 20; // Faster for whitespace
+                    speed = whitespaceSpeed; // Faster for whitespace
                 }
                 
                 setTimeout(typeCode, speed);
@@ -350,7 +355,8 @@ function initTypewriterEffect() {
                 // Move to next segment
                 segmentIndex++;
                 charIndex = 0;
-                setTimeout(typeCode, 30);
+                const segmentDelay = isProjectPage ? 10 : 30;
+                setTimeout(typeCode, segmentDelay);
             }
         }
     }
