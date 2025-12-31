@@ -56,12 +56,11 @@
                         <span class="code-dot"></span>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="code-keyword">def</span> <span class="code-variable">encrypt_message</span>(<span class="code-variable">message</span>, <span class="code-variable">public_key</span>):
-  <span class="code-comment"># RSA key exchange + AES-GCM encryption</span>
-  <span class="code-variable">aes_key</span> = <span class="code-function">generate_key</span>()
-  <span class="code-variable">encrypted_key</span> = <span class="code-function">rsa_encrypt</span>(<span class="code-variable">aes_key</span>, <span class="code-variable">public_key</span>)
-  <span class="code-variable">ciphertext</span>, <span class="code-variable">tag</span> = <span class="code-function">aes_gcm_encrypt</span>(<span class="code-variable">message</span>, <span class="code-variable">aes_key</span>)
-  <span class="code-keyword">return</span> {<span class="code-string">'key'</span>: <span class="code-variable">encrypted_key</span>, <span class="code-string">'data'</span>: <span class="code-variable">ciphertext</span>}</code></pre>
+                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+  <span class="code-property">name</span>: <span class="code-string">'AJ Mendes'</span>,
+  <span class="code-property">role</span>: <span class="code-string">'Data and Security Analyst'</span>,
+  <span class="code-property">passion</span>: <span class="code-string">'Cybersecurity, Data Science, and AI'</span>
+};</code></pre>
                     </div>
                 </div>
             </div>

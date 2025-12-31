@@ -49,6 +49,46 @@
                     <span class="tag">Python</span>
                     <span class="tag">Socket Programming</span>
                 </div>
+                <h3>Code Example</h3>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-filename">encryption.py</span>
+                            </div>
+                            <div class="code-content">
+                                <pre><code><span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives</span> <span class="code-keyword">import</span> <span class="code-variable">hashes</span>
+<span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives.asymmetric</span> <span class="code-keyword">import</span> <span class="code-variable">rsa</span>, <span class="code-variable">padding</span>
+<span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives.ciphers.aead</span> <span class="code-keyword">import</span> <span class="code-variable">AESGCM</span>
+<span class="code-keyword">import</span> <span class="code-variable">os</span>
+
+<span class="code-keyword">def</span> <span class="code-variable">encrypt_message</span>(<span class="code-variable">message</span>, <span class="code-variable">public_key</span>):
+    <span class="code-comment"># Generate AES key for this session</span>
+    <span class="code-variable">aes_key</span> = <span class="code-function">AESGCM</span>.<span class="code-function">generate_key</span>(<span class="code-variable">bit_length</span>=<span class="code-number">256</span>)
+    <span class="code-variable">aesgcm</span> = <span class="code-function">AESGCM</span>(<span class="code-variable">aes_key</span>)
+    <span class="code-variable">nonce</span> = <span class="code-function">os.urandom</span>(<span class="code-number">12</span>)
+    
+    <span class="code-comment"># Encrypt message with AES-GCM</span>
+    <span class="code-variable">ciphertext</span> = <span class="code-variable">aesgcm</span>.<span class="code-function">encrypt</span>(<span class="code-variable">nonce</span>, <span class="code-variable">message</span>.<span class="code-function">encode</span>(), <span class="code-variable">None</span>)
+    
+    <span class="code-comment"># Encrypt AES key with RSA</span>
+    <span class="code-variable">encrypted_key</span> = <span class="code-variable">public_key</span>.<span class="code-function">encrypt</span>(
+        <span class="code-variable">aes_key</span>,
+        <span class="code-function">padding.OAEP</span>(
+            <span class="code-variable">mgf</span>=<span class="code-function">padding.MGF1</span>(<span class="code-variable">algorithm</span>=<span class="code-function">hashes.SHA256</span>()),
+            <span class="code-variable">algorithm</span>=<span class="code-function">hashes.SHA256</span>(),
+            <span class="code-variable">label</span>=<span class="code-variable">None</span>
+        )
+    )
+    
+    <span class="code-keyword">return</span> {
+        <span class="code-string">'encrypted_key'</span>: <span class="code-variable">encrypted_key</span>,
+        <span class="code-string">'nonce'</span>: <span class="code-variable">nonce</span>,
+        <span class="code-string">'ciphertext'</span>: <span class="code-variable">ciphertext</span>
+    }</code></pre>
+                            </div>
+                        </div>
             </div>
         </div>
     </section>
@@ -117,47 +157,6 @@
                             <li>Messages are encrypted using AES-GCM with the session key</li>
                             <li>The encrypted key and ciphertext are transmitted together</li>
                         </ol>
-
-                        <h3>Code Example</h3>
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-dot"></span>
-                                <span class="code-dot"></span>
-                                <span class="code-dot"></span>
-                                <span class="code-filename">encryption.py</span>
-                            </div>
-                            <div class="code-content">
-                                <pre><code><span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives</span> <span class="code-keyword">import</span> <span class="code-variable">hashes</span>
-<span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives.asymmetric</span> <span class="code-keyword">import</span> <span class="code-variable">rsa</span>, <span class="code-variable">padding</span>
-<span class="code-keyword">from</span> <span class="code-variable">cryptography.hazmat.primitives.ciphers.aead</span> <span class="code-keyword">import</span> <span class="code-variable">AESGCM</span>
-<span class="code-keyword">import</span> <span class="code-variable">os</span>
-
-<span class="code-keyword">def</span> <span class="code-variable">encrypt_message</span>(<span class="code-variable">message</span>, <span class="code-variable">public_key</span>):
-    <span class="code-comment"># Generate AES key for this session</span>
-    <span class="code-variable">aes_key</span> = <span class="code-function">AESGCM</span>.<span class="code-function">generate_key</span>(<span class="code-variable">bit_length</span>=<span class="code-number">256</span>)
-    <span class="code-variable">aesgcm</span> = <span class="code-function">AESGCM</span>(<span class="code-variable">aes_key</span>)
-    <span class="code-variable">nonce</span> = <span class="code-function">os.urandom</span>(<span class="code-number">12</span>)
-    
-    <span class="code-comment"># Encrypt message with AES-GCM</span>
-    <span class="code-variable">ciphertext</span> = <span class="code-variable">aesgcm</span>.<span class="code-function">encrypt</span>(<span class="code-variable">nonce</span>, <span class="code-variable">message</span>.<span class="code-function">encode</span>(), <span class="code-variable">None</span>)
-    
-    <span class="code-comment"># Encrypt AES key with RSA</span>
-    <span class="code-variable">encrypted_key</span> = <span class="code-variable">public_key</span>.<span class="code-function">encrypt</span>(
-        <span class="code-variable">aes_key</span>,
-        <span class="code-function">padding.OAEP</span>(
-            <span class="code-variable">mgf</span>=<span class="code-function">padding.MGF1</span>(<span class="code-variable">algorithm</span>=<span class="code-function">hashes.SHA256</span>()),
-            <span class="code-variable">algorithm</span>=<span class="code-function">hashes.SHA256</span>(),
-            <span class="code-variable">label</span>=<span class="code-variable">None</span>
-        )
-    )
-    
-    <span class="code-keyword">return</span> {
-        <span class="code-string">'encrypted_key'</span>: <span class="code-variable">encrypted_key</span>,
-        <span class="code-string">'nonce'</span>: <span class="code-variable">nonce</span>,
-        <span class="code-string">'ciphertext'</span>: <span class="code-variable">ciphertext</span>
-    }</code></pre>
-                            </div>
-                        </div>
                     </div>
                 </div>
 

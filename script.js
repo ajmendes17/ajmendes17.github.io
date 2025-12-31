@@ -149,19 +149,19 @@ function initTypewriterEffect() {
             { type: 'keyword', text: 'const' },
             { type: 'text', text: ' ' },
             { type: 'variable', text: 'developer' },
-            { type: 'text', text: ' = {\n                            ' },
+            { type: 'text', text: ' = {\n  ' },
             { type: 'property', text: 'name' },
             { type: 'text', text: ': ' },
             { type: 'string', text: "'AJ Mendes'" },
-            { type: 'text', text: ',\n                            ' },
+            { type: 'text', text: ',\n  ' },
             { type: 'property', text: 'role' },
             { type: 'text', text: ': ' },
             { type: 'string', text: "'Data and Security Analyst'" },
-            { type: 'text', text: ',\n                            ' },
+            { type: 'text', text: ',\n  ' },
             { type: 'property', text: 'passion' },
             { type: 'text', text: ': ' },
             { type: 'string', text: "'Cybersecurity, Data Science, and AI'" },
-            { type: 'text', text: '\n                            };' }
+            { type: 'text', text: '\n};' }
         ];
     } else if (isProjectPage) {
         // Project page - encryption code
