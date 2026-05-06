@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClueGame | AJ Mendes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span class="logo-text">AJ</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">
+                ← Back to Projects
+            </a>
+            <div class="project-header-content">
+                <span class="project-category">Software Engineering</span>
+                <h1 class="project-main-title">ClueGame</h1>
+                <p class="project-subtitle">A Java Swing implementation of Clue with config-driven board loading, turn management, suggestions, accusations, and computer-player logic.</p>
+                <div class="project-header-tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">Swing</span>
+                    <span class="tag">JUnit 5</span>
+                    <span class="tag">Pathfinding</span>
+                    <span class="tag">OOP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-details">
+        <div class="container">
+            <div class="project-content">
+                <div class="project-section">
+                    <h2 class="section-title">Overview</h2>
+                    <p class="project-text">
+                        ClueGame is a desktop game built around a custom Clue board. The application parses external setup and layout files, builds the board model at runtime, calculates legal movement targets, handles card distribution, and drives human and computer turns through a Swing interface.
+                    </p>
+                    <p class="project-text">
+                        The project is more than a static board: it models rooms, doors, secret passages, occupied cells, player hands, seen cards, suggestions, disproof rules, and accusations. Computer players use the information they have seen to prioritize unseen rooms and form suggestions from remaining unknown cards.
+                    </p>
+                </div>
+
+                <div class="project-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">🧩</div>
+                            <h3>Config-Driven Board</h3>
+                            <p>Loads rooms, spaces, weapons, players, labels, centers, doors, and secret passages from CSV and setup files.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🧭</div>
+                            <h3>Movement Engine</h3>
+                            <p>Calculates valid targets using adjacency lists, dice rolls, room entry rules, occupied cells, and secret passages.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🃏</div>
+                            <h3>Card Logic</h3>
+                            <p>Selects a hidden solution, deals remaining cards fairly, and resolves suggestions in player order.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🖥️</div>
+                            <h3>Swing Interface</h3>
+                            <p>Renders the board, highlights valid moves, shows turn state, supports dialogs, and tracks known cards.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <h2 class="section-title">Technical Implementation</h2>
+                    <div class="tech-details">
+                        <h3>Architecture</h3>
+                        <p class="project-text">
+                            The code separates board state, cell metadata, player behavior, turn orchestration, card models, and UI panels into focused Java classes. `Board` owns the map, deck, solution, movement graph, rendering, and config parsing; `TurnManager` coordinates turn progression, human input, computer moves, suggestions, accusations, and GUI updates.
+                        </p>
+                        <h3>Testing</h3>
+                        <p class="project-text">
+                            The test suite covers file initialization, malformed config handling, board adjacencies, target calculation, deck setup, fair dealing, suggestion disproof, accusation checking, and computer-player choices.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <h2 class="section-title">Technologies & Tools</h2>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h3>Application</h3>
+                            <div class="tech-tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Java Swing</span>
+                                <span class="tag">Object-Oriented Design</span>
+                                <span class="tag">Custom File Parsing</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3>Quality</h3>
+                            <div class="tech-tags">
+                                <span class="tag">JUnit 5</span>
+                                <span class="tag">Exception Testing</span>
+                                <span class="tag">State-Based Tests</span>
+                                <span class="tag">Eclipse Project</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section">
+                    <h2 class="section-title">Project Links</h2>
+                    <div class="project-links">
+                        <a href="https://github.com/ajmendes17/ClueGame" target="_blank" rel="noopener" class="project-link-btn">
+                            <span>View on GitHub →</span>
+                        </a>
+                        <a href="index.html#projects" class="project-link-btn secondary">
+                            <span>Back to Projects</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 AJ Mendes. Built with passion and precision.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
