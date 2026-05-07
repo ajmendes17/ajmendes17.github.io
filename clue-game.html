@@ -31,192 +31,132 @@
         </div>
     </nav>
 
-    <section class="project-hero project-hero-clue">
+    <section class="project-header">
         <div class="container">
-            <a href="index.html#projects" class="back-link">← Back to Projects</a>
-            <div class="project-hero-grid">
-                <div class="project-hero-copy">
-                    <span class="project-category">Software Engineering</span>
-                    <h1 class="project-main-title">ClueGame</h1>
-                    <p class="project-subtitle">A Java Swing board game with file-driven setup, movement search, card logic, and autonomous computer-player decisions.</p>
-                    <div class="project-header-tags">
-                        <span class="tag">Java</span>
-                        <span class="tag">Swing</span>
-                        <span class="tag">JUnit 5</span>
-                        <span class="tag">Pathfinding</span>
-                        <span class="tag">OOP</span>
-                    </div>
-                </div>
-
-                <div class="project-showcase clue-showcase" aria-label="ClueGame board preview">
-                    <div class="board-preview">
-                        <div class="room room-study">Study</div>
-                        <div class="walkway"></div>
-                        <div class="room room-hall">Hall</div>
-                        <div class="walkway"></div>
-                        <div class="room room-lounge">Lounge</div>
-                        <div class="walkway tall"></div>
-                        <div class="target-cell"></div>
-                        <div class="walkway"></div>
-                        <div class="target-cell"></div>
-                        <div class="walkway tall"></div>
-                        <div class="room room-library">Library</div>
-                        <div class="walkway"></div>
-                        <div class="room room-billiard">Billiard</div>
-                        <div class="walkway"></div>
-                        <div class="room room-dining">Dining</div>
-                        <div class="player-token token-green"></div>
-                        <div class="walkway"></div>
-                        <div class="player-token token-blue"></div>
-                        <div class="walkway"></div>
-                        <div class="player-token token-red"></div>
-                        <div class="room room-conservatory">Conservatory</div>
-                        <div class="walkway"></div>
-                        <div class="room room-ballroom">Ballroom</div>
-                        <div class="walkway"></div>
-                        <div class="room room-kitchen">Kitchen</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-stats">
-                <div>
-                    <span class="stat-value">21</span>
-                    <span class="stat-label">Cards across rooms, people, and weapons</span>
-                </div>
-                <div>
-                    <span class="stat-value">2</span>
-                    <span class="stat-label">Runtime config files for board and setup data</span>
-                </div>
-                <div>
-                    <span class="stat-value">AI</span>
-                    <span class="stat-label">Computer turns choose targets and suggestions from seen-card state</span>
+            <a href="index.html#projects" class="back-link">
+                ← Back to Projects
+            </a>
+            <div class="project-header-content">
+                <span class="project-category">Software Engineering</span>
+                <h1 class="project-main-title">ClueGame</h1>
+                <p class="project-subtitle">A Java Swing implementation of Clue with config-driven board loading, graph-based movement, card dealing, suggestions, accusations, and computer-player decision logic.</p>
+                <div class="project-header-tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">Swing</span>
+                    <span class="tag">JUnit 5</span>
+                    <span class="tag">Pathfinding</span>
+                    <span class="tag">OOP</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="project-details refined-project">
+    <section class="project-details">
         <div class="container">
-            <section class="project-section project-narrative">
-                <div>
-                    <span class="section-kicker">What it demonstrates</span>
-                    <h2 class="section-title">A full desktop game built from domain rules.</h2>
+            <div class="project-content">
+                <div class="project-summary-grid">
+                    <div class="summary-item">
+                        <span class="summary-label">Board Model</span>
+                        <strong>Loaded from CSV and setup files</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Game Logic</span>
+                        <strong>Movement, suggestions, accusations</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Testing</span>
+                        <strong>JUnit coverage for rule behavior</strong>
+                    </div>
                 </div>
-                <div class="narrative-copy">
+
+                <div class="project-section">
+                    <h2 class="section-title">Overview</h2>
                     <p class="project-text">
-                        ClueGame is a custom Java implementation of Clue that turns external data files into a playable board. The project models rooms, walkways, doors, secret passages, occupied spaces, player hands, suggestions, accusations, and the hidden solution.
+                        ClueGame is a desktop game built around a custom Clue board. The application parses external setup and layout files, builds the board model at runtime, calculates legal movement targets, handles card distribution, and drives human and computer turns through a Swing interface.
                     </p>
                     <p class="project-text">
-                        The complexity is in the rule coordination: board topology, movement targets, turn progression, card knowledge, and GUI state all have to stay consistent as human and computer players interact with the game.
+                        The important part is the amount of rule coordination. Rooms, doors, secret passages, occupied cells, player hands, seen cards, suggestions, disproof rules, accusations, and GUI updates all have to stay in sync while the game progresses.
                     </p>
                 </div>
-            </section>
 
-            <section class="project-section">
-                <div class="section-heading-row">
-                    <span class="section-kicker">Core systems</span>
-                    <h2 class="section-title">Where the engineering depth shows</h2>
-                </div>
-                <div class="flow-grid">
-                    <div class="flow-card">
-                        <span class="flow-number">01</span>
-                        <h3>Config Parsing</h3>
-                        <p>Board layout and setup files define rooms, spaces, weapons, players, labels, centers, doors, and secret passages.</p>
-                    </div>
-                    <div class="flow-card">
-                        <span class="flow-number">02</span>
-                        <h3>Movement Search</h3>
-                        <p>Adjacency lists and recursive target calculation enforce dice rolls, room entry, blocked cells, and legal destinations.</p>
-                    </div>
-                    <div class="flow-card">
-                        <span class="flow-number">03</span>
-                        <h3>Deduction Model</h3>
-                        <p>The game selects a hidden solution, deals the remaining deck fairly, and resolves suggestions in player order.</p>
-                    </div>
-                    <div class="flow-card">
-                        <span class="flow-number">04</span>
-                        <h3>Computer Turns</h3>
-                        <p>Computer players prioritize unseen rooms and build suggestions from cards they have not already seen.</p>
+                <div class="project-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">🧩</div>
+                            <h3>Config-Driven Board</h3>
+                            <p>Loads rooms, spaces, weapons, players, labels, centers, doors, and secret passages from CSV and setup files.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🧭</div>
+                            <h3>Movement Engine</h3>
+                            <p>Calculates valid targets using adjacency lists, dice rolls, room entry rules, occupied cells, and secret passages.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🃏</div>
+                            <h3>Card Logic</h3>
+                            <p>Selects a hidden solution, deals remaining cards fairly, and resolves suggestions in player order.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🖥️</div>
+                            <h3>Swing Interface</h3>
+                            <p>Renders the board, highlights valid moves, shows turn state, supports dialogs, and tracks known cards.</p>
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <section class="project-section split-section">
-                <div>
-                    <span class="section-kicker">Architecture</span>
-                    <h2 class="section-title">Separated game model, UI, and turn control</h2>
+                <div class="project-section">
+                    <h2 class="section-title">Technical Implementation</h2>
+                    <div class="tech-details">
+                        <h3>Architecture</h3>
+                        <p class="project-text">
+                            The code separates board state, cell metadata, player behavior, turn orchestration, card models, and UI panels into focused Java classes. <span class="inline-code">Board</span> owns the map, deck, solution, movement graph, rendering, and config parsing. <span class="inline-code">TurnManager</span> coordinates turn progression, human input, computer moves, suggestions, accusations, and GUI updates.
+                        </p>
+                        <h3>Testing</h3>
+                        <p class="project-text">
+                            The test suite covers file initialization, malformed config handling, board adjacencies, target calculation, deck setup, fair dealing, suggestion disproof, accusation checking, and computer-player choices.
+                        </p>
+                    </div>
                 </div>
-                <div class="implementation-list">
-                    <article class="implementation-item">
-                        <h3>Board model</h3>
-                        <p><span class="inline-code">Board</span> owns the loaded map, deck, solution, adjacency graph, rendering hooks, and movement target calculation.</p>
-                    </article>
-                    <article class="implementation-item">
-                        <h3>Player behavior</h3>
-                        <p>Human and computer player classes share common card and position behavior while implementing different turn decision paths.</p>
-                    </article>
-                    <article class="implementation-item">
-                        <h3>Turn manager</h3>
-                        <p><span class="inline-code">TurnManager</span> coordinates rolls, movement, suggestions, disproof, accusations, and panel updates.</p>
-                    </article>
-                </div>
-            </section>
 
-            <section class="project-section clue-state-panel">
-                <div>
-                    <span class="section-kicker">Gameplay state</span>
-                    <h2 class="section-title">Multiple rule systems move together</h2>
+                <div class="project-section">
+                    <h2 class="section-title">Technologies & Tools</h2>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h3>Application</h3>
+                            <div class="tech-tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Java Swing</span>
+                                <span class="tag">Object-Oriented Design</span>
+                                <span class="tag">Custom File Parsing</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3>Quality</h3>
+                            <div class="tech-tags">
+                                <span class="tag">JUnit 5</span>
+                                <span class="tag">Exception Testing</span>
+                                <span class="tag">State-Based Tests</span>
+                                <span class="tag">Eclipse Project</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="state-grid">
-                    <div class="state-card">
-                        <span>Movement</span>
-                        <strong>Adjacency + targets</strong>
-                    </div>
-                    <div class="state-card">
-                        <span>Rooms</span>
-                        <strong>Doors + passages</strong>
-                    </div>
-                    <div class="state-card">
-                        <span>Cards</span>
-                        <strong>Hands + seen cards</strong>
-                    </div>
-                    <div class="state-card">
-                        <span>Outcome</span>
-                        <strong>Suggestion + accusation checks</strong>
-                    </div>
-                </div>
-            </section>
 
-            <section class="project-section">
-                <div class="section-heading-row">
-                    <span class="section-kicker">Testing</span>
-                    <h2 class="section-title">JUnit coverage anchors the game rules</h2>
-                </div>
-                <div class="insight-grid">
-                    <div class="insight-card">
-                        <h3>Board correctness</h3>
-                        <p>Tests cover file initialization, bad config handling, room metadata, adjacencies, secret passages, and target calculation.</p>
-                    </div>
-                    <div class="insight-card">
-                        <h3>Game logic</h3>
-                        <p>Tests validate deck setup, fair card dealing, suggestion disproof, accusation checking, and computer-player decision behavior.</p>
+                <div class="project-section">
+                    <h2 class="section-title">Project Links</h2>
+                    <div class="project-links">
+                        <a href="https://github.com/ajmendes17/ClueGame" target="_blank" rel="noopener" class="project-link-btn">
+                            <span>View on GitHub →</span>
+                        </a>
+                        <a href="index.html#projects" class="project-link-btn secondary">
+                            <span>Back to Projects</span>
+                        </a>
                     </div>
                 </div>
-            </section>
-
-            <section class="project-section project-link-panel">
-                <div>
-                    <span class="section-kicker">Explore</span>
-                    <h2 class="section-title">Project links</h2>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/ajmendes17/ClueGame" target="_blank" rel="noopener" class="project-link-btn">View on GitHub →</a>
-                    <a href="index.html#projects" class="project-link-btn secondary">Back to Projects</a>
-                </div>
-            </section>
+            </div>
         </div>
-    </main>
+    </section>
 
     <footer class="footer">
         <div class="container">

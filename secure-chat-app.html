@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -31,207 +32,171 @@
         </div>
     </nav>
 
-    <section class="project-hero project-hero-chat">
+    <!-- Project Header -->
+    <section class="project-header">
         <div class="container">
-            <a href="index.html#projects" class="back-link">← Back to Projects</a>
-            <div class="project-hero-grid">
-                <div class="project-hero-copy">
-                    <span class="project-category">Cybersecurity</span>
-                    <h1 class="project-main-title">Secure Chat Application</h1>
-                    <p class="project-subtitle">A Python client-server messaging demo where the server relays encrypted payloads without seeing plaintext.</p>
-                    <div class="project-header-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">RSA-OAEP</span>
-                        <span class="tag">AES-256-GCM</span>
-                        <span class="tag">Tkinter</span>
-                        <span class="tag">TCP Sockets</span>
-                    </div>
-                </div>
-
-                <div class="project-showcase chat-showcase" aria-label="Secure chat interface preview">
-                    <div class="showcase-window">
-                        <div class="showcase-toolbar">
-                            <span class="code-dot"></span>
-                            <span class="code-dot"></span>
-                            <span class="code-dot"></span>
-                            <span class="showcase-title">secure-chat/session</span>
-                        </div>
-                        <div class="chat-preview">
-                            <div class="chat-status">
-                                <span class="status-dot"></span>
-                                <span>Connected • keys exchanged</span>
-                            </div>
-                            <div class="message-bubble inbound">
-                                <span class="message-label">peer</span>
-                                <p>Public key received. Starting encrypted session.</p>
-                            </div>
-                            <div class="message-bubble outbound">
-                                <span class="message-label">you</span>
-                                <p>Session key wrapped with RSA-OAEP.</p>
-                            </div>
-                            <div class="crypto-strip">
-                                <span>RSA-2048</span>
-                                <span>AES-GCM</span>
-                                <span>nonce + tag</span>
-                            </div>
-                            <div class="message-bubble inbound encrypted">
-                                <span class="message-label">ciphertext</span>
-                                <p>8f 32 ca 19 ... authenticated</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-stats">
-                <div>
-                    <span class="stat-value">3</span>
-                    <span class="stat-label">Core layers: GUI, client, relay server</span>
-                </div>
-                <div>
-                    <span class="stat-value">5-byte</span>
-                    <span class="stat-label">Binary frame header: type + payload length</span>
-                </div>
-                <div>
-                    <span class="stat-value">E2E</span>
-                    <span class="stat-label">Server forwards encrypted packets only</span>
+            <a href="index.html#projects" class="back-link">
+                ← Back to Projects
+            </a>
+            <div class="project-header-content">
+                <span class="project-category">Cybersecurity</span>
+                <h1 class="project-main-title">Secure Chat Application</h1>
+                <p class="project-subtitle">A Python client-server chat application that demonstrates encrypted messaging with RSA-OAEP key exchange, AES-256-GCM message encryption, and a Tkinter desktop interface.</p>
+                <div class="project-header-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">RSA</span>
+                    <span class="tag">AES-GCM</span>
+                    <span class="tag">Tkinter</span>
+                    <span class="tag">Socket Programming</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <main class="project-details refined-project">
+    <!-- Project Details -->
+    <section class="project-details">
         <div class="container">
-            <section class="project-section project-narrative">
-                <div>
-                    <span class="section-kicker">What it demonstrates</span>
-                    <h2 class="section-title">Applied cryptography in a working chat system.</h2>
+            <div class="project-content">
+                <div class="project-summary-grid">
+                    <div class="summary-item">
+                        <span class="summary-label">Architecture</span>
+                        <strong>Client / relay server / shared protocol</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Security</span>
+                        <strong>RSA-OAEP + AES-256-GCM</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Interface</span>
+                        <strong>Tkinter GUI with key fingerprints</strong>
+                    </div>
                 </div>
-                <div class="narrative-copy">
+
+                <!-- Overview -->
+                <div class="project-section">
+                    <h2 class="section-title">Overview</h2>
                     <p class="project-text">
-                        This project combines networking, key management, authenticated encryption, and a usable desktop interface. Each client owns its RSA identity, exchanges public keys through the relay, wraps a fresh AES session key, and sends messages that the server can route but cannot decrypt.
+                        The Secure Chat Application is a complete educational demo of encrypted messaging. The server coordinates connections and relays packets, while clients handle key generation, key exchange, encryption, decryption, and the user-facing chat workflow.
                     </p>
                     <p class="project-text">
-                        The result is a portfolio-ready educational build: small enough to audit, but complete enough to show practical security decisions across multiple modules.
+                        It is intentionally small enough to inspect, but it still shows several real system concerns: binary message framing, persistent RSA keys, authenticated encryption, GUI state, and component-level test scripts.
                     </p>
                 </div>
-            </section>
 
-            <section class="project-section">
-                <div class="section-heading-row">
-                    <span class="section-kicker">System design</span>
-                    <h2 class="section-title">How the message flow works</h2>
+                <!-- Features -->
+                <div class="project-section">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">🔐</div>
+                            <h3>Hybrid Encryption</h3>
+                            <p>RSA-2048 protects session-key exchange while AES-256-GCM handles efficient authenticated message encryption.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔑</div>
+                            <h3>Secure Key Management</h3>
+                            <p>Clients generate and persist RSA keypairs, then expose public key fingerprints for identity visibility.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">✅</div>
+                            <h3>Authenticated Encryption</h3>
+                            <p>AES-GCM includes integrity checks so modified ciphertext fails during decryption.</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <h3>End-to-End Security</h3>
+                            <p>The relay server routes protocol messages without decrypting chat content.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flow-grid">
-                    <div class="flow-card">
-                        <span class="flow-number">01</span>
-                        <h3>Key Identity</h3>
-                        <p>Clients generate or load RSA-2048 keypairs and expose public key fingerprints in the GUI.</p>
-                    </div>
-                    <div class="flow-card">
-                        <span class="flow-number">02</span>
-                        <h3>Relay Handshake</h3>
-                        <p>The TCP server coordinates client connections and forwards public keys without owning private material.</p>
-                    </div>
-                    <div class="flow-card">
-                        <span class="flow-number">03</span>
-                        <h3>Session Encryption</h3>
-                        <p>AES-256-GCM encrypts message bodies with unique nonces and authentication tags for integrity checks.</p>
-                    </div>
-                    <div class="flow-card">
-                        <span class="flow-number">04</span>
-                        <h3>Framed Transport</h3>
-                        <p>A shared protocol packs message type and payload length before sending bytes across the socket.</p>
-                    </div>
-                </div>
-            </section>
 
-            <section class="project-section split-section">
-                <div>
-                    <span class="section-kicker">Implementation</span>
-                    <h2 class="section-title">Concrete engineering pieces</h2>
-                </div>
-                <div class="implementation-list">
-                    <article class="implementation-item">
-                        <h3>Client and GUI</h3>
-                        <p>Tkinter drives connection state, message input, chat display, and public key fingerprint visibility while the client module handles socket communication.</p>
-                    </article>
-                    <article class="implementation-item">
-                        <h3>Cryptography module</h3>
-                        <p>RSA-OAEP protects the session key, while AES-GCM handles authenticated message encryption and tamper detection.</p>
-                    </article>
-                    <article class="implementation-item">
-                        <h3>Server relay</h3>
-                        <p>The server manages multiple clients, forwards protocol messages, and stays intentionally blind to plaintext content.</p>
-                    </article>
-                </div>
-            </section>
-
-            <section class="project-section code-showcase-grid">
-                <div class="project-code-card">
-                    <div class="code-header">
-                        <span class="code-dot"></span>
-                        <span class="code-dot"></span>
-                        <span class="code-dot"></span>
-                        <span class="code-filename">client/crypto.py</span>
-                    </div>
-                    <pre><code><span class="code-keyword">def</span> <span class="code-function">encrypt_message</span>(session_key, plaintext):
-    aesgcm = <span class="code-function">AESGCM</span>(session_key)
-    nonce = os.<span class="code-function">urandom</span>(12)
-    ciphertext = aesgcm.<span class="code-function">encrypt</span>(
-        nonce,
-        plaintext,
-        associated_data=<span class="code-variable">None</span>
-    )
-    <span class="code-keyword">return</span> nonce, ciphertext</code></pre>
-                </div>
-                <div class="project-code-card">
-                    <div class="code-header">
-                        <span class="code-dot"></span>
-                        <span class="code-dot"></span>
-                        <span class="code-dot"></span>
-                        <span class="code-filename">shared/protocol.py</span>
-                    </div>
-                    <pre><code>PUBLIC_KEY  = 1
-SESSION_KEY = 2
-MESSAGE     = 3
-
-<span class="code-keyword">def</span> <span class="code-function">pack_message</span>(msg_type, payload):
-    header = struct.<span class="code-function">pack</span>(<span class="code-string">"&gt;BI"</span>, msg_type, len(payload))
-    <span class="code-keyword">return</span> header + payload</code></pre>
-                </div>
-            </section>
-
-            <section class="project-section">
-                <div class="section-heading-row">
-                    <span class="section-kicker">Quality</span>
-                    <h2 class="section-title">Tests and next security upgrades</h2>
-                </div>
-                <div class="insight-grid">
-                    <div class="insight-card">
-                        <h3>Covered behavior</h3>
-                        <p>Test scripts exercise key generation, RSA session-key encryption, AES-GCM encryption and decryption, protocol packing, client behavior, and server connection flow.</p>
-                    </div>
-                    <div class="insight-card">
-                        <h3>Honest production caveats</h3>
-                        <p>The README clearly calls out future hardening work: peer fingerprint confirmation, encrypted private key storage, TLS transport, reconnect handling, and pytest-based automation.</p>
+                <!-- Technical Implementation -->
+                <div class="project-section">
+                    <h2 class="section-title">Technical Implementation</h2>
+                    <div class="tech-details">
+                        <h3>Encryption Architecture</h3>
+                        <p class="project-text">
+                            The application separates cryptography, networking, protocol framing, and UI work into focused modules. The typical message flow is:
+                        </p>
+                        <ol class="project-list">
+                            <li>Each client loads or generates an RSA keypair.</li>
+                            <li>The server relays public keys between connected clients.</li>
+                            <li>A session key is generated and wrapped with RSA-OAEP.</li>
+                            <li>Messages are encrypted with AES-GCM and sent through the shared protocol.</li>
+                            <li>The recipient verifies and decrypts the ciphertext locally.</li>
+                        </ol>
                     </div>
                 </div>
-            </section>
 
-            <section class="project-section project-link-panel">
-                <div>
-                    <span class="section-kicker">Explore</span>
-                    <h2 class="section-title">Project links</h2>
+                <!-- Security Considerations -->
+                <div class="project-section">
+                    <h2 class="section-title">Security Considerations</h2>
+                    <div class="security-list">
+                        <div class="security-item">
+                            <h3>Key Exchange Security</h3>
+                            <p>RSA-2048 provides strong security for key exchange, with keys being properly validated before use.</p>
+                        </div>
+                        <div class="security-item">
+                            <h3>Forward Secrecy</h3>
+                            <p>Session keys are separated from the long-term RSA identity keys, which keeps the design modular and easier to harden.</p>
+                        </div>
+                        <div class="security-item">
+                            <h3>Message Authentication</h3>
+                            <p>AES-GCM's built-in authentication tag prevents message tampering and ensures data integrity.</p>
+                        </div>
+                        <div class="security-item">
+                            <h3>Nonce Management</h3>
+                            <p>Cryptographically secure random nonces are generated for AES-GCM encryption operations.</p>
+                        </div>
+                        <div class="security-item">
+                            <h3>Future Hardening</h3>
+                            <p>The README notes next steps such as fingerprint confirmation, encrypted private key storage, TLS transport, reconnect handling, and pytest automation.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <a href="https://github.com/ajmendes17/Secure-Chat-App" target="_blank" rel="noopener" class="project-link-btn">View on GitHub →</a>
-                    <a href="index.html#projects" class="project-link-btn secondary">Back to Projects</a>
+
+                <!-- Technologies Used -->
+                <div class="project-section">
+                    <h2 class="section-title">Technologies & Tools</h2>
+                    <div class="tech-stack">
+                        <div class="tech-category">
+                            <h3>Cryptography</h3>
+                            <div class="tech-tags">
+                                <span class="tag">RSA-2048</span>
+                                <span class="tag">AES-256-GCM</span>
+                                <span class="tag">OAEP Padding</span>
+                                <span class="tag">SHA-256</span>
+                            </div>
+                        </div>
+                        <div class="tech-category">
+                            <h3>Programming</h3>
+                            <div class="tech-tags">
+                                <span class="tag">Python 3</span>
+                                <span class="tag">Cryptography Library</span>
+                                <span class="tag">Socket Programming</span>
+                                <span class="tag">Threading</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </section>
+
+                <!-- Project Links -->
+                <div class="project-section">
+                    <h2 class="section-title">Project Links</h2>
+                    <div class="project-links">
+                        <a href="https://github.com/ajmendes17/Secure-Chat-App" target="_blank" rel="noopener" class="project-link-btn">
+                            <span>View on GitHub →</span>
+                        </a>
+                        <a href="index.html#projects" class="project-link-btn secondary">
+                            <span>Back to Projects</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 AJ Mendes. Built with passion and precision.</p>
