@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat Application | AJ Mendes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=secure-chat-image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -38,16 +38,22 @@
             <a href="index.html#projects" class="back-link">
                 ← Back to Projects
             </a>
-            <div class="project-header-content">
-                <span class="project-category">Cybersecurity</span>
-                <h1 class="project-main-title">Secure Chat Application</h1>
-                <p class="project-subtitle">A Python client-server chat application that demonstrates encrypted messaging with RSA-OAEP key exchange, AES-256-GCM message encryption, and a Tkinter desktop interface.</p>
-                <div class="project-header-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">RSA</span>
-                    <span class="tag">AES-GCM</span>
-                    <span class="tag">Tkinter</span>
-                    <span class="tag">Socket Programming</span>
+            <div class="project-header-layout">
+                <div class="project-header-content">
+                    <span class="project-category">Cybersecurity</span>
+                    <h1 class="project-main-title">Secure Chat Application</h1>
+                    <p class="project-subtitle">A Python client-server chat application that demonstrates encrypted messaging with RSA-OAEP key exchange, AES-256-GCM message encryption, and a Tkinter desktop interface.</p>
+                    <div class="project-header-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Cryptography</span>
+                        <span class="tag">Socket Programming</span>
+                        <span class="tag">Client-Server</span>
+                        <span class="tag">GUI</span>
+                    </div>
+                </div>
+
+                <div class="project-showcase secure-chat-showcase" aria-label="Secure Chat encrypted message flow preview">
+                    <img src="assets/secure-chat-flow.png" alt="Diagram of Client A sending RSA key exchange and AES-GCM ciphertext through a relay server to Client B">
                 </div>
             </div>
         </div>
@@ -125,32 +131,47 @@
                             <li>Messages are encrypted with AES-GCM and sent through the shared protocol.</li>
                             <li>The recipient verifies and decrypts the ciphertext locally.</li>
                         </ol>
+                        <div class="project-snippet">
+                            <div class="code-header">
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-filename">shared/protocol.py</span>
+                            </div>
+                            <pre><code>PUBLIC_KEY  = 1
+SESSION_KEY = 2
+MESSAGE     = 3
+
+def pack_message(msg_type, payload):
+    header = struct.pack("&gt;BI", msg_type, len(payload))
+    return header + payload</code></pre>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Security Considerations -->
                 <div class="project-section">
-                    <h2 class="section-title">Security Considerations</h2>
+                    <h2 class="section-title">Security Boundaries</h2>
                     <div class="security-list">
                         <div class="security-item">
-                            <h3>Key Exchange Security</h3>
-                            <p>RSA-2048 provides strong security for key exchange, with keys being properly validated before use.</p>
+                            <h3>What the Server Can See</h3>
+                            <p>The relay server coordinates clients and forwards framed protocol messages, but chat contents are encrypted before they leave the client.</p>
                         </div>
                         <div class="security-item">
-                            <h3>Forward Secrecy</h3>
-                            <p>Session keys are separated from the long-term RSA identity keys, which keeps the design modular and easier to harden.</p>
+                            <h3>Message Integrity</h3>
+                            <p>AES-GCM gives each encrypted message an authentication check, so tampered ciphertext fails instead of silently decrypting into bad data.</p>
                         </div>
                         <div class="security-item">
-                            <h3>Message Authentication</h3>
-                            <p>AES-GCM's built-in authentication tag prevents message tampering and ensures data integrity.</p>
+                            <h3>Current Trust Assumption</h3>
+                            <p>Public keys are exchanged through the relay, so a production version would need peer fingerprint confirmation to reduce impersonation risk.</p>
                         </div>
                         <div class="security-item">
-                            <h3>Nonce Management</h3>
-                            <p>Cryptographically secure random nonces are generated for AES-GCM encryption operations.</p>
+                            <h3>Demo Storage Tradeoff</h3>
+                            <p>Private keys are stored unencrypted for development convenience. A hardened version should protect them with a passphrase or OS key store.</p>
                         </div>
                         <div class="security-item">
-                            <h3>Future Hardening</h3>
-                            <p>The README notes next steps such as fingerprint confirmation, encrypted private key storage, TLS transport, reconnect handling, and pytest automation.</p>
+                            <h3>Next Hardening Steps</h3>
+                            <p>TLS transport, reconnect handling, encrypted key storage, peer verification, and pytest automation are the clearest next upgrades.</p>
                         </div>
                     </div>
                 </div>
