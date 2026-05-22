@@ -148,23 +148,30 @@ function initTypewriterEffect() {
     codeElement.innerHTML = '';
     let codeSegments = [];
     if (isMainPage) {
-        // Main page - developer object
+        // Main page - portfolio object
         codeSegments = [
             { type: 'keyword', text: 'const' },
             { type: 'text', text: ' ' },
-            { type: 'variable', text: 'developer' },
+            { type: 'variable', text: 'portfolio' },
             { type: 'text', text: ' = {\n  ' },
             { type: 'property', text: 'name' },
             { type: 'text', text: ': ' },
             { type: 'string', text: "'AJ Mendes'" },
             { type: 'text', text: ',\n  ' },
-            { type: 'property', text: 'role' },
+            { type: 'property', text: 'focus' },
             { type: 'text', text: ': ' },
-            { type: 'string', text: "'Data and Security Analyst'" },
+            { type: 'string', text: "'secure software'" },
             { type: 'text', text: ',\n  ' },
-            { type: 'property', text: 'passion' },
+            { type: 'property', text: 'projects' },
             { type: 'text', text: ': ' },
-            { type: 'string', text: "'Cybersecurity, Data Science, and AI'" },
+            { type: 'text', text: '[' },
+            { type: 'string', text: "'encrypted chat'" },
+            { type: 'text', text: ', ' },
+            { type: 'string', text: "'ClueGame'" },
+            { type: 'text', text: '],\n  ' },
+            { type: 'property', text: 'method' },
+            { type: 'text', text: ': ' },
+            { type: 'string', text: "'build, test, explain'" },
             { type: 'text', text: '\n};' }
         ];
     } else if (isProjectPage) {

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS Portfolio | AJ Mendes - Cybersecurity, Data Science & AI</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AJ Mendes | Secure Software & Applied CS</title>
+    <link rel="stylesheet" href="style.css?v=homepage-cooler">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -37,15 +37,30 @@
         </div>
         <div class="hero-content">
             <div class="hero-text">
+                <p class="hero-kicker">Secure software · tested systems · applied computer science</p>
                 <h1 class="hero-title">
-                    <span class="line">Cybersecurity</span>
-                    <span class="line">Data Science</span>
-                    <span class="line highlight">AI</span>
+                    <span class="line">Secure Systems</span>
+                    <span class="line">Software Engineering</span>
+                    <span class="line highlight">Applied AI</span>
                 </h1>
-                <p class="hero-subtitle">Computer Science Specialist</p>
+                <p class="hero-subtitle">I build security-minded software with practical architecture, readable code, and test coverage that proves the important behavior.</p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+                <div class="hero-metrics" aria-label="Portfolio highlights">
+                    <div>
+                        <strong>2</strong>
+                        <span>featured builds</span>
+                    </div>
+                    <div>
+                        <strong>80</strong>
+                        <span>JUnit tests</span>
+                    </div>
+                    <div>
+                        <strong>~4K</strong>
+                        <span>Java lines</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-visual">
@@ -56,10 +71,11 @@
                         <span class="code-dot"></span>
                     </div>
                     <div class="code-content">
-                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
+                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">portfolio</span> = {
   <span class="code-property">name</span>: <span class="code-string">'AJ Mendes'</span>,
-  <span class="code-property">role</span>: <span class="code-string">'Data and Security Analyst'</span>,
-  <span class="code-property">passion</span>: <span class="code-string">'Cybersecurity, Data Science, and AI'</span>
+  <span class="code-property">focus</span>: <span class="code-string">'secure software'</span>,
+  <span class="code-property">projects</span>: [<span class="code-string">'encrypted chat'</span>, <span class="code-string">'ClueGame'</span>],
+  <span class="code-property">method</span>: <span class="code-string">'build, test, explain'</span>
 };</code></pre>
                     </div>
                 </div>
@@ -80,25 +96,25 @@
             <div class="about-content">
                 <div class="about-text">
                     <p class="about-intro">
-                        I'm a computer science specialist focused on building secure, data-driven solutions.
-                        My expertise spans cryptography, data analysis, and machine learning, with a passion for
-                        creating robust systems that protect information while extracting meaningful insights.
+                        I'm a computer science student focused on secure software, practical systems, and tested engineering.
+                        My strongest work so far combines cryptography, client-server networking, Java/OOP design,
+                        GUI programming, and enough testing to make the moving parts easier to trust.
                     </p>
                     <div class="skills-grid">
                         <div class="skill-item">
                             <div class="skill-icon">🔒</div>
-                            <h3>Cybersecurity</h3>
-                            <p>RSA, AES-GCM, Network Security, Cryptography, Penetration Testing</p>
+                            <h3>Secure Software</h3>
+                            <p>RSA-OAEP, AES-GCM, key management, protocol framing, client-server messaging</p>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-icon">📊</div>
-                            <h3>Data Science</h3>
-                            <p>Python, Pandas, NumPy, Data Analysis, Visualization, Statistical Modeling</p>
+                            <div class="skill-icon">🧪</div>
+                            <h3>Tested Engineering</h3>
+                            <p>JUnit, TDD, state-based testing, exception handling, pair programming</p>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-icon">🤖</div>
-                            <h3>AI/ML</h3>
-                            <p>Machine Learning, Neural Networks, TensorFlow, PyTorch, Deep Learning</p>
+                            <div class="skill-icon">🧭</div>
+                            <h3>Applied CS</h3>
+                            <p>Java, Python, OOP, Swing graphics, pathfinding, data-driven configuration</p>
                         </div>
                     </div>
                 </div>
@@ -113,12 +129,10 @@
                 <span class="section-number">02</span>
                 <h2 class="section-title">Projects</h2>
             </div>
-            <div class="projects-grid">
-                <div class="project-card" data-project="1" data-project-url="secure-chat-app.html">
+            <div class="projects-grid featured-projects">
+                <div class="project-card featured-card" data-project="1" data-project-url="secure-chat-app.html">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <span class="project-icon">🔒</span>
-                        </div>
+                        <img src="assets/secure-chat-flow.png" alt="Secure Chat encrypted client-server flow" class="project-thumb">
                         <div class="project-overlay">
                             <span class="project-link">View Project →</span>
                         </div>
@@ -137,10 +151,34 @@
                     </div>
                 </div>
 
-                <div class="project-card" data-project="2" data-project-url="clue-game.html">
+                <div class="project-card featured-card" data-project="2" data-project-url="clue-game.html">
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <span class="project-icon">🎲</span>
+                        <div class="project-board-thumb" aria-hidden="true">
+                            <span class="room">Study</span>
+                            <span class="walkway"></span>
+                            <span class="room">Hall</span>
+                            <span class="walkway"></span>
+                            <span class="room">Lounge</span>
+                            <span class="walkway"></span>
+                            <span class="target-cell"></span>
+                            <span class="walkway"></span>
+                            <span class="target-cell"></span>
+                            <span class="walkway"></span>
+                            <span class="room">Library</span>
+                            <span class="walkway"></span>
+                            <span class="room">Billiard</span>
+                            <span class="walkway"></span>
+                            <span class="room">Dining</span>
+                            <span class="player-token token-green"></span>
+                            <span class="walkway"></span>
+                            <span class="player-token token-blue"></span>
+                            <span class="walkway"></span>
+                            <span class="player-token token-red"></span>
+                            <span class="room">Conservatory</span>
+                            <span class="walkway"></span>
+                            <span class="room">Ballroom</span>
+                            <span class="walkway"></span>
+                            <span class="room">Kitchen</span>
                         </div>
                         <div class="project-overlay">
                             <span class="project-link">View Project →</span>
@@ -159,49 +197,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card" data-project="3">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <span class="project-icon">🤖</span>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Project →</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-category">AI/ML</span>
-                        <h3 class="project-title">Machine Learning Model</h3>
-                        <p class="project-description">An advanced machine learning project implementing neural networks for pattern recognition and predictive modeling. Features deep learning architectures, model optimization, and performance evaluation metrics.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">Neural Networks</span>
-                            <span class="tag">Deep Learning</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-project="4">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <span class="project-icon">🛡️</span>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Project →</a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <span class="project-category">Cybersecurity</span>
-                        <h3 class="project-title">Security Tool</h3>
-                        <p class="project-description">A cybersecurity tool for network analysis and vulnerability assessment. Implements security scanning, threat detection, and security protocol analysis.</p>
-                        <div class="project-tags">
-                            <span class="tag">Network Security</span>
-                            <span class="tag">Penetration Testing</span>
-                            <span class="tag">Python</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -215,8 +210,8 @@
             </div>
             <div class="contact-content">
                 <div class="contact-text">
-                    <h3>Let's collaborate</h3>
-                    <p>I'm always open to discussing cybersecurity projects, data science initiatives, AI/ML research, or opportunities to contribute to innovative technical solutions.</p>
+                    <h3>Let's build something solid</h3>
+                    <p>I'm open to security-focused software, systems projects, internships, and technical collaborations where clear engineering matters.</p>
                 </div>
                 <div class="contact-links">
                     <button type="button" class="contact-link" id="copy-email" data-email="ajmendes17@gmail.com">
