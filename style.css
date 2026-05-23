@@ -180,8 +180,8 @@ body {
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
-    gap: 3.5rem;
+    grid-template-columns: minmax(420px, 0.9fr) minmax(420px, 1.1fr);
+    gap: 4rem;
     align-items: center;
     position: relative;
     z-index: 1;
@@ -194,20 +194,21 @@ body {
 .hero-kicker {
     color: var(--accent);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.08em;
-    margin-bottom: 1rem;
+    margin-bottom: 0.9rem;
     text-transform: uppercase;
     opacity: 0;
     animation: fadeInUp 0.8s ease 0.1s forwards;
+    max-width: 100%;
 }
 
 .hero-title {
-    font-size: clamp(3.2rem, 6.4vw, 6rem);
+    font-size: clamp(3rem, 5.2vw, 5.25rem);
     font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+    line-height: 1.04;
+    margin-bottom: 1.25rem;
 }
 
 .hero-title .line {
@@ -228,10 +229,10 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.12rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
-    max-width: 680px;
+    margin-bottom: 1.65rem;
+    max-width: 560px;
     opacity: 0;
     animation: fadeInUp 0.8s ease 0.8s forwards;
 }
@@ -247,14 +248,14 @@ body {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
-    max-width: 520px;
-    margin-top: 2rem;
+    max-width: 500px;
+    margin-top: 1.5rem;
     opacity: 0;
     animation: fadeInUp 0.8s ease 1.15s forwards;
 }
 
 .hero-metrics div {
-    padding: 1rem;
+    padding: 0.85rem 1rem;
     background: rgba(26, 26, 26, 0.68);
     border: 1px solid var(--border-color);
     border-radius: 8px;
