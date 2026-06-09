@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat Application | AJ Mendes</title>
-    <link rel="stylesheet" href="style.css?v=secure-chat-image">
+    <link rel="stylesheet" href="style.css?v=secure-chat-summary">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
                 <div class="project-header-content">
                     <span class="project-category">Cybersecurity</span>
                     <h1 class="project-main-title">Secure Chat Application</h1>
-                    <p class="project-subtitle">A Python client-server chat application that demonstrates encrypted messaging with RSA-OAEP key exchange, AES-256-GCM message encryption, and a Tkinter desktop interface.</p>
+                    <p class="project-subtitle">An educational Python chat application built to make encrypted messaging easier to understand, from the plain-English idea to the cryptographic implementation details.</p>
                     <div class="project-header-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Cryptography</span>
@@ -65,16 +65,58 @@
             <div class="project-content">
                 <div class="project-summary-grid">
                     <div class="summary-item">
-                        <span class="summary-label">Architecture</span>
-                        <strong>Client / relay server / shared protocol</strong>
+                        <span class="summary-label">Purpose</span>
+                        <strong>Make encryption understandable</strong>
                     </div>
                     <div class="summary-item">
-                        <span class="summary-label">Security</span>
+                        <span class="summary-label">Plain English</span>
+                        <strong>A locked-message chat demo</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Technical Layer</span>
                         <strong>RSA-OAEP + AES-256-GCM</strong>
                     </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Interface</span>
-                        <strong>Tkinter GUI with key fingerprints</strong>
+                </div>
+
+                <!-- Educational Summary -->
+                <div class="project-section educational-summary" data-summary-switcher>
+                    <div class="summary-heading">
+                        <div>
+                            <span class="summary-label">Educational Summary</span>
+                            <h2 class="section-title">Two ways to understand the project</h2>
+                        </div>
+                        <div class="summary-toggle" role="tablist" aria-label="Secure Chat summary level">
+                            <button type="button" class="summary-toggle-btn active" role="tab" aria-selected="true" aria-controls="plain-summary" data-summary-target="plain">Plain English</button>
+                            <button type="button" class="summary-toggle-btn" role="tab" aria-selected="false" aria-controls="technical-summary" data-summary-target="technical">Technical Jargon</button>
+                        </div>
+                    </div>
+
+                    <div class="summary-panels">
+                        <div class="summary-panel active" id="plain-summary" role="tabpanel" data-summary-panel="plain">
+                            <p class="project-text">
+                                I built Secure Chat as an educational demonstration of how encrypted messaging works. The goal was not just to make messages unreadable to the server, but to show the process in a way that someone less technical could follow.
+                            </p>
+                            <ol class="project-list plain-steps">
+                                <li>Each person has a public lock and a private key.</li>
+                                <li>The sender uses the recipient's public lock to protect a temporary message key.</li>
+                                <li>The actual chat message is locked with that temporary key.</li>
+                                <li>The server only passes the locked package along.</li>
+                                <li>The recipient unlocks it locally with their private key.</li>
+                            </ol>
+                        </div>
+
+                        <div class="summary-panel" id="technical-summary" role="tabpanel" hidden data-summary-panel="technical">
+                            <p class="project-text">
+                                Secure Chat implements a hybrid-encryption flow in Python. Clients generate or load RSA keypairs, exchange public keys through a relay server, wrap a per-message/session symmetric key with RSA-OAEP, and encrypt message payloads with AES-256-GCM before transport.
+                            </p>
+                            <ol class="project-list">
+                                <li>RSA-OAEP handles asymmetric key wrapping for the AES key.</li>
+                                <li>AES-GCM provides confidentiality and authentication for message payloads.</li>
+                                <li>A shared protocol frames message type and payload length for socket transport.</li>
+                                <li>The relay server coordinates clients and forwards ciphertext without decrypting content.</li>
+                                <li>The Tkinter UI exposes the chat workflow and key fingerprint context.</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
 
@@ -94,22 +136,22 @@
                     <h2 class="section-title">Key Features</h2>
                     <div class="features-grid">
                         <div class="feature-item">
-                            <div class="feature-icon">🔐</div>
+                            <div class="feature-icon">ENC</div>
                             <h3>Hybrid Encryption</h3>
                             <p>RSA-2048 protects session-key exchange while AES-256-GCM handles efficient authenticated message encryption.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🔑</div>
+                            <div class="feature-icon">KEY</div>
                             <h3>Secure Key Management</h3>
                             <p>Clients generate and persist RSA keypairs, then expose public key fingerprints for identity visibility.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">✅</div>
+                            <div class="feature-icon">AUTH</div>
                             <h3>Authenticated Encryption</h3>
                             <p>AES-GCM includes integrity checks so modified ciphertext fails during decryption.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-icon">E2E</div>
                             <h3>End-to-End Security</h3>
                             <p>The relay server routes protocol messages without decrypting chat content.</p>
                         </div>
@@ -220,10 +262,10 @@ def pack_message(msg_type, payload):
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 AJ Mendes. Built with passion and precision.</p>
+            <p>&copy; 2026 AJ Mendes.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=summary-switch"></script>
 </body>
 </html>

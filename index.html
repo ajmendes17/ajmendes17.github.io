@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AJ Mendes | Secure Software & Applied CS</title>
-    <link rel="stylesheet" href="style.css?v=homepage-cooler">
+    <link rel="stylesheet" href="style.css?v=blue-editorial">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,43 +31,29 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" class="hero home-hero">
         <div class="hero-background">
             <div class="grid-overlay"></div>
         </div>
-        <div class="hero-content">
+        <div class="hero-content home-hero-content">
             <div class="hero-text">
-                <p class="hero-kicker">Secure software · tested systems</p>
+                <p class="hero-kicker">Secure software · tested systems · applied CS</p>
                 <h1 class="hero-title">
-                    <span class="line">Secure Software</span>
-                    <span class="line">Engineered Well</span>
+                    <span class="line">AJ Mendes</span>
                 </h1>
-                <p class="hero-subtitle">I build security-minded software with practical architecture, readable code, and tests that prove the important behavior.</p>
+                <p class="hero-subtitle">Computer science student focused on secure software, practical systems, and engineering choices that can be explained, tested, and improved.</p>
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                    <a href="#projects" class="btn btn-primary">Explore Work</a>
+                    <a href="#contact" class="btn btn-secondary">Contact</a>
+                </div>
+                <div class="evidence-rail" aria-label="Technical evidence">
+                    <span>AES-GCM</span>
+                    <span>RSA-OAEP</span>
+                    <span>JUnit</span>
+                    <span>Java Swing</span>
+                    <span>Python</span>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="code-window">
-                    <div class="code-header">
-                        <span class="code-dot"></span>
-                        <span class="code-dot"></span>
-                        <span class="code-dot"></span>
-                    </div>
-                    <div class="code-content">
-                        <pre><code><span class="code-keyword">const</span> <span class="code-variable">portfolio</span> = {
-  <span class="code-property">name</span>: <span class="code-string">'AJ Mendes'</span>,
-  <span class="code-property">focus</span>: <span class="code-string">'secure software'</span>,
-  <span class="code-property">projects</span>: [<span class="code-string">'encrypted chat'</span>, <span class="code-string">'ClueGame'</span>],
-  <span class="code-property">method</span>: <span class="code-string">'build, test, explain'</span>
-};</code></pre>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
         </div>
     </section>
 
@@ -87,17 +73,17 @@
                     </p>
                     <div class="skills-grid">
                         <div class="skill-item">
-                            <div class="skill-icon">🔒</div>
+                            <div class="skill-icon">01</div>
                             <h3>Secure Software</h3>
                             <p>RSA-OAEP, AES-GCM, key management, protocol framing, client-server messaging</p>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-icon">🧪</div>
+                            <div class="skill-icon">02</div>
                             <h3>Tested Engineering</h3>
                             <p>JUnit, TDD, state-based testing, exception handling, pair programming</p>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-icon">🧭</div>
+                            <div class="skill-icon">03</div>
                             <h3>Applied CS</h3>
                             <p>Java, Python, OOP, Swing graphics, pathfinding, data-driven configuration</p>
                         </div>
@@ -114,30 +100,43 @@
                 <span class="section-number">02</span>
                 <h2 class="section-title">Projects</h2>
             </div>
-            <div class="projects-grid featured-projects">
-                <div class="project-card featured-card" data-project="1" data-project-url="secure-chat-app.html">
-                    <div class="project-image">
+            <div class="selected-work">
+                <article class="case-study project-card" data-project="1" data-project-url="secure-chat-app.html">
+                    <div class="case-visual secure-case">
                         <img src="assets/secure-chat-flow.png" alt="Secure Chat encrypted client-server flow" class="project-thumb">
-                        <div class="project-overlay">
-                            <span class="project-link">View Project →</span>
-                        </div>
                     </div>
-                    <div class="project-info">
-                        <span class="project-category">Cybersecurity</span>
+                    <div class="case-content">
+                        <div class="case-meta">
+                            <span class="project-category">Cybersecurity</span>
+                            <a href="secure-chat-app.html" class="case-link">View Project</a>
+                        </div>
                         <h3 class="project-title">Secure Chat Application</h3>
-                        <p class="project-description">A secure messaging application implementing hybrid encryption with RSA for key exchange and AES-GCM for message encryption. Features end-to-end encryption, secure key management, and authenticated encryption to ensure message confidentiality and integrity.</p>
+                        <p class="project-description">A Python client-server chat app that demonstrates RSA-OAEP key exchange, AES-256-GCM message encryption, framed protocol packets, and a Tkinter desktop workflow.</p>
+                        <div class="case-proof-grid">
+                            <div>
+                                <span>Role</span>
+                                <strong>Architecture, crypto flow, UI</strong>
+                            </div>
+                            <div>
+                                <span>Stack</span>
+                                <strong>Python, sockets, cryptography</strong>
+                            </div>
+                            <div>
+                                <span>Evidence</span>
+                                <strong>Server cannot read chat contents</strong>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tag">Python</span>
-                            <span class="tag">Cryptography</span>
-                            <span class="tag">Socket Programming</span>
+                            <span class="tag">RSA-OAEP</span>
+                            <span class="tag">AES-GCM</span>
                             <span class="tag">Client-Server</span>
-                            <span class="tag">GUI</span>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card featured-card" data-project="2" data-project-url="clue-game.html">
-                    <div class="project-image">
+                <article class="case-study project-card" data-project="2" data-project-url="clue-game.html">
+                    <div class="case-visual clue-case">
                         <div class="project-board-thumb" aria-hidden="true">
                             <span class="room">Study</span>
                             <span class="walkway"></span>
@@ -165,23 +164,36 @@
                             <span class="walkway"></span>
                             <span class="room">Kitchen</span>
                         </div>
-                        <div class="project-overlay">
-                            <span class="project-link">View Project →</span>
-                        </div>
                     </div>
-                    <div class="project-info">
-                        <span class="project-category">Software Engineering</span>
+                    <div class="case-content">
+                        <div class="case-meta">
+                            <span class="project-category">Software Engineering</span>
+                            <a href="clue-game.html" class="case-link">View Project</a>
+                        </div>
                         <h3 class="project-title">ClueGame</h3>
-                        <p class="project-description">A Java Swing implementation of Clue with config-driven board loading, pathfinding-based movement, card dealing, suggestions, accusations, and computer-player decision logic.</p>
+                        <p class="project-description">A Java Swing implementation of Clue with config-driven board loading, graph-based movement, card dealing, suggestions, accusations, and computer-player decision logic.</p>
+                        <div class="case-proof-grid">
+                            <div>
+                                <span>Role</span>
+                                <strong>Board model, rules, UI, tests</strong>
+                            </div>
+                            <div>
+                                <span>Stack</span>
+                                <strong>Java, Swing, JUnit 5</strong>
+                            </div>
+                            <div>
+                                <span>Evidence</span>
+                                <strong>80 JUnit tests against game behavior</strong>
+                            </div>
+                        </div>
                         <div class="project-tags">
                             <span class="tag">Java</span>
                             <span class="tag">TDD</span>
-                            <span class="tag">Pair Programming</span>
                             <span class="tag">OOP</span>
-                            <span class="tag">Graphics</span>
+                            <span class="tag">Pathfinding</span>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
@@ -200,15 +212,21 @@
                 </div>
                 <div class="contact-links">
                     <button type="button" class="contact-link" id="copy-email" data-email="ajmendes17@gmail.com">
-                        <span class="contact-icon">✉️</span>
+                        <span class="contact-icon" aria-hidden="true">
+                            <img src="assets/icon-mail.svg" alt="">
+                        </span>
                         <span>Email</span>
                     </button> <!--Email Button-->
                     <a href="https://github.com/ajmendes17" target="_blank" class="contact-link">
-                        <span class="contact-icon">💻</span>
+                        <span class="contact-icon" aria-hidden="true">
+                            <img src="assets/icon-github.svg" alt="">
+                        </span>
                         <span>GitHub</span>
                     </a>
                     <a href="https://www.linkedin.com/in/aj-mendes-b49709341" target="_blank" class="contact-link">
-                        <span class="contact-icon">💼</span>
+                        <span class="contact-icon" aria-hidden="true">
+                            <img src="assets/icon-linkedin.svg" alt="">
+                        </span>
                         <span>LinkedIn</span>
                     </a>
                 </div>

@@ -84,7 +84,7 @@ window.addEventListener('scroll', () => {
     const heroContent = document.querySelector('.hero-content');
     const gridOverlay = document.querySelector('.grid-overlay');
     
-    if (hero && scrolled < window.innerHeight) {
+    if (hero && !hero.classList.contains('home-hero') && scrolled < window.innerHeight) {
         const parallaxSpeed = scrolled * 0.5;
         if (heroContent) {
             heroContent.style.transform = `translateY(${parallaxSpeed}px)`;
@@ -542,4 +542,37 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initEmailCopy);
 } else {
     initEmailCopy();
+}
+
+// Toggle Secure Chat summary detail level
+function initSummarySwitcher() {
+    const switcher = document.querySelector('[data-summary-switcher]');
+    if (!switcher) return;
+
+    const buttons = switcher.querySelectorAll('[data-summary-target]');
+    const panels = switcher.querySelectorAll('[data-summary-panel]');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.dataset.summaryTarget;
+
+            buttons.forEach(item => {
+                const isActive = item === button;
+                item.classList.toggle('active', isActive);
+                item.setAttribute('aria-selected', String(isActive));
+            });
+
+            panels.forEach(panel => {
+                const isActive = panel.dataset.summaryPanel === target;
+                panel.classList.toggle('active', isActive);
+                panel.toggleAttribute('hidden', !isActive);
+            });
+        });
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSummarySwitcher);
+} else {
+    initSummarySwitcher();
 }
