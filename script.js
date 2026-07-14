@@ -19,16 +19,25 @@ window.addEventListener('scroll', () => {
 });
 
 // Mobile menu toggle
+function closeMobileMenu() {
+    navMenu.classList.remove('active');
+    navToggle.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Open navigation menu');
+}
+
 navToggle.addEventListener('click', () => {
+    const isOpening = !navMenu.classList.contains('active');
     navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
+    navToggle.setAttribute('aria-expanded', String(isOpening));
+    navToggle.setAttribute('aria-label', isOpening ? 'Close navigation menu' : 'Open navigation menu');
 });
 
 // Close mobile menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
+        closeMobileMenu();
     });
 });
 
@@ -74,7 +83,7 @@ const skillItems = document.querySelectorAll('.skill-item');
 
 [...sections, ...projectCards, ...skillItems].forEach(el => {
     el.classList.add('fade-in');
-    observer.observe(el);
+    el.classList.add('visible');
 });
 
 // Parallax effect for hero section
@@ -425,15 +434,6 @@ const throttledScroll = throttle(() => {
 }, 100);
 
 window.addEventListener('scroll', throttledScroll);
-
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
 
 // Add ripple effect to buttons
 document.querySelectorAll('.btn').forEach(button => {
