@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat Application | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=perspective-transitions">
+    <link rel="stylesheet" href="style.css?v=secure-3d-sequences-v2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -59,72 +59,95 @@
                             <span class="secure-model-eyebrow">Live architecture model</span>
                             <h2 id="secure-model-title">Encrypted endpoint flow</h2>
                         </div>
-                        <button type="button" class="secure-model-replay" data-secure-replay aria-label="Replay encrypted message flow">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M20 11a8.1 8.1 0 1 0-2.4 5.8M20 4v7h-7" />
-                            </svg>
-                            Replay
-                        </button>
                     </div>
 
-                    <div class="secure-model-scene" aria-hidden="true">
-                        <div class="secure-model-plane"></div>
+                    <div class="secure-model-scene secure-3d-viewport" data-secure-viewport role="img" aria-label="Three-dimensional model of two encrypted chat endpoints exchanging keys and messages through a forwarding-only TCP relay.">
+                        <div class="secure-sequence-readout" aria-hidden="true">
+                            <span data-secure-sequence-index>03 / MESSAGE</span>
+                            <strong data-secure-sequence-steps>BUILD FRAME → RELAY → VERIFY</strong>
+                        </div>
 
-                        <div class="secure-model-node secure-model-endpoint secure-model-endpoint-a">
-                            <div class="secure-node-signal"></div>
-                            <div class="secure-node-screen">
-                                <span class="secure-screen-status">LOCAL</span>
-                                <svg class="secure-lock-icon" viewBox="0 0 24 24">
-                                    <rect x="5" y="10" width="14" height="10" rx="2" />
-                                    <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
-                                </svg>
-                                <span class="secure-screen-code">A7:3F:91</span>
+                        <div class="secure-3d-world" aria-hidden="true">
+                            <div class="secure-world-floor"></div>
+                            <div class="secure-zone secure-zone-a"><span>Trusted zone A</span></div>
+                            <div class="secure-zone secure-zone-b"><span>Trusted zone B</span></div>
+
+                            <div class="secure-terminal secure-terminal-a">
+                                <div class="secure-terminal-surface">
+                                    <span class="secure-terminal-kicker">CLIENT 01</span>
+                                    <svg class="secure-terminal-lock" viewBox="0 0 24 24">
+                                        <rect x="5" y="10" width="14" height="10" rx="2" />
+                                        <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
+                                    </svg>
+                                    <strong>Endpoint A</strong>
+                                    <span data-secure-endpoint-a-state>Encrypt locally</span>
+                                </div>
+                                <span class="secure-private-key">PRIVATE KEY<br>LOCAL ONLY</span>
                             </div>
-                            <strong>Endpoint A</strong>
-                            <span>Encrypts locally</span>
-                        </div>
 
-                        <div class="secure-route secure-route-left">
-                            <span class="secure-route-line"></span>
-                            <span class="secure-packet secure-packet-left">
-                                <svg viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M6 10h12v10H6z" /></svg>
-                            </span>
-                        </div>
-
-                        <div class="secure-model-node secure-model-relay">
-                            <span class="secure-relay-ring"></span>
-                            <svg viewBox="0 0 24 24">
-                                <rect x="4" y="4" width="16" height="5" rx="1" />
-                                <rect x="4" y="15" width="16" height="5" rx="1" />
-                                <path d="M8 9v6M16 9v6M8 6.5h.01M8 17.5h.01" />
-                            </svg>
-                            <strong>Relay</strong>
-                            <span>Routes only</span>
-                        </div>
-
-                        <div class="secure-route secure-route-right">
-                            <span class="secure-route-line"></span>
-                            <span class="secure-packet secure-packet-right">
-                                <svg viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M6 10h12v10H6z" /></svg>
-                            </span>
-                        </div>
-
-                        <div class="secure-model-node secure-model-endpoint secure-model-endpoint-b">
-                            <div class="secure-node-signal"></div>
-                            <div class="secure-node-screen">
-                                <span class="secure-screen-status">LOCAL</span>
-                                <svg class="secure-lock-icon" viewBox="0 0 24 24">
-                                    <rect x="5" y="10" width="14" height="10" rx="2" />
-                                    <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
-                                </svg>
-                                <span class="secure-screen-code">D2:8C:4E</span>
+                            <div class="secure-route-3d secure-route-3d-left">
+                                <span class="secure-route-beam"></span>
+                                <span class="secure-packet-3d secure-packet-3d-left secure-packet-primary">
+                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                </span>
+                                <span class="secure-packet-3d secure-packet-3d-left secure-packet-exchange">
+                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                </span>
                             </div>
-                            <strong>Endpoint B</strong>
-                            <span>Decrypts locally</span>
+
+                            <div class="secure-relay-3d">
+                                <span class="secure-relay-orbit secure-relay-orbit-one"></span>
+                                <span class="secure-relay-orbit secure-relay-orbit-two"></span>
+                                <div class="secure-relay-core">
+                                    <svg viewBox="0 0 24 24">
+                                        <rect x="4" y="4" width="16" height="5" rx="1" />
+                                        <rect x="4" y="15" width="16" height="5" rx="1" />
+                                        <path d="M8 9v6M16 9v6M8 6.5h.01M8 17.5h.01" />
+                                    </svg>
+                                </div>
+                                <strong>TCP Relay</strong>
+                                <span data-secure-relay-state>Ciphertext only</span>
+                            </div>
+
+                            <div class="secure-route-3d secure-route-3d-right">
+                                <span class="secure-route-beam"></span>
+                                <span class="secure-packet-3d secure-packet-3d-right secure-packet-primary">
+                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                </span>
+                                <span class="secure-packet-3d secure-packet-3d-right secure-packet-exchange">
+                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                </span>
+                            </div>
+
+                            <div class="secure-terminal secure-terminal-b">
+                                <div class="secure-terminal-surface">
+                                    <span class="secure-terminal-kicker">CLIENT 02</span>
+                                    <svg class="secure-terminal-lock" viewBox="0 0 24 24">
+                                        <rect x="5" y="10" width="14" height="10" rx="2" />
+                                        <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
+                                    </svg>
+                                    <strong>Endpoint B</strong>
+                                    <span data-secure-endpoint-b-state>Verify + decrypt</span>
+                                </div>
+                                <span class="secure-private-key">PRIVATE KEY<br>LOCAL ONLY</span>
+                            </div>
                         </div>
 
-                        <span class="secure-boundary-label">Untrusted transport boundary</span>
-                        <span class="secure-payload-label" data-secure-payload-label>AES-GCM ciphertext</span>
+                        <div class="secure-frame-inspector" aria-hidden="true">
+                            <span class="secure-frame-label">TCP frame</span>
+                            <div class="secure-frame-parts" data-secure-frame-parts>
+                                <span>TYPE · 1B</span>
+                                <span>LENGTH · 4B</span>
+                                <span>NONCE · 12B</span>
+                                <span>CIPHERTEXT</span>
+                                <span>TAG · 16B</span>
+                            </div>
+                        </div>
+
+                        <div class="secure-boundary-readout" aria-hidden="true">
+                            <span class="secure-boundary-label">Untrusted transport boundary</span>
+                            <span class="secure-payload-label" data-secure-payload-label>AES-GCM ciphertext</span>
+                        </div>
                     </div>
 
                     <div class="secure-model-stage-controls" role="group" aria-label="Choose a communication stage">
@@ -366,6 +389,6 @@ def pack_message(msg_type, payload):
         </div>
     </footer>
 
-    <script src="script.js?v=perspective-transitions"></script>
+    <script src="script.js?v=secure-3d-sequences-v2"></script>
 </body>
 </html>

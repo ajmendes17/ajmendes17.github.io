@@ -1048,46 +1048,89 @@ function initSecureEndpointModel() {
     if (!model) return;
 
     const stageButtons = model.querySelectorAll('[data-secure-stage]');
-    const replayButton = model.querySelector('[data-secure-replay]');
     const captionIndex = model.querySelector('[data-secure-caption-index]');
     const captionTitle = model.querySelector('[data-secure-caption-title]');
     const captionCopy = model.querySelector('[data-secure-caption-copy]');
     const payloadLabel = model.querySelector('[data-secure-payload-label]');
+    const packetLabels = model.querySelectorAll('[data-secure-packet-short]');
+    const frameParts = model.querySelector('[data-secure-frame-parts]');
+    const relayState = model.querySelector('[data-secure-relay-state]');
+    const endpointAState = model.querySelector('[data-secure-endpoint-a-state]');
+    const endpointBState = model.querySelector('[data-secure-endpoint-b-state]');
+    const sequenceIndex = model.querySelector('[data-secure-sequence-index]');
+    const sequenceSteps = model.querySelector('[data-secure-sequence-steps]');
     let animationTimer;
+    let ambientTimer;
 
     const stageContent = {
         keys: {
             index: 'Stage 01',
             title: 'Public key exchange',
-            copy: 'Each client shares a public key through the relay. Private keys remain on their endpoints.',
-            payload: 'Public keys · safe to share'
+            copy: 'Each client sends its RSA-2048 public key through the TCP relay. The corresponding private key stays on disk at its own endpoint.',
+            payload: 'RSA public key · PEM payload',
+            packet: 'PUB',
+            frame: ['TYPE 01 · 1B', 'LENGTH · 4B', 'PUBLIC KEY · PEM'],
+            relay: 'Forwards public keys',
+            endpointA: 'Share public key',
+            endpointB: 'Load peer key',
+            sequenceIndex: '01 / IDENTITY',
+            sequenceSteps: 'PUBLISH → EXCHANGE → STORE',
+            duration: 3600
         },
         session: {
             index: 'Stage 02',
             title: 'Session key setup',
-            copy: 'A symmetric key is generated and wrapped with the recipient’s public key using RSA-OAEP.',
-            payload: 'RSA-OAEP wrapped key'
+            copy: 'Endpoint A generates a random 32-byte AES key and wraps it with Endpoint B’s public key using RSA-OAEP with SHA-256.',
+            payload: 'RSA-OAEP wrapped AES key',
+            packet: 'KEY',
+            frame: ['TYPE 02 · 1B', 'LENGTH · 4B', 'WRAPPED KEY · 256B'],
+            relay: 'Cannot unwrap key',
+            endpointA: 'Generate AES-256 key',
+            endpointB: 'Unwrap with private key',
+            sequenceIndex: '02 / SESSION',
+            sequenceSteps: 'GENERATE → WRAP → UNWRAP',
+            duration: 3600
         },
         message: {
             index: 'Stage 03',
             title: 'Encrypted message',
-            copy: 'AES-256-GCM encrypts and authenticates the payload before the relay forwards it for local decryption.',
-            payload: 'AES-GCM ciphertext'
+            copy: 'AES-256-GCM creates a unique 12-byte nonce, ciphertext, and 16-byte authentication tag. The relay forwards the serialized frame; Endpoint B verifies and decrypts it locally.',
+            payload: 'AES-256-GCM encrypted payload',
+            packet: 'MSG',
+            frame: ['TYPE 03 · 1B', 'LENGTH · 4B', 'NONCE · 12B', 'CIPHERTEXT', 'TAG · 16B'],
+            relay: 'Ciphertext only',
+            endpointA: 'Encrypt + authenticate',
+            endpointB: 'Verify + decrypt',
+            sequenceIndex: '03 / MESSAGE',
+            sequenceSteps: 'BUILD FRAME → RELAY → VERIFY',
+            duration: 4400
         }
     };
 
-    function replayFlow() {
+    function scheduleAmbientSequence() {
+        window.clearTimeout(ambientTimer);
+        if (reducedMotionQuery.matches) return;
+
+        const quietInterval = 8500 + Math.round(Math.random() * 3500);
+        ambientTimer = window.setTimeout(runSequence, quietInterval);
+    }
+
+    function runSequence() {
         window.clearTimeout(animationTimer);
+        window.clearTimeout(ambientTimer);
         model.classList.remove('is-animating');
 
-        if (reducedMotionQuery.matches) return;
+        if (reducedMotionQuery.matches || document.hidden) return;
+
+        const activeStage = stageContent[model.dataset.modelStage] || stageContent.message;
 
         window.requestAnimationFrame(() => {
             window.requestAnimationFrame(() => {
                 model.classList.add('is-animating');
                 animationTimer = window.setTimeout(() => {
                     model.classList.remove('is-animating');
-                }, 1400);
+                    scheduleAmbientSequence();
+                }, activeStage.duration);
             });
         });
     }
@@ -1105,18 +1148,39 @@ function initSecureEndpointModel() {
         if (captionTitle) captionTitle.textContent = content.title;
         if (captionCopy) captionCopy.textContent = content.copy;
         if (payloadLabel) payloadLabel.textContent = content.payload;
-        if (replayButton) replayButton.setAttribute('aria-label', `Replay ${content.title.toLowerCase()} flow`);
+        packetLabels.forEach(label => { label.textContent = content.packet; });
+        if (frameParts) {
+            frameParts.replaceChildren(...content.frame.map(part => {
+                const span = document.createElement('span');
+                span.textContent = part;
+                return span;
+            }));
+        }
+        if (relayState) relayState.textContent = content.relay;
+        if (endpointAState) endpointAState.textContent = content.endpointA;
+        if (endpointBState) endpointBState.textContent = content.endpointB;
+        if (sequenceIndex) sequenceIndex.textContent = content.sequenceIndex;
+        if (sequenceSteps) sequenceSteps.textContent = content.sequenceSteps;
 
-        replayFlow();
+        runSequence();
     }
 
     stageButtons.forEach(button => {
         button.addEventListener('click', () => setStage(button.dataset.secureStage));
     });
 
-    if (replayButton) {
-        replayButton.addEventListener('click', replayFlow);
-    }
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            window.clearTimeout(ambientTimer);
+            window.clearTimeout(animationTimer);
+            model.classList.remove('is-animating');
+            return;
+        }
+
+        scheduleAmbientSequence();
+    });
+
+    setStage(model.dataset.modelStage || 'message');
 }
 
 if (document.readyState === 'loading') {
