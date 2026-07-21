@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AJ Mendes | Secure Software & Applied CS</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=blue-editorial">
+    <link rel="stylesheet" href="style.css?v=perspective-transitions">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -95,24 +95,98 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects project-stage" data-active-project="1">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">02</span>
                 <h2 class="section-title">Projects</h2>
             </div>
-            <div class="selected-work">
-                <article class="case-study project-card" data-project="1" data-project-url="secure-chat-app.html">
-                    <div class="case-visual secure-case">
-                        <img src="assets/secure-chat-flow.png" alt="Secure Chat encrypted client-server flow" class="project-thumb">
+            <div class="systems-showcase" data-project-stage>
+                <aside class="systems-intro">
+                    <span class="systems-eyebrow">Selected system</span>
+                    <div class="systems-intro-copy" aria-live="polite" aria-atomic="true">
+                        <span class="systems-kicker" data-carousel-kicker>Encrypted communication</span>
+                        <h3 data-carousel-title>Secure Chat Application</h3>
+                        <p data-carousel-summary>Hybrid encryption keeps private keys at the endpoints while a relay forwards ciphertext.</p>
                     </div>
-                    <div class="case-content">
+                    <a class="systems-view-link" data-carousel-link href="secure-chat-app.html" aria-label="View Secure Chat Application project">
+                        <span>View system</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
+                    </a>
+                    <div class="systems-position" aria-live="polite">
+                        <strong data-carousel-current>01</strong>
+                        <span>/</span>
+                        <span data-carousel-total>03</span>
+                    </div>
+                </aside>
+
+                <div class="systems-carousel" data-project-carousel>
+                    <div class="systems-carousel-header">
+                        <span>Drag · swipe · arrow keys</span>
+                        <div class="systems-carousel-controls">
+                            <button type="button" data-carousel-previous aria-label="Show previous project">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+                            </button>
+                            <button type="button" data-carousel-next aria-label="Show next project">
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="systems-carousel-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Selected software projects">
+                        <div class="selected-work systems-carousel-track">
+                <article class="case-study project-card project-portal secure-portal system-slide is-selected" data-project="1" data-project-url="secure-chat-app.html" data-carousel-kicker="Encrypted communication" data-carousel-summary="Hybrid encryption keeps private keys at the endpoints while a relay forwards ciphertext." data-carousel-slide aria-current="true">
+                    <div class="case-visual portal-visual secure-case">
+                        <div class="portal-depth" aria-hidden="true">
+                            <div class="portal-layer portal-grid-layer"></div>
+                            <div class="portal-layer portal-media-layer">
+                                <img src="assets/secure-chat-flow.png" alt="" class="project-thumb" loading="lazy">
+                            </div>
+                            <div class="portal-layer secure-system-layer">
+                                <div class="secure-endpoint endpoint-a">
+                                    <span class="endpoint-screen"><span class="endpoint-lock"></span></span>
+                                    <span>Endpoint A</span>
+                                </div>
+                                <div class="secure-channel" aria-hidden="true">
+                                    <span class="packet packet-one"></span>
+                                    <span class="packet packet-two"></span>
+                                    <span class="packet packet-three"></span>
+                                </div>
+                                <div class="secure-relay">
+                                    <span class="relay-core"></span>
+                                    <span>Relay</span>
+                                </div>
+                                <div class="secure-endpoint endpoint-b">
+                                    <span class="endpoint-screen"><span class="endpoint-lock"></span></span>
+                                    <span>Endpoint B</span>
+                                </div>
+                            </div>
+                            <div class="portal-layer portal-frame-layer">
+                                <span class="portal-index">01 / Secure system</span>
+                                <span class="portal-status"><span></span>Encrypted endpoints</span>
+                            </div>
+                        </div>
+                        <ol class="portal-callouts" aria-label="Secure Chat system details">
+                            <li style="--callout-y: 22%"><b>01</b><span><strong>Interface frame</strong><small>Application shell</small></span></li>
+                            <li style="--callout-y: 50%"><b>02</b><span><strong>Encrypted path</strong><small>Packets in transit</small></span></li>
+                            <li style="--callout-y: 76%"><b>03</b><span><strong>Endpoint boundary</strong><small>Keys stay isolated</small></span></li>
+                        </ol>
+                        <button type="button" class="portal-toggle" aria-expanded="false" aria-controls="portal-details-1">
+                            <span class="portal-toggle-label">Explore layers</span>
+                            <span class="portal-toggle-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="case-content" id="portal-details-1">
                         <div class="case-meta">
                             <span class="project-category">Cybersecurity</span>
-                            <a href="secure-chat-app.html" class="case-link">View Project</a>
                         </div>
                         <h3 class="project-title">Secure Chat Application</h3>
                         <p class="project-description">A Python client-server chat app that demonstrates RSA-OAEP key exchange, AES-256-GCM message encryption, framed protocol packets, and a Tkinter desktop workflow.</p>
+                        <div class="portal-layer-key" aria-label="Secure Chat portal layers">
+                            <span><i>01</i> Interface shell</span>
+                            <span><i>02</i> Encrypted transport</span>
+                            <span><i>03</i> Endpoint boundary</span>
+                        </div>
                         <div class="case-proof-grid">
                             <div>
                                 <span>Role</span>
@@ -136,43 +210,65 @@
                     </div>
                 </article>
 
-                <article class="case-study project-card" data-project="2" data-project-url="clue-game.html">
-                    <div class="case-visual clue-case">
-                        <div class="project-board-thumb" aria-hidden="true">
-                            <span class="room">Study</span>
-                            <span class="walkway"></span>
-                            <span class="room">Hall</span>
-                            <span class="walkway"></span>
-                            <span class="room">Lounge</span>
-                            <span class="walkway"></span>
-                            <span class="target-cell"></span>
-                            <span class="walkway"></span>
-                            <span class="target-cell"></span>
-                            <span class="walkway"></span>
-                            <span class="room">Library</span>
-                            <span class="walkway"></span>
-                            <span class="room">Billiard</span>
-                            <span class="walkway"></span>
-                            <span class="room">Dining</span>
-                            <span class="player-token token-green"></span>
-                            <span class="walkway"></span>
-                            <span class="player-token token-blue"></span>
-                            <span class="walkway"></span>
-                            <span class="player-token token-red"></span>
-                            <span class="room">Conservatory</span>
-                            <span class="walkway"></span>
-                            <span class="room">Ballroom</span>
-                            <span class="walkway"></span>
-                            <span class="room">Kitchen</span>
+                <article class="case-study project-card project-portal clue-portal system-slide" data-project="2" data-project-url="clue-game.html" data-carousel-kicker="Rule-driven game system" data-carousel-summary="A configuration-first board engine combining graph movement, computer players, and tested behavior." data-carousel-slide aria-current="false">
+                    <div class="case-visual portal-visual clue-case">
+                        <div class="portal-depth" aria-hidden="true">
+                            <div class="portal-layer portal-grid-layer"></div>
+                            <div class="portal-layer portal-board-layer">
+                                <div class="project-board-thumb">
+                                    <span class="room">Study</span>
+                                    <span class="walkway"></span>
+                                    <span class="room">Hall</span>
+                                    <span class="walkway"></span>
+                                    <span class="room">Lounge</span>
+                                    <span class="walkway"></span>
+                                    <span class="target-cell"></span>
+                                    <span class="walkway"></span>
+                                    <span class="target-cell"></span>
+                                    <span class="walkway"></span>
+                                    <span class="room">Library</span>
+                                    <span class="walkway"></span>
+                                    <span class="room">Billiard</span>
+                                    <span class="walkway"></span>
+                                    <span class="room">Dining</span>
+                                    <span class="player-token token-green"></span>
+                                    <span class="walkway"></span>
+                                    <span class="player-token token-blue"></span>
+                                    <span class="walkway"></span>
+                                    <span class="player-token token-red"></span>
+                                    <span class="room">Conservatory</span>
+                                    <span class="walkway"></span>
+                                    <span class="room">Ballroom</span>
+                                    <span class="walkway"></span>
+                                    <span class="room">Kitchen</span>
+                                </div>
+                            </div>
+                            <div class="portal-layer portal-frame-layer">
+                                <span class="portal-index">02 / Game system</span>
+                                <span class="portal-status"><span></span>Config-driven board</span>
+                            </div>
                         </div>
+                        <ol class="portal-callouts" aria-label="ClueGame system details">
+                            <li style="--callout-y: 23%"><b>01</b><span><strong>Configured board</strong><small>Data-defined rooms</small></span></li>
+                            <li style="--callout-y: 51%"><b>02</b><span><strong>Movement graph</strong><small>Reachable paths</small></span></li>
+                            <li style="--callout-y: 76%"><b>03</b><span><strong>Rule state</strong><small>Behavior under test</small></span></li>
+                        </ol>
+                        <button type="button" class="portal-toggle" aria-expanded="false" aria-controls="portal-details-2">
+                            <span class="portal-toggle-label">Explore layers</span>
+                            <span class="portal-toggle-icon" aria-hidden="true"></span>
+                        </button>
                     </div>
-                    <div class="case-content">
+                    <div class="case-content" id="portal-details-2">
                         <div class="case-meta">
                             <span class="project-category">Software Engineering</span>
-                            <a href="clue-game.html" class="case-link">View Project</a>
                         </div>
                         <h3 class="project-title">ClueGame</h3>
                         <p class="project-description">A Java Swing implementation of Clue with config-driven board loading, graph-based movement, card dealing, suggestions, accusations, and computer-player decision logic.</p>
+                        <div class="portal-layer-key" aria-label="ClueGame portal layers">
+                            <span><i>01</i> Configured board</span>
+                            <span><i>02</i> Movement graph</span>
+                            <span><i>03</i> Tested rules</span>
+                        </div>
                         <div class="case-proof-grid">
                             <div>
                                 <span>Role</span>
@@ -196,17 +292,44 @@
                     </div>
                 </article>
 
-                <article class="case-study project-card" data-project="3" data-project-url="call-for-fire-trainer.html">
-                    <div class="case-visual call-fire-case">
-                        <img src="assets/call-for-fire-dashboard-snapshot-v2.png" alt="Blurred dashboard snapshot for the Call for Fire Trainer project" class="project-thumb">
+                <article class="case-study project-card project-portal call-fire-portal system-slide" data-project="3" data-project-url="call-for-fire-trainer.html" data-carousel-kicker="Guided training system" data-carousel-summary="A privacy-treated training aid built to expand independent practice when instructor availability became a bottleneck." data-carousel-slide aria-current="false">
+                    <div class="case-visual portal-visual call-fire-case">
+                        <div class="portal-depth" aria-hidden="true">
+                            <div class="portal-layer portal-grid-layer"></div>
+                            <div class="portal-layer portal-media-layer call-fire-media">
+                                <img src="assets/call-for-fire-dashboard-snapshot-v2.png" alt="" class="project-thumb" loading="lazy">
+                            </div>
+                            <div class="portal-layer training-focus-layer">
+                                <span class="training-reticle"></span>
+                                <span class="training-axis axis-x"></span>
+                                <span class="training-axis axis-y"></span>
+                            </div>
+                            <div class="portal-layer portal-frame-layer">
+                                <span class="portal-index">03 / Training system</span>
+                                <span class="portal-status"><span></span>Details abstracted</span>
+                            </div>
+                        </div>
+                        <ol class="portal-callouts" aria-label="Call for Fire Trainer system details">
+                            <li style="--callout-y: 22%"><b>01</b><span><strong>Guided input</strong><small>Focused practice flow</small></span></li>
+                            <li style="--callout-y: 50%"><b>02</b><span><strong>Feedback loop</strong><small>Immediate correction</small></span></li>
+                            <li style="--callout-y: 76%"><b>03</b><span><strong>Privacy layer</strong><small>Details abstracted</small></span></li>
+                        </ol>
+                        <button type="button" class="portal-toggle" aria-expanded="false" aria-controls="portal-details-3">
+                            <span class="portal-toggle-label">Explore layers</span>
+                            <span class="portal-toggle-icon" aria-hidden="true"></span>
+                        </button>
                     </div>
-                    <div class="case-content">
+                    <div class="case-content" id="portal-details-3">
                         <div class="case-meta">
                             <span class="project-category">Training Systems</span>
-                            <a href="call-for-fire-trainer.html" class="case-link">View Project</a>
                         </div>
                         <h3 class="project-title">Call for Fire Trainer</h3>
                         <p class="project-description">A focused training aid created to make repeatable practice possible when instructor availability became a bottleneck. The project emphasizes clear pacing, feedback, and independent rehearsal without exposing operational details.</p>
+                        <div class="portal-layer-key" aria-label="Call for Fire Trainer portal layers">
+                            <span><i>01</i> Guided interface</span>
+                            <span><i>02</i> Feedback model</span>
+                            <span><i>03</i> Privacy treatment</span>
+                        </div>
                         <div class="case-proof-grid">
                             <div>
                                 <span>Challenge</span>
@@ -229,6 +352,15 @@
                         </div>
                     </div>
                 </article>
+                        </div>
+                    </div>
+
+                    <div class="systems-carousel-dots" role="group" aria-label="Choose a project">
+                        <button type="button" data-carousel-dot="0" aria-label="Show Secure Chat Application" aria-pressed="true"><span>01</span><small>Secure Chat</small></button>
+                        <button type="button" data-carousel-dot="1" aria-label="Show ClueGame" aria-pressed="false"><span>02</span><small>ClueGame</small></button>
+                        <button type="button" data-carousel-dot="2" aria-label="Show Call for Fire Trainer" aria-pressed="false"><span>03</span><small>Trainer</small></button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -277,6 +409,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=perspective-transitions"></script>
 </body>
 </html>

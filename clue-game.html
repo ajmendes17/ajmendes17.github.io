@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClueGame | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=perspective-transitions">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="project-detail-page">
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -21,7 +21,7 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html#home" class="nav-link">Home</a></li>
                 <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html?project=2#projects" class="nav-link">Projects</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
@@ -34,7 +34,7 @@
 
     <section class="project-header">
         <div class="container">
-            <a href="index.html#projects" class="back-link">
+            <a href="index.html?project=2#projects" class="back-link">
                 ← Back to Projects
             </a>
             <div class="project-header-layout">
@@ -101,7 +101,43 @@
     <section class="project-details">
         <div class="container">
             <div class="project-content">
-                <div class="project-section">
+                <div class="project-section project-perspective" data-perspective-switcher data-project-id="clue-game">
+                    <div class="perspective-heading">
+                        <div>
+                            <span class="summary-label">Project Perspective</span>
+                            <h2 class="section-title">Choose the level of abstraction</h2>
+                            <p>See the game as a player-facing rules system or inspect the engineering underneath it.</p>
+                        </div>
+                        <div class="perspective-toggle" role="tablist" aria-label="ClueGame project perspective">
+                            <button type="button" class="perspective-toggle-btn active" role="tab" aria-selected="true" aria-controls="clue-operator-perspective" data-perspective-target="operator"><span>01</span>Operator</button>
+                            <button type="button" class="perspective-toggle-btn" role="tab" aria-selected="false" aria-controls="clue-builder-perspective" data-perspective-target="builder"><span>02</span>Builder</button>
+                        </div>
+                    </div>
+                    <div class="perspective-panels" aria-live="polite">
+                        <div class="perspective-panel active" id="clue-operator-perspective" role="tabpanel" data-perspective-panel="operator">
+                            <span class="perspective-panel-kicker">Rules · decisions · player state</span>
+                            <h3>A board game whose moving parts stay coherent</h3>
+                            <p class="project-text">The operator view focuses on what the system makes possible: legal moves are clear, suggestions resolve predictably, computer players act within the same rules, and the interface keeps the current turn understandable.</p>
+                            <div class="perspective-brief-grid">
+                                <div><span>Intent</span><strong>Make complex rules playable</strong></div>
+                                <div><span>Interaction</span><strong>Board-led turn decisions</strong></div>
+                                <div><span>Outcome</span><strong>Consistent game state</strong></div>
+                            </div>
+                        </div>
+                        <div class="perspective-panel" id="clue-builder-perspective" role="tabpanel" hidden data-perspective-panel="builder">
+                            <span class="perspective-panel-kicker">Graph · state machine · tests</span>
+                            <h3>Configuration-driven behavior with tested boundaries</h3>
+                            <p class="project-text">The builder view follows the runtime model: external files construct the board, adjacency graphs constrain movement, focused classes coordinate cards and turns, and JUnit tests protect the rules most likely to drift.</p>
+                            <div class="perspective-brief-grid">
+                                <div><span>Architecture</span><strong>Model + orchestration + Swing</strong></div>
+                                <div><span>Core logic</span><strong>Graph traversal and rule state</strong></div>
+                                <div><span>Validation</span><strong>80 JUnit tests</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section" data-perspective-content="operator">
                     <h2 class="section-title">Overview</h2>
                     <p class="project-text">
                         ClueGame is a desktop game built around a custom Clue board. The application parses external setup and layout files, builds the board model at runtime, calculates legal movement targets, handles card distribution, and drives human and computer turns through a Swing interface.
@@ -111,7 +147,7 @@
                     </p>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="operator">
                     <h2 class="section-title">Key Features</h2>
                     <div class="features-grid">
                         <div class="feature-item">
@@ -137,7 +173,7 @@
                     </div>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="builder">
                     <h2 class="section-title">Technical Implementation</h2>
                     <div class="tech-details">
                         <h3>Architecture</h3>
@@ -151,7 +187,7 @@
                     </div>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="builder">
                     <h2 class="section-title">Technologies & Tools</h2>
                     <div class="tech-stack">
                         <div class="tech-category">
@@ -175,13 +211,13 @@
                     </div>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="both">
                     <h2 class="section-title">Project Links</h2>
                     <div class="project-links">
                         <a href="https://github.com/ajmendes17/ClueGame" target="_blank" rel="noopener" class="project-link-btn">
                             <span>View on GitHub →</span>
                         </a>
-                        <a href="index.html#projects" class="project-link-btn secondary">
+                        <a href="index.html?project=2#projects" class="project-link-btn secondary">
                             <span>Back to Projects</span>
                         </a>
                     </div>
@@ -196,6 +232,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=perspective-transitions"></script>
 </body>
 </html>

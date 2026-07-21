@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Call for Fire Trainer | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=call-fire-trainer">
+    <link rel="stylesheet" href="style.css?v=perspective-transitions">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="project-detail-page">
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -21,7 +21,7 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html#home" class="nav-link">Home</a></li>
                 <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html?project=3#projects" class="nav-link">Projects</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
@@ -34,7 +34,7 @@
 
     <section class="project-header">
         <div class="container">
-            <a href="index.html#projects" class="back-link">← Back to Projects</a>
+            <a href="index.html?project=3#projects" class="back-link">← Back to Projects</a>
             <div class="project-header-layout">
                 <div class="project-header-content">
                     <span class="project-category">Training Systems</span>
@@ -72,13 +72,49 @@
     <section class="project-details">
         <div class="container">
             <div class="project-content">
-                <div class="project-section">
+                <div class="project-section project-perspective" data-perspective-switcher data-project-id="call-for-fire">
+                    <div class="perspective-heading">
+                        <div>
+                            <span class="summary-label">Project Perspective</span>
+                            <h2 class="section-title">Choose the level of abstraction</h2>
+                            <p>Understand the training outcome first, or examine the interaction and feedback decisions used to build it.</p>
+                        </div>
+                        <div class="perspective-toggle" role="tablist" aria-label="Call for Fire Trainer project perspective">
+                            <button type="button" class="perspective-toggle-btn active" role="tab" aria-selected="true" aria-controls="trainer-operator-perspective" data-perspective-target="operator"><span>01</span>Operator</button>
+                            <button type="button" class="perspective-toggle-btn" role="tab" aria-selected="false" aria-controls="trainer-builder-perspective" data-perspective-target="builder"><span>02</span>Builder</button>
+                        </div>
+                    </div>
+                    <div class="perspective-panels" aria-live="polite">
+                        <div class="perspective-panel active" id="trainer-operator-perspective" role="tabpanel" data-perspective-panel="operator">
+                            <span class="perspective-panel-kicker">Practice · feedback · instructor leverage</span>
+                            <h3>More useful repetitions between coached sessions</h3>
+                            <p class="project-text">The operator view centers the training problem: learners need a clear practice loop, immediate feedback, and a safe way to build familiarity without requiring an instructor beside every repetition.</p>
+                            <div class="perspective-brief-grid">
+                                <div><span>Constraint</span><strong>Limited instructor bandwidth</strong></div>
+                                <div><span>Workflow</span><strong>Scenario, response, feedback</strong></div>
+                                <div><span>Outcome</span><strong>More independent practice</strong></div>
+                            </div>
+                        </div>
+                        <div class="perspective-panel" id="trainer-builder-perspective" role="tabpanel" hidden data-perspective-panel="builder">
+                            <span class="perspective-panel-kicker">State · hierarchy · privacy</span>
+                            <h3>A focused feedback system with responsible abstraction</h3>
+                            <p class="project-text">The builder view examines how the interface guides attention: status establishes context, one primary input controls the practice loop, visual feedback explains the result, and operational details remain intentionally abstracted.</p>
+                            <div class="perspective-brief-grid">
+                                <div><span>Structure</span><strong>State-driven dashboard</strong></div>
+                                <div><span>UX priority</span><strong>One clear next action</strong></div>
+                                <div><span>Constraint</span><strong>Privacy-preserving presentation</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-section" data-perspective-content="operator">
                     <h2 class="section-title">Overview</h2>
                     <p class="project-text">This project began with a practical bottleneck: there were not enough instructors available to personally guide every student through each repetition of a structured training exercise.</p>
                     <p class="project-text">The result was a focused training aid that gives learners a consistent place to work through a scenario, receive feedback, and build confidence before returning to instructor-led practice. This portfolio view intentionally leaves out operational content and focuses on the design problem, interaction model, and learning experience.</p>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="operator">
                     <h2 class="section-title">The Design Challenge</h2>
                     <div class="features-grid">
                         <div class="feature-item">
@@ -104,13 +140,13 @@
                     </div>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="builder">
                     <h2 class="section-title">Approach</h2>
                     <p class="project-text">The interface is organized around a simple loop: present a scenario, accept a structured response, provide a visual result, and surface the next useful correction. That rhythm turns instructor-dependent practice into a more repeatable self-guided experience while keeping instructor time available for higher-value coaching.</p>
                     <p class="project-text">The dashboard snapshot uses a deliberate visual hierarchy: status at the top, primary input near the center of attention, and supporting context arranged around a central visualization. The portfolio image softens the details, but preserves the layout so the design intent is still visible.</p>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="builder">
                     <h2 class="section-title">What I Learned</h2>
                     <div class="security-list">
                         <div class="security-item">
@@ -128,10 +164,10 @@
                     </div>
                 </div>
 
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="both">
                     <h2 class="section-title">Project Links</h2>
                     <div class="project-links">
-                        <a href="index.html#projects" class="project-link-btn secondary">
+                        <a href="index.html?project=3#projects" class="project-link-btn secondary">
                             <span>Back to Projects</span>
                         </a>
                     </div>
@@ -146,6 +182,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=perspective-transitions"></script>
 </body>
 </html>

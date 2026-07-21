@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat Application | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=secure-chat-summary">
+    <link rel="stylesheet" href="style.css?v=perspective-transitions">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="secure-chat-page project-detail-page">
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -22,7 +22,7 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html#home" class="nav-link">Home</a></li>
                 <li><a href="index.html#about" class="nav-link">About</a></li>
-                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html?project=1#projects" class="nav-link">Projects</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
@@ -36,7 +36,7 @@
     <!-- Project Header -->
     <section class="project-header">
         <div class="container">
-            <a href="index.html#projects" class="back-link">
+            <a href="index.html?project=1#projects" class="back-link">
                 ← Back to Projects
             </a>
             <div class="project-header-layout">
@@ -53,8 +53,102 @@
                     </div>
                 </div>
 
-                <div class="project-showcase secure-chat-showcase" aria-label="Secure Chat encrypted message flow preview">
-                    <img src="assets/secure-chat-flow.png" alt="Diagram of Client A sending RSA key exchange and AES-GCM ciphertext through a relay server to Client B">
+                <div class="project-showcase secure-chat-showcase secure-endpoint-model" data-secure-endpoint-model data-model-stage="message" aria-labelledby="secure-model-title">
+                    <div class="secure-model-topline">
+                        <div>
+                            <span class="secure-model-eyebrow">Live architecture model</span>
+                            <h2 id="secure-model-title">Encrypted endpoint flow</h2>
+                        </div>
+                        <button type="button" class="secure-model-replay" data-secure-replay aria-label="Replay encrypted message flow">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20 11a8.1 8.1 0 1 0-2.4 5.8M20 4v7h-7" />
+                            </svg>
+                            Replay
+                        </button>
+                    </div>
+
+                    <div class="secure-model-scene" aria-hidden="true">
+                        <div class="secure-model-plane"></div>
+
+                        <div class="secure-model-node secure-model-endpoint secure-model-endpoint-a">
+                            <div class="secure-node-signal"></div>
+                            <div class="secure-node-screen">
+                                <span class="secure-screen-status">LOCAL</span>
+                                <svg class="secure-lock-icon" viewBox="0 0 24 24">
+                                    <rect x="5" y="10" width="14" height="10" rx="2" />
+                                    <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
+                                </svg>
+                                <span class="secure-screen-code">A7:3F:91</span>
+                            </div>
+                            <strong>Endpoint A</strong>
+                            <span>Encrypts locally</span>
+                        </div>
+
+                        <div class="secure-route secure-route-left">
+                            <span class="secure-route-line"></span>
+                            <span class="secure-packet secure-packet-left">
+                                <svg viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M6 10h12v10H6z" /></svg>
+                            </span>
+                        </div>
+
+                        <div class="secure-model-node secure-model-relay">
+                            <span class="secure-relay-ring"></span>
+                            <svg viewBox="0 0 24 24">
+                                <rect x="4" y="4" width="16" height="5" rx="1" />
+                                <rect x="4" y="15" width="16" height="5" rx="1" />
+                                <path d="M8 9v6M16 9v6M8 6.5h.01M8 17.5h.01" />
+                            </svg>
+                            <strong>Relay</strong>
+                            <span>Routes only</span>
+                        </div>
+
+                        <div class="secure-route secure-route-right">
+                            <span class="secure-route-line"></span>
+                            <span class="secure-packet secure-packet-right">
+                                <svg viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M6 10h12v10H6z" /></svg>
+                            </span>
+                        </div>
+
+                        <div class="secure-model-node secure-model-endpoint secure-model-endpoint-b">
+                            <div class="secure-node-signal"></div>
+                            <div class="secure-node-screen">
+                                <span class="secure-screen-status">LOCAL</span>
+                                <svg class="secure-lock-icon" viewBox="0 0 24 24">
+                                    <rect x="5" y="10" width="14" height="10" rx="2" />
+                                    <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
+                                </svg>
+                                <span class="secure-screen-code">D2:8C:4E</span>
+                            </div>
+                            <strong>Endpoint B</strong>
+                            <span>Decrypts locally</span>
+                        </div>
+
+                        <span class="secure-boundary-label">Untrusted transport boundary</span>
+                        <span class="secure-payload-label" data-secure-payload-label>AES-GCM ciphertext</span>
+                    </div>
+
+                    <div class="secure-model-stage-controls" role="group" aria-label="Choose a communication stage">
+                        <button type="button" data-secure-stage="keys" aria-pressed="false">
+                            <span>01</span>
+                            <strong>Public keys</strong>
+                        </button>
+                        <button type="button" data-secure-stage="session" aria-pressed="false">
+                            <span>02</span>
+                            <strong>Session setup</strong>
+                        </button>
+                        <button type="button" data-secure-stage="message" aria-pressed="true">
+                            <span>03</span>
+                            <strong>Encrypted message</strong>
+                        </button>
+                    </div>
+
+                    <div class="secure-model-caption" aria-live="polite">
+                        <div class="secure-caption-index" data-secure-caption-index>Stage 03</div>
+                        <div>
+                            <strong data-secure-caption-title>Encrypted message</strong>
+                            <p data-secure-caption-copy>AES-256-GCM encrypts and authenticates the payload before the relay forwards it for local decryption.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,20 +174,23 @@
                 </div>
 
                 <!-- Educational Summary -->
-                <div class="project-section educational-summary" data-summary-switcher>
-                    <div class="summary-heading">
+                <div class="project-section project-perspective" data-perspective-switcher data-project-id="secure-chat">
+                    <div class="perspective-heading">
                         <div>
-                            <span class="summary-label">Educational Summary</span>
-                            <h2 class="section-title">Two ways to understand the project</h2>
+                            <span class="summary-label">Project Perspective</span>
+                            <h2 class="section-title">Choose the level of abstraction</h2>
+                            <p>Start with what the system enables, or inspect how it was built and validated.</p>
                         </div>
-                        <div class="summary-toggle" role="tablist" aria-label="Secure Chat summary level">
-                            <button type="button" class="summary-toggle-btn active" role="tab" aria-selected="true" aria-controls="plain-summary" data-summary-target="plain">Plain English</button>
-                            <button type="button" class="summary-toggle-btn" role="tab" aria-selected="false" aria-controls="technical-summary" data-summary-target="technical">Technical Jargon</button>
+                        <div class="perspective-toggle" role="tablist" aria-label="Secure Chat project perspective">
+                            <button type="button" class="perspective-toggle-btn active" role="tab" aria-selected="true" aria-controls="secure-operator-perspective" data-perspective-target="operator"><span>01</span>Operator</button>
+                            <button type="button" class="perspective-toggle-btn" role="tab" aria-selected="false" aria-controls="secure-builder-perspective" data-perspective-target="builder"><span>02</span>Builder</button>
                         </div>
                     </div>
 
-                    <div class="summary-panels">
-                        <div class="summary-panel active" id="plain-summary" role="tabpanel" data-summary-panel="plain">
+                    <div class="perspective-panels" aria-live="polite">
+                        <div class="perspective-panel active" id="secure-operator-perspective" role="tabpanel" data-perspective-panel="operator">
+                            <span class="perspective-panel-kicker">Purpose · trust · workflow</span>
+                            <h3>Private conversation without trusting the relay</h3>
                             <p class="project-text">
                                 I built Secure Chat as an educational demonstration of how encrypted messaging works. The goal was not just to make messages unreadable to the server, but to show the process in a way that someone less technical could follow.
                             </p>
@@ -106,7 +203,9 @@
                             </ol>
                         </div>
 
-                        <div class="summary-panel" id="technical-summary" role="tabpanel" hidden data-summary-panel="technical">
+                        <div class="perspective-panel" id="secure-builder-perspective" role="tabpanel" hidden data-perspective-panel="builder">
+                            <span class="perspective-panel-kicker">Boundary · protocol · cryptography</span>
+                            <h3>Hybrid encryption across isolated endpoints</h3>
                             <p class="project-text">
                                 Secure Chat implements a hybrid-encryption flow in Python. Clients generate or load RSA keypairs, exchange public keys through a relay server, wrap a per-message/session symmetric key with RSA-OAEP, and encrypt message payloads with AES-256-GCM before transport.
                             </p>
@@ -122,7 +221,7 @@
                 </div>
 
                 <!-- Overview -->
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="operator">
                     <h2 class="section-title">Overview</h2>
                     <p class="project-text">
                         The Secure Chat Application is a complete educational demo of encrypted messaging. The server coordinates connections and relays packets, while clients handle key generation, key exchange, encryption, decryption, and the user-facing chat workflow.
@@ -133,7 +232,7 @@
                 </div>
 
                 <!-- Features -->
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="operator">
                     <h2 class="section-title">Key Features</h2>
                     <div class="features-grid">
                         <div class="feature-item">
@@ -160,7 +259,7 @@
                 </div>
 
                 <!-- Technical Implementation -->
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="builder">
                     <h2 class="section-title">Technical Implementation</h2>
                     <div class="tech-details">
                         <h3>Encryption Architecture</h3>
@@ -193,7 +292,7 @@ def pack_message(msg_type, payload):
                 </div>
 
                 <!-- Security Considerations -->
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="builder">
                     <h2 class="section-title">Security Boundaries</h2>
                     <div class="security-list">
                         <div class="security-item">
@@ -220,7 +319,7 @@ def pack_message(msg_type, payload):
                 </div>
 
                 <!-- Technologies Used -->
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="builder">
                     <h2 class="section-title">Technologies & Tools</h2>
                     <div class="tech-stack">
                         <div class="tech-category">
@@ -245,13 +344,13 @@ def pack_message(msg_type, payload):
                 </div>
 
                 <!-- Project Links -->
-                <div class="project-section">
+                <div class="project-section" data-perspective-content="both">
                     <h2 class="section-title">Project Links</h2>
                     <div class="project-links">
                         <a href="https://github.com/ajmendes17/Secure-Chat-App" target="_blank" rel="noopener" class="project-link-btn">
                             <span>View on GitHub →</span>
                         </a>
-                        <a href="index.html#projects" class="project-link-btn secondary">
+                        <a href="index.html?project=1#projects" class="project-link-btn secondary">
                             <span>Back to Projects</span>
                         </a>
                     </div>
@@ -267,6 +366,6 @@ def pack_message(msg_type, payload):
         </div>
     </footer>
 
-    <script src="script.js?v=summary-switch"></script>
+    <script src="script.js?v=perspective-transitions"></script>
 </body>
 </html>

@@ -105,28 +105,250 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Project card hover effects and click handling
+// Project card interactions and expandable portal controls
+const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
+    const isPortal = card.classList.contains('project-portal');
+    const portalToggle = card.querySelector('.portal-toggle');
+    const portalVisual = card.querySelector('.portal-visual');
+    const portalDepth = card.querySelector('.portal-depth');
+
+    if (!isPortal) {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    }
+
+    if (portalToggle) {
+        portalToggle.addEventListener('click', () => {
+            const willExpand = !card.classList.contains('is-expanded');
+
+            projectCards.forEach(otherCard => {
+                if (otherCard === card || !otherCard.classList.contains('project-portal')) return;
+                otherCard.classList.remove('is-expanded');
+                const otherToggle = otherCard.querySelector('.portal-toggle');
+                if (otherToggle) {
+                    otherToggle.setAttribute('aria-expanded', 'false');
+                    const otherLabel = otherToggle.querySelector('.portal-toggle-label');
+                    if (otherLabel) otherLabel.textContent = 'Explore layers';
+                }
+            });
+
+            card.classList.toggle('is-expanded', willExpand);
+            portalToggle.setAttribute('aria-expanded', String(willExpand));
+            const toggleLabel = portalToggle.querySelector('.portal-toggle-label');
+            if (toggleLabel) toggleLabel.textContent = willExpand ? 'Collapse layers' : 'Explore layers';
+        });
+    }
+
+    if (portalVisual && portalDepth) {
+        portalVisual.addEventListener('pointermove', event => {
+            if (reducedMotionQuery.matches || event.pointerType === 'touch') return;
+
+            const bounds = portalVisual.getBoundingClientRect();
+            const pointerX = (event.clientX - bounds.left) / bounds.width;
+            const pointerY = (event.clientY - bounds.top) / bounds.height;
+            const rotateY = (pointerX - 0.5) * 8;
+            const rotateX = (0.5 - pointerY) * 6;
+
+            portalDepth.style.setProperty('--portal-rotate-x', `${rotateX.toFixed(2)}deg`);
+            portalDepth.style.setProperty('--portal-rotate-y', `${rotateY.toFixed(2)}deg`);
+        });
+
+        portalVisual.addEventListener('pointerleave', () => {
+            portalDepth.style.removeProperty('--portal-rotate-x');
+            portalDepth.style.removeProperty('--portal-rotate-y');
+        });
+    }
+
+    card.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || !card.classList.contains('is-expanded')) return;
+        card.classList.remove('is-expanded');
+        if (portalToggle) {
+            portalToggle.setAttribute('aria-expanded', 'false');
+            const toggleLabel = portalToggle.querySelector('.portal-toggle-label');
+            if (toggleLabel) toggleLabel.textContent = 'Explore layers';
+            portalToggle.focus();
+        }
     });
 
     // Make entire card clickable if it has a project URL
     const projectUrl = card.getAttribute('data-project-url');
-    if (projectUrl) {
+    if (projectUrl && !card.hasAttribute('data-carousel-slide')) {
         card.addEventListener('click', function(e) {
             // Don't navigate if clicking on a link or button inside
-            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+            if (e.target.closest('a, button')) {
                 return;
             }
             window.location.href = projectUrl;
         });
     }
 });
+
+// Selected systems horizontal carousel
+function initProjectCarousel() {
+    const carousel = document.querySelector('[data-project-carousel]');
+    if (!carousel) return;
+
+    const stage = carousel.closest('[data-project-stage]');
+    const projectSection = carousel.closest('.project-stage');
+    const viewport = carousel.querySelector('.systems-carousel-viewport');
+    const track = carousel.querySelector('.systems-carousel-track');
+    const slides = [...carousel.querySelectorAll('[data-carousel-slide]')];
+    const dots = [...carousel.querySelectorAll('[data-carousel-dot]')];
+    const previousButton = carousel.querySelector('[data-carousel-previous]');
+    const nextButton = carousel.querySelector('[data-carousel-next]');
+    const currentLabel = document.querySelector('[data-carousel-current]');
+    const totalLabel = document.querySelector('[data-carousel-total]');
+    const introKicker = document.querySelector('[data-carousel-kicker]');
+    const introTitle = document.querySelector('[data-carousel-title]');
+    const introSummary = document.querySelector('[data-carousel-summary]');
+    const viewSystemLink = document.querySelector('[data-carousel-link]');
+    let selectedIndex = 0;
+    let dragStartX = 0;
+    let dragDistance = 0;
+    let activePointerId = null;
+    let isDragging = false;
+    let didDrag = false;
+
+    if (!viewport || !track || !slides.length) return;
+    if (totalLabel) totalLabel.textContent = String(slides.length).padStart(2, '0');
+
+    function updateSelection(index, direction = 0) {
+        selectedIndex = (index + slides.length) % slides.length;
+        stage?.setAttribute('data-stage-direction', direction < 0 ? 'previous' : 'next');
+        projectSection?.setAttribute('data-active-project', String(selectedIndex + 1));
+        track.style.setProperty('--stage-drag', '0px');
+
+        slides.forEach((slide, slideIndex) => {
+            const isSelected = slideIndex === selectedIndex;
+            const relativePosition = (slideIndex - selectedIndex + slides.length) % slides.length;
+            slide.classList.toggle('is-selected', isSelected);
+            slide.setAttribute('aria-current', String(isSelected));
+            slide.dataset.carouselPosition = relativePosition === 0 ? 'active' : relativePosition === 1 ? 'next' : 'far';
+            const slideToggle = slide.querySelector('.portal-toggle');
+            if (slideToggle) slideToggle.tabIndex = isSelected ? 0 : -1;
+        });
+
+        dots.forEach((dot, dotIndex) => {
+            dot.setAttribute('aria-pressed', String(dotIndex === selectedIndex));
+        });
+
+        if (currentLabel) {
+            currentLabel.textContent = String(selectedIndex + 1).padStart(2, '0');
+        }
+
+        const selectedSlide = slides[selectedIndex];
+        const selectedTitle = selectedSlide.querySelector('.project-title')?.textContent.trim() || 'selected project';
+        const selectedKicker = selectedSlide.dataset.carouselKicker || 'Selected system';
+        const selectedSummary = selectedSlide.dataset.carouselSummary || selectedSlide.querySelector('.project-description')?.textContent.trim();
+        const selectedUrl = selectedSlide.dataset.projectUrl;
+
+        if (introKicker) introKicker.textContent = selectedKicker;
+        if (introTitle) introTitle.textContent = selectedTitle;
+        if (introSummary && selectedSummary) introSummary.textContent = selectedSummary;
+        if (viewSystemLink && selectedUrl) {
+            viewSystemLink.href = selectedUrl;
+            viewSystemLink.setAttribute('aria-label', `View ${selectedTitle} project`);
+        }
+
+        selectedSlide.setAttribute('aria-label', `${selectedIndex + 1} of ${slides.length}: ${selectedTitle}`);
+    }
+
+    function showPrevious() {
+        updateSelection(selectedIndex - 1, -1);
+    }
+
+    function showNext() {
+        updateSelection(selectedIndex + 1, 1);
+    }
+
+    previousButton?.addEventListener('click', showPrevious);
+    nextButton?.addEventListener('click', showNext);
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            const forwardDistance = (index - selectedIndex + slides.length) % slides.length;
+            updateSelection(index, forwardDistance === slides.length - 1 ? -1 : 1);
+        });
+    });
+
+    slides.forEach((slide, index) => {
+        slide.addEventListener('click', event => {
+            if (didDrag || event.target.closest('a, button')) return;
+            if (index !== selectedIndex) updateSelection(index, 1);
+        });
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) return;
+        if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+
+        const carouselBounds = carousel.getBoundingClientRect();
+        const carouselIsVisible = carouselBounds.top < window.innerHeight && carouselBounds.bottom > 0;
+        if (!carouselIsVisible) return;
+
+        event.preventDefault();
+        if (event.key === 'ArrowLeft') showPrevious();
+        if (event.key === 'ArrowRight') showNext();
+    });
+
+    viewport.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        if (event.target.closest('a, button')) return;
+        isDragging = true;
+        didDrag = false;
+        dragDistance = 0;
+        dragStartX = event.clientX;
+        activePointerId = event.pointerId;
+        viewport.classList.add('is-dragging');
+        viewport.setPointerCapture(event.pointerId);
+    });
+
+    viewport.addEventListener('pointermove', event => {
+        if (!isDragging || event.pointerId !== activePointerId) return;
+        dragDistance = event.clientX - dragStartX;
+        if (Math.abs(dragDistance) > 7) didDrag = true;
+        const resistedDistance = Math.max(-220, Math.min(220, dragDistance * 0.72));
+        track.style.setProperty('--stage-drag', `${resistedDistance}px`);
+    });
+
+    function finishDrag(event) {
+        if (!isDragging || event.pointerId !== activePointerId) return;
+        isDragging = false;
+        activePointerId = null;
+        viewport.classList.remove('is-dragging');
+        if (viewport.hasPointerCapture(event.pointerId)) {
+            viewport.releasePointerCapture(event.pointerId);
+        }
+        track.style.setProperty('--stage-drag', '0px');
+        if (Math.abs(dragDistance) >= 64) {
+            if (dragDistance < 0) showNext();
+            if (dragDistance > 0) showPrevious();
+        }
+        window.setTimeout(() => { didDrag = false; }, 0);
+    }
+
+    viewport.addEventListener('pointerup', finishDrag);
+    viewport.addEventListener('pointercancel', finishDrag);
+    const requestedProject = Number(new URLSearchParams(window.location.search).get('project'));
+    const initialIndex = Number.isInteger(requestedProject) && requestedProject >= 1 && requestedProject <= slides.length
+        ? requestedProject - 1
+        : 0;
+    updateSelection(initialIndex, 1);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProjectCarousel);
+} else {
+    initProjectCarousel();
+}
 
 // Typing effect for hero title (optional enhancement)
 function typeWriter(element, text, speed = 100) {
@@ -575,4 +797,330 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSummarySwitcher);
 } else {
     initSummarySwitcher();
+}
+
+// Project detail lens: purpose and outcomes for operators, implementation and validation for builders.
+function initPerspectiveSwitchers() {
+    const switchers = [...document.querySelectorAll('[data-perspective-switcher]')];
+    if (!switchers.length) return;
+
+    const validPerspectives = ['operator', 'builder'];
+    const url = new URL(window.location.href);
+    const requestedPerspective = url.searchParams.get('lens');
+    let storedPerspective = null;
+
+    try {
+        storedPerspective = window.sessionStorage.getItem('portfolio-project-perspective');
+    } catch (error) {
+        storedPerspective = null;
+    }
+
+    const initialPerspective = validPerspectives.includes(requestedPerspective)
+        ? requestedPerspective
+        : validPerspectives.includes(storedPerspective)
+            ? storedPerspective
+            : 'operator';
+
+    document.body.classList.add('has-perspective-switcher');
+
+    function setPerspective(perspective, updateUrl = true) {
+        if (!validPerspectives.includes(perspective)) return;
+
+        document.body.dataset.projectPerspective = perspective;
+
+        switchers.forEach(switcher => {
+            const buttons = [...switcher.querySelectorAll('[data-perspective-target]')];
+            const panels = [...switcher.querySelectorAll('[data-perspective-panel]')];
+
+            buttons.forEach(button => {
+                const isActive = button.dataset.perspectiveTarget === perspective;
+                button.classList.toggle('active', isActive);
+                button.setAttribute('aria-selected', String(isActive));
+                button.tabIndex = isActive ? 0 : -1;
+            });
+
+            panels.forEach(panel => {
+                const isActive = panel.dataset.perspectivePanel === perspective;
+                panel.classList.toggle('active', isActive);
+                panel.toggleAttribute('hidden', !isActive);
+            });
+        });
+
+        document.querySelectorAll('[data-perspective-content]').forEach(section => {
+            const sectionPerspective = section.dataset.perspectiveContent;
+            const isVisible = sectionPerspective === 'both' || sectionPerspective === perspective;
+            section.toggleAttribute('hidden', !isVisible);
+            section.classList.toggle('perspective-visible', isVisible);
+        });
+
+        try {
+            window.sessionStorage.setItem('portfolio-project-perspective', perspective);
+        } catch (error) {
+            // The control remains fully functional when storage is unavailable.
+        }
+
+        if (updateUrl) {
+            const nextUrl = new URL(window.location.href);
+            nextUrl.searchParams.set('lens', perspective);
+            window.history.replaceState({}, '', nextUrl);
+        }
+    }
+
+    switchers.forEach(switcher => {
+        const buttons = [...switcher.querySelectorAll('[data-perspective-target]')];
+
+        buttons.forEach((button, buttonIndex) => {
+            button.addEventListener('click', () => {
+                setPerspective(button.dataset.perspectiveTarget);
+            });
+
+            button.addEventListener('keydown', event => {
+                if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+                event.preventDefault();
+
+                let targetIndex = buttonIndex;
+                if (event.key === 'ArrowLeft') targetIndex = (buttonIndex - 1 + buttons.length) % buttons.length;
+                if (event.key === 'ArrowRight') targetIndex = (buttonIndex + 1) % buttons.length;
+                if (event.key === 'Home') targetIndex = 0;
+                if (event.key === 'End') targetIndex = buttons.length - 1;
+
+                const targetButton = buttons[targetIndex];
+                setPerspective(targetButton.dataset.perspectiveTarget);
+                targetButton.focus();
+            });
+        });
+    });
+
+    setPerspective(initialPerspective, false);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPerspectiveSwitchers);
+} else {
+    initPerspectiveSwitchers();
+}
+
+// Progressive fallback for browsers without cross-document View Transitions.
+function initProjectPageTransitions() {
+    document.body.dataset.viewTransitionCapability = typeof document.startViewTransition === 'function'
+        ? 'native'
+        : 'fallback';
+
+    const projectLinks = document.querySelectorAll(
+        '[data-carousel-link], .back-link[href*="index.html"], .project-link-btn.secondary[href*="index.html"]'
+    );
+
+    function getTransitionElements() {
+        if (document.body.classList.contains('project-detail-page')) {
+            return {
+                visual: document.querySelector('.project-showcase'),
+                title: document.querySelector('.project-main-title')
+            };
+        }
+
+        return {
+            visual: document.querySelector('.system-slide.is-selected .portal-depth'),
+            title: document.querySelector('[data-carousel-title]')
+        };
+    }
+
+    function rectToObject(element) {
+        if (!element) return null;
+        const rect = element.getBoundingClientRect();
+        return {
+            left: rect.left,
+            top: rect.top,
+            width: rect.width,
+            height: rect.height
+        };
+    }
+
+    function storeTransitionOrigin() {
+        const elements = getTransitionElements();
+        const transitionState = {
+            createdAt: Date.now(),
+            visual: rectToObject(elements.visual),
+            title: rectToObject(elements.title)
+        };
+
+        try {
+            window.sessionStorage.setItem('portfolio-shared-transition', JSON.stringify(transitionState));
+        } catch (error) {
+            // Navigation still works when storage is unavailable.
+        }
+    }
+
+    function animateElementFromRect(element, sourceRect, duration) {
+        if (!element || !sourceRect || typeof element.animate !== 'function') return Promise.resolve();
+
+        const targetRect = element.getBoundingClientRect();
+        if (!targetRect.width || !targetRect.height || !sourceRect.width || !sourceRect.height) return Promise.resolve();
+
+        const translateX = sourceRect.left - targetRect.left;
+        const translateY = sourceRect.top - targetRect.top;
+        const scaleX = sourceRect.width / targetRect.width;
+        const scaleY = sourceRect.height / targetRect.height;
+        const computedTransform = window.getComputedStyle(element).transform;
+        const baseTransform = computedTransform === 'none' ? '' : computedTransform;
+        const startTransform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY}) ${baseTransform}`.trim();
+        const endTransform = baseTransform || 'none';
+
+        element.classList.add('is-shared-transition-target');
+        const animation = element.animate(
+            [
+                { transform: startTransform, opacity: 0.84, filter: 'brightness(0.76)' },
+                { transform: endTransform, opacity: 1, filter: 'brightness(1)' }
+            ],
+            {
+                duration,
+                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                fill: 'both'
+            }
+        );
+
+        return animation.finished.catch(() => undefined).finally(() => {
+            animation.cancel();
+            element.classList.remove('is-shared-transition-target');
+        });
+    }
+
+    function playStoredTransition() {
+        if (reducedMotionQuery.matches || typeof document.startViewTransition === 'function') return;
+
+        let transitionState = null;
+        try {
+            transitionState = JSON.parse(window.sessionStorage.getItem('portfolio-shared-transition'));
+            window.sessionStorage.removeItem('portfolio-shared-transition');
+        } catch (error) {
+            transitionState = null;
+        }
+
+        if (!transitionState || Date.now() - transitionState.createdAt > 4000) return;
+
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                const elements = getTransitionElements();
+                document.body.classList.add('is-shared-transition-entering');
+                document.body.dataset.sharedTransitionState = 'active';
+
+                Promise.all([
+                    animateElementFromRect(elements.visual, transitionState.visual, 620),
+                    animateElementFromRect(elements.title, transitionState.title, 480)
+                ]).finally(() => {
+                    document.body.classList.remove('is-shared-transition-entering');
+                    document.body.dataset.sharedTransitionState = 'complete';
+                });
+            });
+        });
+    }
+
+    playStoredTransition();
+
+    projectLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            if (reducedMotionQuery.matches) return;
+
+            const destination = new URL(link.href, window.location.href);
+            if (destination.origin !== window.location.origin) return;
+
+            if (typeof document.startViewTransition === 'function') return;
+            storeTransitionOrigin();
+
+            event.preventDefault();
+            document.body.classList.add('project-page-leaving');
+            window.setTimeout(() => {
+                window.location.href = destination.href;
+            }, 120);
+        });
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProjectPageTransitions);
+} else {
+    initProjectPageTransitions();
+}
+
+// Interactive encrypted-endpoint architecture model
+function initSecureEndpointModel() {
+    const model = document.querySelector('[data-secure-endpoint-model]');
+    if (!model) return;
+
+    const stageButtons = model.querySelectorAll('[data-secure-stage]');
+    const replayButton = model.querySelector('[data-secure-replay]');
+    const captionIndex = model.querySelector('[data-secure-caption-index]');
+    const captionTitle = model.querySelector('[data-secure-caption-title]');
+    const captionCopy = model.querySelector('[data-secure-caption-copy]');
+    const payloadLabel = model.querySelector('[data-secure-payload-label]');
+    let animationTimer;
+
+    const stageContent = {
+        keys: {
+            index: 'Stage 01',
+            title: 'Public key exchange',
+            copy: 'Each client shares a public key through the relay. Private keys remain on their endpoints.',
+            payload: 'Public keys · safe to share'
+        },
+        session: {
+            index: 'Stage 02',
+            title: 'Session key setup',
+            copy: 'A symmetric key is generated and wrapped with the recipient’s public key using RSA-OAEP.',
+            payload: 'RSA-OAEP wrapped key'
+        },
+        message: {
+            index: 'Stage 03',
+            title: 'Encrypted message',
+            copy: 'AES-256-GCM encrypts and authenticates the payload before the relay forwards it for local decryption.',
+            payload: 'AES-GCM ciphertext'
+        }
+    };
+
+    function replayFlow() {
+        window.clearTimeout(animationTimer);
+        model.classList.remove('is-animating');
+
+        if (reducedMotionQuery.matches) return;
+
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                model.classList.add('is-animating');
+                animationTimer = window.setTimeout(() => {
+                    model.classList.remove('is-animating');
+                }, 1400);
+            });
+        });
+    }
+
+    function setStage(stage) {
+        const content = stageContent[stage];
+        if (!content) return;
+
+        model.dataset.modelStage = stage;
+        stageButtons.forEach(button => {
+            button.setAttribute('aria-pressed', String(button.dataset.secureStage === stage));
+        });
+
+        if (captionIndex) captionIndex.textContent = content.index;
+        if (captionTitle) captionTitle.textContent = content.title;
+        if (captionCopy) captionCopy.textContent = content.copy;
+        if (payloadLabel) payloadLabel.textContent = content.payload;
+        if (replayButton) replayButton.setAttribute('aria-label', `Replay ${content.title.toLowerCase()} flow`);
+
+        replayFlow();
+    }
+
+    stageButtons.forEach(button => {
+        button.addEventListener('click', () => setStage(button.dataset.secureStage));
+    });
+
+    if (replayButton) {
+        replayButton.addEventListener('click', replayFlow);
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSecureEndpointModel);
+} else {
+    initSecureEndpointModel();
 }
