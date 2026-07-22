@@ -6,12 +6,14 @@
     <title>AJ Mendes | Secure Software & Applied CS</title>
     <meta name="description" content="AJ Mendes is a Colorado School of Mines computer science student building secure software, tested systems, and data-analysis tools.">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=portfolio-experience-v6">
+    <link rel="stylesheet" href="style.css?v=portfolio-experience-v7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -33,6 +35,7 @@
         </div>
     </nav>
 
+    <main id="main-content" tabindex="-1">
     <!-- Hero Section -->
     <section id="home" class="hero home-hero">
         <div class="hero-background">
@@ -44,7 +47,7 @@
                 <h1 class="hero-title">
                     <span class="line">AJ Mendes</span>
                 </h1>
-                <p class="hero-subtitle">Colorado School of Mines computer science student combining cybersecurity data research, secure application development, and hands-on industrial systems experience.</p>
+                <p class="hero-subtitle">Hard-working Colorado School of Mines computer science student building secure software and data systems with care, curiosity, and follow-through.</p>
                 <div class="hero-cta">
                     <a href="#projects" class="btn btn-primary">Explore Work</a>
                     <a href="#experience" class="btn btn-secondary">View Experience</a>
@@ -472,12 +475,17 @@
                     <p>I'm seeking internships and co-ops in software engineering, data systems, cybersecurity, and technical teams where careful engineering matters.</p>
                 </div>
                 <div class="contact-links">
-                    <button type="button" class="contact-link" id="copy-email" data-email="ajmendes17@gmail.com">
-                        <span class="contact-icon" aria-hidden="true">
-                            <img src="assets/icon-mail.svg" alt="">
-                        </span>
-                        <span>Email</span>
-                    </button> <!--Email Button-->
+                    <div class="contact-email">
+                        <a href="mailto:ajmendes17@gmail.com" class="contact-link">
+                            <span class="contact-icon" aria-hidden="true">
+                                <img src="assets/icon-mail.svg" alt="">
+                            </span>
+                            <span>Email</span>
+                        </a>
+                        <button type="button" class="copy-email-button" id="copy-email" data-email="ajmendes17@gmail.com">
+                            Copy address
+                        </button>
+                    </div>
                     <a href="https://github.com/ajmendes17" target="_blank" rel="noopener" class="contact-link">
                         <span class="contact-icon" aria-hidden="true">
                             <img src="assets/icon-github.svg" alt="">
@@ -495,6 +503,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -503,6 +512,6 @@
         </div>
     </footer>
 
-    <script src="script.js?v=portfolio-experience-v6"></script>
+    <script src="script.js?v=portfolio-experience-v7"></script>
 </body>
 </html>

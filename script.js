@@ -3,6 +3,13 @@ const navbar = document.getElementById('navbar');
 const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
+const mobileNavQuery = window.matchMedia('(max-width: 768px)');
+
+function syncMobileMenuAccessibility() {
+    const isClosedMobileMenu = mobileNavQuery.matches && !navMenu.classList.contains('active');
+    navMenu.inert = isClosedMobileMenu;
+    navMenu.setAttribute('aria-hidden', String(isClosedMobileMenu));
+}
 
 // Navbar scroll effect
 let lastScroll = 0;
@@ -24,6 +31,7 @@ function closeMobileMenu() {
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Open navigation menu');
+    syncMobileMenuAccessibility();
 }
 
 navToggle.addEventListener('click', () => {
@@ -32,7 +40,21 @@ navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
     navToggle.setAttribute('aria-expanded', String(isOpening));
     navToggle.setAttribute('aria-label', isOpening ? 'Close navigation menu' : 'Open navigation menu');
+    syncMobileMenuAccessibility();
 });
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+        closeMobileMenu();
+        navToggle.focus();
+    }
+});
+
+mobileNavQuery.addEventListener('change', () => {
+    closeMobileMenu();
+});
+
+syncMobileMenuAccessibility();
 
 // Close mobile menu when clicking on a link
 navLinks.forEach(link => {
