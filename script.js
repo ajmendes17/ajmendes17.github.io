@@ -230,9 +230,16 @@ function initProjectCarousel() {
         slides.forEach((slide, slideIndex) => {
             const isSelected = slideIndex === selectedIndex;
             const relativePosition = (slideIndex - selectedIndex + slides.length) % slides.length;
+            const carouselPosition = relativePosition === 0
+                ? 'active'
+                : relativePosition === 1
+                    ? 'next'
+                    : relativePosition === slides.length - 1
+                        ? 'previous'
+                        : 'far';
             slide.classList.toggle('is-selected', isSelected);
             slide.setAttribute('aria-current', String(isSelected));
-            slide.dataset.carouselPosition = relativePosition === 0 ? 'active' : relativePosition === 1 ? 'next' : 'far';
+            slide.dataset.carouselPosition = carouselPosition;
             const slideToggle = slide.querySelector('.portal-toggle');
             if (slideToggle) slideToggle.tabIndex = isSelected ? 0 : -1;
         });
@@ -344,6 +351,15 @@ function initProjectCarousel() {
         ? requestedProject - 1
         : 0;
     updateSelection(initialIndex, 1);
+
+    // Re-align deep links after responsive layout and web fonts settle. Without
+    // this pass, mobile browsers can stop inside the preceding experience
+    // section because the anchor is resolved before its final height is known.
+    if (window.location.hash === '#projects') {
+        const alignProjectSection = () => projectSection?.scrollIntoView({ block: 'start' });
+        requestAnimationFrame(() => requestAnimationFrame(alignProjectSection));
+        document.fonts?.ready.then(alignProjectSection);
+    }
 }
 
 if (document.readyState === 'loading') {

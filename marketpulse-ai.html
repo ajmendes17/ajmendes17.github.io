@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarketPulse AI | AJ Mendes</title>
+    <meta name="description" content="MarketPulse AI is AJ Mendes's educational laboratory for building, comparing, and evaluating classical and neural machine-learning models.">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="style.css?v=portfolio-experience-v6">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+</head>
+<body class="marketpulse-page project-detail-page">
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo"><a href="index.html" aria-label="AJ Mendes home"><span class="logo-text">AJ</span></a></div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html?project=4#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="project-header">
+            <div class="container">
+                <a href="index.html?project=4#projects" class="back-link">&larr; Back to Projects</a>
+                <div class="project-header-layout">
+                    <div class="project-header-content">
+                        <span class="project-category">Machine Learning</span>
+                        <h1 class="project-main-title">MarketPulse AI</h1>
+                        <p class="project-subtitle">An educational machine-learning laboratory built to practice feature engineering, train different model families, and compare how they behave on the same real-world dataset.</p>
+                        <div class="project-header-tags">
+                            <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">Backtesting</span><span class="tag">Streamlit</span>
+                        </div>
+                    </div>
+                    <div class="project-showcase marketpulse-showcase">
+                        <img class="marketpulse-dashboard-image" src="assets/marketpulse-model-comparison.jpg" alt="MarketPulse dashboard comparing neural-network, logistic-regression, and random-forest ROC AUC results across seven equities, with a model metric table below.">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+                <div class="project-content">
+                    <div class="project-summary-grid">
+                        <div class="summary-item"><span class="summary-label">Purpose</span><strong>Experiment with ML models</strong></div>
+                        <div class="summary-item"><span class="summary-label">Models</span><strong>Logistic, forest, dense NN</strong></div>
+                        <div class="summary-item"><span class="summary-label">Evidence</span><strong>Metrics, tables, and reports</strong></div>
+                    </div>
+
+                    <div class="project-section">
+                        <h2>Why I built it</h2>
+                        <p class="project-text">The primary purpose of MarketPulse AI was to experiment with building machine-learning models. Market data provides a noisy, difficult dataset where logistic regression, random forests, and a dense neural network can be trained against the same target and compared with the same metrics. The stock-signal question gives the experiments structure; learning how the models behave is the actual goal.</p>
+                    </div>
+
+                    <div class="project-section">
+                        <h2>Pipeline</h2>
+                        <ol class="project-list">
+                            <li>Download and validate adjusted historical price and volume data for seven equities and SPY.</li>
+                            <li>Engineer return, volatility, moving-average, volume, RSI, and MACD features.</li>
+                            <li>Create a five-day forward-outperformance target relative to the benchmark.</li>
+                            <li>Compare logistic regression, random forest, and dense neural-network models.</li>
+                            <li>Run time-aware backtests with transaction costs and decision-threshold sweeps.</li>
+                            <li>Save machine-readable reports, figures, and dashboard-ready summaries.</li>
+                        </ol>
+                    </div>
+
+                    <div class="project-section">
+                        <h2>Engineering choices</h2>
+                        <div class="features-grid">
+                            <div class="feature-item"><h3>Reproducible modules</h3><p>Data, features, models, evaluation, and application code are separated into a package with command-line entry points.</p></div>
+                            <div class="feature-item"><h3>Honest chronology</h3><p>Training and evaluation preserve time order so later observations cannot leak into earlier predictions.</p></div>
+                            <div class="feature-item"><h3>Multiple baselines</h3><p>Neural results are compared with interpretable classical models rather than presented in isolation.</p></div>
+                            <div class="feature-item"><h3>Verifiable output</h3><p>Automated tests cover feature construction and backtest behavior; runs produce JSON, CSV, and chart artifacts.</p></div>
+                        </div>
+                    </div>
+
+                    <div class="project-section">
+                        <h2>Current status</h2>
+                        <p class="project-text">The working laboratory now supports batch experiments, three model families, neural threshold sweeps, classification-metric comparisons, report generation, and a Streamlit interface. It remains an educational model-building project, not a trading system or financial recommendation.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/ajmendes17/MarketPulse-AI" target="_blank" rel="noopener" class="project-link-btn">View Repository</a>
+                            <a href="index.html?project=4#projects" class="project-link-btn secondary">Back to Portfolio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer"><div class="container"><p>&copy; 2026 AJ Mendes.</p></div></footer>
+    <script src="script.js?v=portfolio-experience-v6"></script>
+</body>
+</html>
