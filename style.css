@@ -2235,19 +2235,8 @@ section {
 }
 
 .project-stage .portal-depth::after {
-    content: '';
-    position: absolute;
-    z-index: 12;
-    top: -20%;
-    bottom: -20%;
-    width: 22%;
-    left: -28%;
-    opacity: 0.16;
-    background: linear-gradient(90deg, transparent, rgba(var(--portal-rgb), 0.7), transparent);
-    filter: blur(8px);
-    transform: skewX(-12deg);
-    animation: system-stage-scan 4.8s ease-in-out infinite;
-    pointer-events: none;
+    content: none;
+    display: none;
 }
 
 .project-stage .system-slide * {
@@ -2258,12 +2247,10 @@ section {
     animation-play-state: running !important;
 }
 
-.project-stage .system-slide .portal-depth::after,
 .project-stage .system-slide .player-token::after {
     animation-play-state: paused !important;
 }
 
-.project-stage .system-slide.is-selected .portal-depth::after,
 .project-stage .system-slide.is-selected .player-token::after {
     animation-play-state: running !important;
 }
@@ -2282,13 +2269,6 @@ section {
 
 .project-stage .call-fire-portal .training-reticle {
     animation: stage-reticle-acquire 3.2s ease-in-out infinite;
-}
-
-@keyframes system-stage-scan {
-    0%, 14% { transform: translateX(0) skewX(-12deg); opacity: 0; }
-    28% { opacity: 0.18; }
-    72% { opacity: 0.18; }
-    88%, 100% { transform: translateX(650%) skewX(-12deg); opacity: 0; }
 }
 
 @keyframes stage-token-pulse {
@@ -2536,25 +2516,6 @@ section {
     max-width: 780px;
     color: #b4c0d0;
     margin-bottom: 1.4rem;
-}
-
-.evidence-rail {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-    margin-top: 1.45rem;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease 1.1s forwards;
-}
-
-.evidence-rail span {
-    padding: 0.48rem 0.72rem;
-    border: 1px solid rgba(var(--accent-rgb), 0.24);
-    border-radius: 4px;
-    background: rgba(120, 183, 255, 0.075);
-    color: #c7ddf5;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
 }
 
 .project-map {
@@ -3407,7 +3368,6 @@ section {
     }
 
     .hero-cta,
-    .evidence-rail,
     .case-meta {
         align-items: stretch;
     }
@@ -5063,8 +5023,8 @@ section {
 }
 
 .system-slide.project-portal .portal-visual::before {
-    background: linear-gradient(110deg, transparent 30%, rgba(var(--portal-rgb), 0.08), transparent 70%);
-    opacity: 0.7;
+    content: none;
+    display: none;
 }
 
 .system-slide.project-portal .portal-depth,
@@ -5395,34 +5355,13 @@ section {
 }
 
 .system-slide.project-portal::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 10px -9px -11px 10px;
-    border: 1px solid rgba(var(--portal-rgb), 0.16);
-    border-radius: inherit;
-    background: rgba(4, 10, 17, 0.92);
-    transform: translateZ(-18px);
-    pointer-events: none;
+    content: none;
+    display: none;
 }
 
 .system-slide .case-visual::after {
-    content: '';
-    position: absolute;
-    z-index: 0;
-    left: 8%;
-    right: 8%;
-    bottom: 3%;
-    height: 30%;
-    background:
-        linear-gradient(rgba(var(--portal-rgb), 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(var(--portal-rgb), 0.1) 1px, transparent 1px);
-    background-size: 18px 18px;
-    border: 1px solid rgba(var(--portal-rgb), 0.12);
-    transform: rotateX(66deg) translateZ(-28px);
-    transform-origin: center bottom;
-    mask-image: linear-gradient(to top, black, transparent 92%);
-    pointer-events: none;
+    content: none;
+    display: none;
 }
 
 .system-slide .portal-grid-layer {
@@ -5533,6 +5472,16 @@ section {
     inset: 7% 7% 6%;
     transform: translate3d(0, 2px, 52px) rotateX(28deg) rotateZ(-1.25deg) scale(0.94);
     transform-origin: center center;
+}
+
+/* Keep each project-specific illustration, but flatten its sibling layer group
+   so no decorative 3D plane can cross the selected visual during interaction. */
+.project-stage .system-slide.project-portal .portal-depth,
+.project-stage .system-slide.project-portal:hover .portal-depth,
+.project-stage .system-slide.project-portal:focus-within .portal-depth {
+    transform: none;
+    transform-style: flat;
+    will-change: auto;
 }
 
 .project-stage .system-slide.clue-portal .project-board-thumb {

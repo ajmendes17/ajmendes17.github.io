@@ -146,7 +146,9 @@ projectCards.forEach(card => {
         });
     }
 
-    if (portalVisual && portalDepth) {
+    // Homepage project portals use a stable staged composition. Pointer-driven
+    // parent rotation can make nested 3D planes intersect in the compositor.
+    if (portalVisual && portalDepth && !card.classList.contains('system-slide')) {
         portalVisual.addEventListener('pointermove', event => {
             if (reducedMotionQuery.matches || event.pointerType === 'touch') return;
 
