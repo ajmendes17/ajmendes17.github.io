@@ -1051,31 +1051,84 @@ function initProjectPageTransitions() {
         const targetRect = element.getBoundingClientRect();
         if (!targetRect.width || !targetRect.height || !sourceRect.width || !sourceRect.height) return Promise.resolve();
 
+        const overlay = document.createElement('div');
+        overlay.className = 'shared-transition-overlay';
+
+        const clone = element.cloneNode(true);
+        clone.classList.add('shared-transition-clone');
+        clone.removeAttribute('id');
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('[id]').forEach(child => child.removeAttribute('id'));
+
+        if (element.closest('.system-slide')) {
+            const slide = element.closest('.system-slide');
+            const context = document.createElement('div');
+            context.className = `${slide.className} shared-transition-context`;
+            context.removeAttribute('id');
+            context.removeAttribute('role');
+            context.removeAttribute('aria-label');
+            context.removeAttribute('aria-current');
+            context.removeAttribute('aria-hidden');
+            context.removeAttribute('inert');
+            context.append(clone);
+            overlay.classList.add('project-stage');
+            overlay.append(context);
+        } else {
+            overlay.append(clone);
+        }
+
+        Object.assign(clone.style, {
+            position: 'fixed',
+            inset: 'auto',
+            left: `${targetRect.left}px`,
+            top: `${targetRect.top}px`,
+            width: `${targetRect.width}px`,
+            height: `${targetRect.height}px`,
+            minWidth: '0',
+            minHeight: '0',
+            maxWidth: 'none',
+            maxHeight: 'none',
+            margin: '0',
+            transform: 'none',
+            transformOrigin: 'top left',
+            opacity: '1',
+            visibility: 'visible',
+            pointerEvents: 'none'
+        });
+
         const translateX = sourceRect.left - targetRect.left;
         const translateY = sourceRect.top - targetRect.top;
         const scaleX = sourceRect.width / targetRect.width;
         const scaleY = sourceRect.height / targetRect.height;
-        const computedTransform = window.getComputedStyle(element).transform;
-        const baseTransform = computedTransform === 'none' ? '' : computedTransform;
-        const startTransform = `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY}) ${baseTransform}`.trim();
-        const endTransform = baseTransform || 'none';
 
-        element.classList.add('is-shared-transition-target');
-        const animation = element.animate(
+        document.body.append(overlay);
+        const previousVisibility = element.style.visibility;
+        element.style.visibility = 'hidden';
+
+        const animation = clone.animate(
             [
-                { transform: startTransform, opacity: 0.84, filter: 'brightness(0.76)' },
-                { transform: endTransform, opacity: 1, filter: 'brightness(1)' }
+                {
+                    transform: `translate(${translateX}px, ${translateY}px) scale(${scaleX}, ${scaleY})`,
+                    opacity: 0.9,
+                    filter: 'brightness(0.86)'
+                },
+                {
+                    transform: 'translate(0, 0) scale(1, 1)',
+                    opacity: 1,
+                    filter: 'brightness(1)'
+                }
             ],
             {
                 duration,
-                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
                 fill: 'both'
             }
         );
 
         return animation.finished.catch(() => undefined).finally(() => {
             animation.cancel();
-            element.classList.remove('is-shared-transition-target');
+            overlay.remove();
+            element.style.visibility = previousVisibility;
         });
     }
 
@@ -1122,10 +1175,7 @@ function initProjectPageTransitions() {
                 document.body.dataset.sharedTransitionState = 'active';
                 document.body.dataset.sharedTransitionDirection = transitionState.direction;
 
-                Promise.all([
-                    animateElementFromRect(elements.visual, transitionState.visual, 620),
-                    animateElementFromRect(elements.title, transitionState.title, 480)
-                ]).finally(() => {
+                animateElementFromRect(elements.visual, transitionState.visual, 680).finally(() => {
                     document.body.classList.remove('is-shared-transition-entering');
                     document.body.dataset.sharedTransitionState = 'complete';
                 });

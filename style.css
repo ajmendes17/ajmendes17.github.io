@@ -6123,15 +6123,50 @@ section {
     animation: project-fallback-out 220ms ease-in both;
 }
 
-.is-shared-transition-target {
+.shared-transition-overlay {
+    position: fixed !important;
     z-index: 2000 !important;
-    transform-origin: top left !important;
-    will-change: transform, opacity, filter;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
     pointer-events: none;
 }
 
-.project-detail-page .project-showcase.is-shared-transition-target {
-    position: relative;
+.shared-transition-overlay::before,
+.shared-transition-overlay::after {
+    content: none !important;
+    display: none !important;
+}
+
+.shared-transition-context {
+    position: static !important;
+    inset: auto !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+.shared-transition-clone {
+    z-index: 1 !important;
+    contain: layout paint style;
+    will-change: transform, opacity, filter;
+    pointer-events: none !important;
+}
+
+.shared-transition-clone,
+.shared-transition-clone *,
+.shared-transition-clone *::before,
+.shared-transition-clone *::after {
+    animation-play-state: paused !important;
 }
 
 .is-shared-transition-entering .project-header,
