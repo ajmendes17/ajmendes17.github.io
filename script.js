@@ -329,21 +329,32 @@ function initProjectCarousel() {
     });
 
     slides.forEach((slide, index) => {
-        slide.addEventListener('click', event => {
-            if (didDrag || event.target.closest('a, button')) return;
-            if (index !== selectedIndex) {
-                updateSelection(index, 1);
-                return;
-            }
-
-            openSelectedProject();
-        });
-
         slide.addEventListener('keydown', event => {
             if (event.key !== 'Enter' || event.target !== slide || index !== selectedIndex) return;
             event.preventDefault();
             openSelectedProject();
         });
+    });
+
+    viewport.addEventListener('click', event => {
+        if (didDrag || event.target.closest('a, button')) return;
+
+        // Pointer capture used by the drag surface can retarget a click to the
+        // viewport. Resolve the element under the released pointer so a normal
+        // click still activates the visible card.
+        const hitTarget = document.elementFromPoint(event.clientX, event.clientY);
+        if (!hitTarget || hitTarget.closest('a, button')) return;
+
+        const clickedSlide = hitTarget.closest('[data-carousel-slide]');
+        const clickedIndex = slides.indexOf(clickedSlide);
+        if (clickedIndex < 0) return;
+
+        if (clickedIndex !== selectedIndex) {
+            updateSelection(clickedIndex, 1);
+            return;
+        }
+
+        openSelectedProject();
     });
 
     document.addEventListener('keydown', event => {
