@@ -2332,6 +2332,11 @@ section {
         inset 0 1px rgba(255, 255, 255, 0.08);
 }
 
+.project-stage .system-slide.project-portal.is-selected:focus-visible {
+    outline: 2px solid rgb(var(--portal-rgb));
+    outline-offset: 5px;
+}
+
 .project-stage .system-slide.project-portal[data-carousel-position='next'] {
     z-index: 22;
     opacity: 0.7;

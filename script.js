@@ -263,6 +263,8 @@ function initProjectCarousel() {
             slide.setAttribute('aria-current', String(isSelected));
             slide.setAttribute('aria-hidden', String(!isSelected));
             slide.toggleAttribute('inert', !isSelected);
+            slide.setAttribute('role', 'link');
+            slide.tabIndex = isSelected ? 0 : -1;
             slide.dataset.carouselPosition = carouselPosition;
             const slideToggle = slide.querySelector('.portal-toggle');
             if (slideToggle) slideToggle.tabIndex = isSelected ? 0 : -1;
@@ -290,7 +292,7 @@ function initProjectCarousel() {
             viewSystemLink.setAttribute('aria-label', `View ${selectedTitle} project`);
         }
 
-        selectedSlide.setAttribute('aria-label', `${selectedIndex + 1} of ${slides.length}: ${selectedTitle}`);
+        selectedSlide.setAttribute('aria-label', `${selectedIndex + 1} of ${slides.length}: View ${selectedTitle} project`);
     }
 
     function showPrevious() {
@@ -299,6 +301,21 @@ function initProjectCarousel() {
 
     function showNext() {
         updateSelection(selectedIndex + 1, 1);
+    }
+
+    function openSelectedProject() {
+        const selectedSlide = slides[selectedIndex];
+        const selectedUrl = selectedSlide?.dataset.projectUrl;
+        if (!selectedUrl) return;
+
+        // Reuse the visible project link so card activation receives the same
+        // shared-page transition behavior as the explicit call to action.
+        if (viewSystemLink) {
+            viewSystemLink.click();
+            return;
+        }
+
+        window.location.href = selectedUrl;
     }
 
     previousButton?.addEventListener('click', showPrevious);
@@ -314,7 +331,18 @@ function initProjectCarousel() {
     slides.forEach((slide, index) => {
         slide.addEventListener('click', event => {
             if (didDrag || event.target.closest('a, button')) return;
-            if (index !== selectedIndex) updateSelection(index, 1);
+            if (index !== selectedIndex) {
+                updateSelection(index, 1);
+                return;
+            }
+
+            openSelectedProject();
+        });
+
+        slide.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' || event.target !== slide || index !== selectedIndex) return;
+            event.preventDefault();
+            openSelectedProject();
         });
     });
 
