@@ -2262,6 +2262,7 @@ section {
 .project-stage .systems-carousel-viewport {
     position: absolute;
     inset: 3.25rem 0 4rem;
+    padding: 0;
     overflow: visible;
     scroll-snap-type: none;
     cursor: grab;
@@ -2300,7 +2301,7 @@ section {
     height: 100%;
     min-height: 0;
     display: grid;
-    grid-template-rows: minmax(0, 64%) minmax(0, 36%);
+    grid-template-rows: minmax(0, 54%) minmax(0, 46%);
     flex: none;
     margin: 0;
     overflow: visible;
@@ -2634,7 +2635,7 @@ section {
     .project-stage .system-slide.project-portal:hover {
         left: 0;
         width: calc(100% - 80px);
-        grid-template-rows: minmax(0, 55%) minmax(0, 45%);
+        grid-template-rows: minmax(0, 50%) minmax(0, 50%);
     }
 
     .project-stage .system-slide.project-portal[data-carousel-position='next'] {
