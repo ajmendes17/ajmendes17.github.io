@@ -434,16 +434,16 @@ function initProjectCarousel() {
             projectSection.scrollIntoView({ block: 'start' });
             root.style.scrollBehavior = previousScrollBehavior;
         };
+        alignProjectSection();
         requestAnimationFrame(() => requestAnimationFrame(alignProjectSection));
         document.fonts?.ready.then(alignProjectSection);
     }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initProjectCarousel);
-} else {
-    initProjectCarousel();
-}
+// The script is loaded after the page markup, so initialize synchronously.
+// This lets cross-document View Transitions capture the selected project and
+// final scroll position before the homepage's first rendered frame.
+initProjectCarousel();
 
 // Typing effect for hero title (optional enhancement)
 function typeWriter(element, text, speed = 100) {
@@ -997,7 +997,8 @@ if (document.readyState === 'loading') {
 
 // Shared-element navigation between the homepage carousel and project pages.
 function initProjectPageTransitions() {
-    document.body.dataset.viewTransitionCapability = 'custom';
+    const hasNativeViewTransitions = typeof document.startViewTransition === 'function';
+    document.body.dataset.viewTransitionCapability = hasNativeViewTransitions ? 'native' : 'fallback';
 
     const projectLinks = document.querySelectorAll(
         '[data-carousel-link], .back-link[href*="index.html"], .project-link-btn.secondary[href*="index.html"]'
@@ -1146,7 +1147,7 @@ function initProjectPageTransitions() {
     }
 
     function playStoredTransition() {
-        if (reducedMotionQuery.matches) return;
+        if (reducedMotionQuery.matches || hasNativeViewTransitions) return;
 
         let transitionState = null;
         try {
@@ -1195,6 +1196,7 @@ function initProjectPageTransitions() {
         if (
             transitionStoredForNavigation
             || reducedMotionQuery.matches
+            || hasNativeViewTransitions
             || !document.body.classList.contains('project-detail-page')
         ) return;
 
@@ -1213,6 +1215,8 @@ function initProjectPageTransitions() {
 
             const destination = new URL(link.href, window.location.href);
             if (destination.origin !== window.location.origin) return;
+
+            if (hasNativeViewTransitions) return;
 
             storeTransitionOrigin();
             transitionStoredForNavigation = true;

@@ -6066,14 +6066,17 @@ section {
 }
 
 /* Shared-element navigation between the project stage and case-study pages. */
+@view-transition {
+    navigation: auto;
+}
+
 .project-stage .system-slide.is-selected .portal-depth,
 .project-detail-page .project-showcase {
     view-transition-name: project-visual;
 }
 
-.project-stage [data-carousel-title],
-.project-detail-page .project-main-title {
-    view-transition-name: project-title;
+.navbar {
+    view-transition-name: site-navigation;
 }
 
 ::view-transition-group(project-visual) {
@@ -6082,39 +6085,63 @@ section {
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-::view-transition-group(project-title) {
-    z-index: 110;
-    animation-duration: 480ms;
-    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+::view-transition-group(site-navigation),
+::view-transition-old(site-navigation),
+::view-transition-new(site-navigation) {
+    animation: none;
+    mix-blend-mode: normal;
 }
 
 ::view-transition-old(project-visual),
-::view-transition-new(project-visual),
-::view-transition-old(project-title),
-::view-transition-new(project-title) {
+::view-transition-new(project-visual) {
     height: 100%;
     mix-blend-mode: normal;
 }
 
+::view-transition-old(project-visual) {
+    animation: project-visual-out 620ms linear both;
+}
+
+::view-transition-new(project-visual) {
+    animation: project-visual-in 620ms linear both;
+}
+
 ::view-transition-old(root) {
-    animation: project-page-out 260ms ease-in both;
+    animation: none;
+    opacity: 0;
 }
 
 ::view-transition-new(root) {
-    animation: project-page-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes project-page-out {
-    to {
-        opacity: 0.22;
-        transform: scale(0.985);
-    }
+    animation: project-page-in 300ms 180ms ease-out both;
 }
 
 @keyframes project-page-in {
     from {
         opacity: 0;
-        transform: translateY(14px) scale(1.008);
+    }
+}
+
+@keyframes project-visual-out {
+    0%,
+    38% {
+        opacity: 1;
+    }
+
+    58%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes project-visual-in {
+    0%,
+    42% {
+        opacity: 0;
+    }
+
+    62%,
+    100% {
+        opacity: 1;
     }
 }
 
