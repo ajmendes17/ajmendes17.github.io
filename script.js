@@ -308,6 +308,13 @@ function initProjectCarousel() {
         const selectedUrl = selectedSlide?.dataset.projectUrl;
         if (!selectedUrl) return;
 
+        // Keep the homepage history entry tied to the project being opened so
+        // browser Back restores the correct card for the reverse transition.
+        const returnUrl = new URL(window.location.href);
+        returnUrl.searchParams.set('project', String(selectedIndex + 1));
+        returnUrl.hash = 'projects';
+        window.history.replaceState(window.history.state, '', returnUrl);
+
         // Reuse the visible project link so card activation receives the same
         // shared-page transition behavior as the explicit call to action.
         if (viewSystemLink) {
@@ -419,7 +426,14 @@ function initProjectCarousel() {
     // this pass, mobile browsers can stop inside the preceding experience
     // section because the anchor is resolved before its final height is known.
     if (window.location.hash === '#projects') {
-        const alignProjectSection = () => projectSection?.scrollIntoView({ block: 'start' });
+        const alignProjectSection = () => {
+            if (!projectSection) return;
+            const root = document.documentElement;
+            const previousScrollBehavior = root.style.scrollBehavior;
+            root.style.scrollBehavior = 'auto';
+            projectSection.scrollIntoView({ block: 'start' });
+            root.style.scrollBehavior = previousScrollBehavior;
+        };
         requestAnimationFrame(() => requestAnimationFrame(alignProjectSection));
         document.fonts?.ready.then(alignProjectSection);
     }
@@ -981,15 +995,14 @@ if (document.readyState === 'loading') {
     initPerspectiveSwitchers();
 }
 
-// Progressive fallback for browsers without cross-document View Transitions.
+// Shared-element navigation between the homepage carousel and project pages.
 function initProjectPageTransitions() {
-    document.body.dataset.viewTransitionCapability = typeof document.startViewTransition === 'function'
-        ? 'native'
-        : 'fallback';
+    document.body.dataset.viewTransitionCapability = 'custom';
 
     const projectLinks = document.querySelectorAll(
         '[data-carousel-link], .back-link[href*="index.html"], .project-link-btn.secondary[href*="index.html"]'
     );
+    let transitionStoredForNavigation = false;
 
     function getTransitionElements() {
         if (document.body.classList.contains('project-detail-page')) {
@@ -1020,6 +1033,7 @@ function initProjectPageTransitions() {
         const elements = getTransitionElements();
         const transitionState = {
             createdAt: Date.now(),
+            direction: document.body.classList.contains('project-detail-page') ? 'to-stage' : 'to-detail',
             visual: rectToObject(elements.visual),
             title: rectToObject(elements.title)
         };
@@ -1065,8 +1079,21 @@ function initProjectPageTransitions() {
         });
     }
 
+    function alignProjectStageImmediately() {
+        if (document.body.classList.contains('project-detail-page') || window.location.hash !== '#projects') return;
+
+        const projectSection = document.querySelector('.project-stage');
+        if (!projectSection) return;
+
+        const root = document.documentElement;
+        const previousScrollBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        projectSection.scrollIntoView({ block: 'start' });
+        root.style.scrollBehavior = previousScrollBehavior;
+    }
+
     function playStoredTransition() {
-        if (reducedMotionQuery.matches || typeof document.startViewTransition === 'function') return;
+        if (reducedMotionQuery.matches) return;
 
         let transitionState = null;
         try {
@@ -1078,11 +1105,22 @@ function initProjectPageTransitions() {
 
         if (!transitionState || Date.now() - transitionState.createdAt > 4000) return;
 
-        window.requestAnimationFrame(() => {
-            window.requestAnimationFrame(() => {
+        const destinationIsDetail = document.body.classList.contains('project-detail-page');
+        const directionMatchesDestination = transitionState.direction === 'to-detail'
+            ? destinationIsDetail
+            : !destinationIsDetail && window.location.hash === '#projects';
+        if (!directionMatchesDestination) return;
+
+        if (transitionState.direction === 'to-stage') {
+            alignProjectStageImmediately();
+        }
+
+        const beginTransition = () => {
+            window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
                 const elements = getTransitionElements();
                 document.body.classList.add('is-shared-transition-entering');
                 document.body.dataset.sharedTransitionState = 'active';
+                document.body.dataset.sharedTransitionDirection = transitionState.direction;
 
                 Promise.all([
                     animateElementFromRect(elements.visual, transitionState.visual, 620),
@@ -1091,11 +1129,32 @@ function initProjectPageTransitions() {
                     document.body.classList.remove('is-shared-transition-entering');
                     document.body.dataset.sharedTransitionState = 'complete';
                 });
-            });
-        });
+            }));
+        };
+
+        if (document.fonts?.ready) {
+            document.fonts.ready.then(beginTransition);
+        } else {
+            beginTransition();
+        }
     }
 
     playStoredTransition();
+
+    window.addEventListener('pagehide', () => {
+        if (
+            transitionStoredForNavigation
+            || reducedMotionQuery.matches
+            || !document.body.classList.contains('project-detail-page')
+        ) return;
+
+        storeTransitionOrigin();
+    });
+
+    window.addEventListener('pageshow', event => {
+        transitionStoredForNavigation = false;
+        if (event.persisted) playStoredTransition();
+    });
 
     projectLinks.forEach(link => {
         link.addEventListener('click', event => {
@@ -1105,8 +1164,8 @@ function initProjectPageTransitions() {
             const destination = new URL(link.href, window.location.href);
             if (destination.origin !== window.location.origin) return;
 
-            if (typeof document.startViewTransition === 'function') return;
             storeTransitionOrigin();
+            transitionStoredForNavigation = true;
 
             event.preventDefault();
             document.body.classList.add('project-page-leaving');

@@ -6066,10 +6066,6 @@ section {
 }
 
 /* Shared-element navigation between the project stage and case-study pages. */
-@view-transition {
-    navigation: auto;
-}
-
 .project-stage .system-slide.is-selected .portal-depth,
 .project-detail-page .project-showcase {
     view-transition-name: project-visual;
@@ -6128,11 +6124,14 @@ section {
 }
 
 .is-shared-transition-target {
-    position: relative;
     z-index: 2000 !important;
     transform-origin: top left !important;
     will-change: transform, opacity, filter;
     pointer-events: none;
+}
+
+.project-detail-page .project-showcase.is-shared-transition-target {
+    position: relative;
 }
 
 .is-shared-transition-entering .project-header,
