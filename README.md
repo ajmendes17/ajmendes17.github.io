@@ -2,15 +2,9 @@
 
 A static HTML, CSS, and JavaScript portfolio focused on secure software, tested systems, data research, and applied computer science. The homepage connects AJ's project work with cybersecurity research, industrial systems experience, and Colorado School of Mines education.
 
-## Local preview
+## Live site
 
-Run the site through a local server so navigation, URL state, and view transitions behave consistently:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then open `http://127.0.0.1:8000/index.html`.
+This portfolio is hosted with GitHub Pages and available at [ajmendes17.github.io](https://ajmendes17.github.io/).
 
 ## Project pages
 

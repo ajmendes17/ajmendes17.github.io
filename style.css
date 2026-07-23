@@ -2439,29 +2439,6 @@ section {
     transform: translateY(-50%);
 }
 
-.portal-callouts li::after {
-    content: '';
-    position: absolute;
-    top: 0.7rem;
-    left: calc(100% + 0.6rem);
-    width: clamp(80px, 9vw, 140px);
-    height: 1px;
-    background: linear-gradient(90deg, rgba(181, 200, 219, 0.72), rgba(var(--portal-rgb), 0.68));
-}
-
-.portal-callouts li::before {
-    content: '';
-    position: absolute;
-    top: calc(0.7rem - 3px);
-    left: calc(100% + 0.6rem + clamp(80px, 9vw, 140px));
-    width: 6px;
-    height: 6px;
-    border: 1px solid rgba(var(--portal-rgb), 0.9);
-    border-radius: 50%;
-    background: #07101b;
-    box-shadow: 0 0 10px rgba(var(--portal-rgb), 0.55);
-}
-
 .portal-callouts b {
     color: rgb(var(--portal-rgb));
     font: 600 0.68rem 'JetBrains Mono', monospace;

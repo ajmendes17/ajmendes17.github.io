@@ -1192,7 +1192,7 @@ function initSecureEndpointModel() {
 
         if (reducedMotionQuery.matches || document.hidden) return;
 
-        const activeStage = stageContent[model.dataset.modelStage] || stageContent.message;
+        const activeStage = stageContent[model.dataset.modelStage] || stageContent.keys;
 
         window.requestAnimationFrame(() => {
             window.requestAnimationFrame(() => {
@@ -1250,7 +1250,7 @@ function initSecureEndpointModel() {
         scheduleAmbientSequence();
     });
 
-    setStage(model.dataset.modelStage || 'message');
+    setStage(model.dataset.modelStage || 'keys');
 }
 
 if (document.readyState === 'loading') {

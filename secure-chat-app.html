@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat Application | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=portfolio-experience-v8">
+    <link rel="stylesheet" href="style.css?v=portfolio-experience-v9">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="project-showcase secure-chat-showcase secure-endpoint-model" data-secure-endpoint-model data-model-stage="message" aria-labelledby="secure-model-title">
+                <div class="project-showcase secure-chat-showcase secure-endpoint-model" data-secure-endpoint-model data-model-stage="keys" aria-labelledby="secure-model-title">
                     <div class="secure-model-topline">
                         <div>
                             <span class="secure-model-eyebrow">Live architecture model</span>
@@ -67,8 +67,8 @@
 
                     <div class="secure-model-scene secure-3d-viewport" data-secure-viewport role="img" aria-label="Three-dimensional model of two encrypted chat endpoints exchanging keys and messages through a forwarding-only TCP relay.">
                         <div class="secure-sequence-readout" aria-hidden="true">
-                            <span data-secure-sequence-index>03 / MESSAGE</span>
-                            <strong data-secure-sequence-steps>BUILD FRAME → RELAY → VERIFY</strong>
+                            <span data-secure-sequence-index>01 / IDENTITY</span>
+                            <strong data-secure-sequence-steps>PUBLISH → EXCHANGE → STORE</strong>
                         </div>
 
                         <div class="secure-3d-world" aria-hidden="true">
@@ -84,7 +84,7 @@
                                         <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
                                     </svg>
                                     <strong>Endpoint A</strong>
-                                    <span data-secure-endpoint-a-state>Encrypt locally</span>
+                                    <span data-secure-endpoint-a-state>Share public key</span>
                                 </div>
                                 <span class="secure-private-key">PRIVATE KEY<br>LOCAL ONLY</span>
                             </div>
@@ -92,10 +92,10 @@
                             <div class="secure-route-3d secure-route-3d-left">
                                 <span class="secure-route-beam"></span>
                                 <span class="secure-packet-3d secure-packet-3d-left secure-packet-primary">
-                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
                                 </span>
                                 <span class="secure-packet-3d secure-packet-3d-left secure-packet-exchange">
-                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
                                 </span>
                             </div>
 
@@ -110,16 +110,16 @@
                                     </svg>
                                 </div>
                                 <strong>TCP Relay</strong>
-                                <span data-secure-relay-state>Ciphertext only</span>
+                                <span data-secure-relay-state>Forwards public keys</span>
                             </div>
 
                             <div class="secure-route-3d secure-route-3d-right">
                                 <span class="secure-route-beam"></span>
                                 <span class="secure-packet-3d secure-packet-3d-right secure-packet-primary">
-                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
                                 </span>
                                 <span class="secure-packet-3d secure-packet-3d-right secure-packet-exchange">
-                                    <span class="secure-packet-top" data-secure-packet-short>MSG</span>
+                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
                                 </span>
                             </div>
 
@@ -131,7 +131,7 @@
                                         <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
                                     </svg>
                                     <strong>Endpoint B</strong>
-                                    <span data-secure-endpoint-b-state>Verify + decrypt</span>
+                                    <span data-secure-endpoint-b-state>Load peer key</span>
                                 </div>
                                 <span class="secure-private-key">PRIVATE KEY<br>LOCAL ONLY</span>
                             </div>
@@ -140,22 +140,20 @@
                         <div class="secure-frame-inspector" aria-hidden="true">
                             <span class="secure-frame-label">TCP frame</span>
                             <div class="secure-frame-parts" data-secure-frame-parts>
-                                <span>TYPE · 1B</span>
+                                <span>TYPE 01 · 1B</span>
                                 <span>LENGTH · 4B</span>
-                                <span>NONCE · 12B</span>
-                                <span>CIPHERTEXT</span>
-                                <span>TAG · 16B</span>
+                                <span>PUBLIC KEY · PEM</span>
                             </div>
                         </div>
 
                         <div class="secure-boundary-readout" aria-hidden="true">
                             <span class="secure-boundary-label">Untrusted transport boundary</span>
-                            <span class="secure-payload-label" data-secure-payload-label>AES-GCM ciphertext</span>
+                            <span class="secure-payload-label" data-secure-payload-label>RSA public key · PEM payload</span>
                         </div>
                     </div>
 
                     <div class="secure-model-stage-controls" role="group" aria-label="Choose a communication stage">
-                        <button type="button" data-secure-stage="keys" aria-pressed="false">
+                        <button type="button" data-secure-stage="keys" aria-pressed="true">
                             <span>01</span>
                             <strong>Public keys</strong>
                         </button>
@@ -163,17 +161,17 @@
                             <span>02</span>
                             <strong>Session setup</strong>
                         </button>
-                        <button type="button" data-secure-stage="message" aria-pressed="true">
+                        <button type="button" data-secure-stage="message" aria-pressed="false">
                             <span>03</span>
                             <strong>Encrypted message</strong>
                         </button>
                     </div>
 
                     <div class="secure-model-caption" aria-live="polite">
-                        <div class="secure-caption-index" data-secure-caption-index>Stage 03</div>
+                        <div class="secure-caption-index" data-secure-caption-index>Stage 01</div>
                         <div>
-                            <strong data-secure-caption-title>Encrypted message</strong>
-                            <p data-secure-caption-copy>AES-256-GCM encrypts and authenticates the payload before the relay forwards it for local decryption.</p>
+                            <strong data-secure-caption-title>Public key exchange</strong>
+                            <p data-secure-caption-copy>Each client sends its RSA-2048 public key through the TCP relay. The corresponding private key stays on disk at its own endpoint.</p>
                         </div>
                     </div>
                 </div>
@@ -394,6 +392,6 @@ def pack_message(msg_type, payload):
         </div>
     </footer>
 
-    <script src="script.js?v=portfolio-experience-v8"></script>
+    <script src="script.js?v=portfolio-experience-v9"></script>
 </body>
 </html>

@@ -15,4 +15,3 @@ yarn-error.log*
 
 # Local planning and status notes
 *.md
-!HOMEPAGE_PROJECT_PRESENTATION.md
