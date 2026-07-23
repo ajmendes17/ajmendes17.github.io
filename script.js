@@ -261,6 +261,8 @@ function initProjectCarousel() {
                         : 'far';
             slide.classList.toggle('is-selected', isSelected);
             slide.setAttribute('aria-current', String(isSelected));
+            slide.setAttribute('aria-hidden', String(!isSelected));
+            slide.toggleAttribute('inert', !isSelected);
             slide.dataset.carouselPosition = carouselPosition;
             const slideToggle = slide.querySelector('.portal-toggle');
             if (slideToggle) slideToggle.tabIndex = isSelected ? 0 : -1;
