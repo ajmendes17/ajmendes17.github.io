@@ -996,6 +996,16 @@ section {
     font-size: 2rem;
 }
 
+.contact-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .copy-status {
     margin-top: 1.5rem;
     color: var(--accent);
@@ -2152,15 +2162,6 @@ section {
     width: 100%;
     max-width: 1600px;
     padding-inline: clamp(1.5rem, 3.2vw, 4rem);
-}
-
-.project-stage > .container > .section-header {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
 }
 
 .project-stage .systems-showcase {
@@ -5377,8 +5378,8 @@ section {
 /* Selected systems: horizontal project carousel */
 .systems-showcase {
     display: grid;
-    grid-template-columns: minmax(180px, 0.25fr) minmax(0, 1fr);
-    gap: clamp(2rem, 4vw, 4.5rem);
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: clamp(1.5rem, 2.6vw, 2.75rem);
     align-items: start;
     margin-top: -1rem;
 }
@@ -5386,7 +5387,26 @@ section {
 .systems-intro {
     position: sticky;
     top: 112px;
-    padding-top: 3.4rem;
+    z-index: 30;
+    padding-top: 3.1rem;
+}
+
+.systems-section-label {
+    display: flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+}
+
+.systems-section-label span {
+    color: var(--accent);
+    font: 600 0.7rem 'JetBrains Mono', monospace;
+}
+
+.systems-section-label h2 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    line-height: 1;
 }
 
 .systems-kicker {
@@ -5408,14 +5428,16 @@ section {
 }
 
 .systems-intro h3 {
-    margin: 1.2rem 0 0.85rem;
+    margin: 1.1rem 0 0.85rem;
     color: var(--text-primary);
-    font-size: clamp(1.55rem, 2.6vw, 2.2rem);
+    font-size: clamp(1.7rem, 2.7vw, 2.35rem);
     line-height: 1.1;
 }
 
 .systems-intro p {
+    min-height: 7.5rem;
     max-width: 26ch;
+    margin-top: 0.9rem;
     color: var(--text-secondary);
     font-size: 0.94rem;
     line-height: 1.7;
@@ -5425,7 +5447,7 @@ section {
     display: flex;
     align-items: baseline;
     gap: 0.45rem;
-    margin-top: 2rem;
+    margin-top: 1.6rem;
     color: var(--text-secondary);
     font-family: 'JetBrains Mono', monospace;
 }
@@ -5533,11 +5555,11 @@ section {
 }
 
 .system-slide.project-portal {
-    flex: 0 0 clamp(560px, 58vw, 680px);
-    min-height: 650px;
+    flex: 0 0 clamp(640px, 62vw, 780px);
+    min-height: 760px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 360px auto;
+    grid-template-rows: 450px auto;
     scroll-snap-align: start;
     cursor: pointer;
     transform: rotateY(-2deg) scale(0.94);
@@ -5567,8 +5589,8 @@ section {
 
 .system-slide.project-portal .case-visual {
     width: 100%;
-    height: 360px;
-    min-height: 360px;
+    height: 450px;
+    min-height: 450px;
     border-right: 0;
     border-bottom: 1px solid rgba(var(--portal-rgb), 0.22);
     background:
@@ -5599,7 +5621,8 @@ section {
 
 .system-slide.project-portal .case-content {
     width: 100%;
-    padding: 1.45rem 1.6rem 1.6rem;
+    min-height: 310px;
+    padding: 1.7rem 1.85rem 1.85rem;
     align-self: stretch;
     background:
         linear-gradient(145deg, rgba(var(--portal-rgb), 0.07), transparent 55%),
@@ -5607,36 +5630,24 @@ section {
 }
 
 .system-slide .case-meta {
+    justify-content: flex-start;
     margin-bottom: 0.55rem;
 }
 
 .system-slide .case-link {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    padding: 0 0.85rem;
-    color: var(--portal-strong);
-    border: 1px solid rgba(var(--portal-rgb), 0.36);
-    border-radius: 5px;
-    background: rgba(var(--portal-rgb), 0.07);
-    pointer-events: auto;
-}
-
-.system-slide .case-link::after {
-    content: ' ↗';
-    margin-left: 0.35rem;
+    display: none;
 }
 
 .system-slide .project-title {
     margin-bottom: 0.45rem;
-    font-size: clamp(1.45rem, 2.6vw, 2rem);
+    font-size: clamp(1.65rem, 2.8vw, 2.25rem);
 }
 
 .system-slide .project-description {
-    max-width: 68ch;
+    max-width: 72ch;
     margin-bottom: 1rem;
     color: #adbed1;
-    font-size: 0.9rem;
+    font-size: 0.96rem;
     line-height: 1.55;
 }
 
@@ -5743,15 +5754,21 @@ section {
     .systems-intro {
         position: static;
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto;
         align-items: end;
-        gap: 0.6rem 2rem;
+        gap: 0.75rem 1.5rem;
         padding-top: 0;
+    }
+
+    .systems-section-label {
+        grid-column: 1 / -1;
+        margin-bottom: 0.25rem;
     }
 
     .systems-intro h3,
     .systems-intro p {
         grid-column: 1;
+        min-height: 0;
     }
 
     .systems-intro h3 {
@@ -5765,7 +5782,7 @@ section {
     }
 
     .system-slide.project-portal {
-        flex-basis: min(74vw, 680px);
+        flex-basis: min(82vw, 760px);
     }
 }
 
@@ -5789,8 +5806,8 @@ section {
 
     .system-slide.project-portal {
         flex-basis: calc(100vw - 3rem);
-        min-height: 600px;
-        grid-template-rows: 300px auto;
+        min-height: 640px;
+        grid-template-rows: 330px auto;
         transform: scale(0.96);
     }
 
@@ -5799,12 +5816,13 @@ section {
     }
 
     .system-slide.project-portal .case-visual {
-        height: 300px;
-        min-height: 300px;
+        height: 330px;
+        min-height: 330px;
     }
 
     .system-slide.project-portal .case-content {
-        padding: 1.15rem;
+        min-height: 310px;
+        padding: 1.25rem;
     }
 
     .system-slide .project-description {
@@ -5832,22 +5850,13 @@ section {
 @media (max-width: 420px) {
     .system-slide.project-portal {
         flex-basis: calc(100vw - 2rem);
-        min-height: 570px;
-        grid-template-rows: 270px auto;
+        min-height: 610px;
+        grid-template-rows: 300px auto;
     }
 
     .system-slide.project-portal .case-visual {
-        height: 270px;
-        min-height: 270px;
-    }
-
-    .system-slide .project-title {
-        font-size: 1.35rem;
-    }
-
-    .system-slide .case-link {
-        padding-inline: 0.65rem;
-        font-size: 0.68rem;
+        height: 300px;
+        min-height: 300px;
     }
 }
 
@@ -5899,18 +5908,24 @@ section {
 
 .system-slide.project-portal.is-selected,
 .system-slide.project-portal.is-selected:hover {
-    transform: translate3d(0, 0, 24px) rotateX(1.25deg) rotateY(-4.5deg) scale(0.985);
+    transform: translate3d(0, 0, 38px) rotateX(1.35deg) rotateY(-4.25deg) scale(0.995);
     transform-origin: center center;
     box-shadow:
-        22px 38px 80px rgba(0, 0, 0, 0.5),
-        7px 10px 0 rgba(4, 10, 17, 0.82),
-        0 0 0 1px rgba(var(--portal-rgb), 0.22),
-        inset 0 1px rgba(255, 255, 255, 0.06);
+        30px 48px 95px rgba(0, 0, 0, 0.58),
+        12px 16px 0 rgba(3, 9, 16, 0.9),
+        16px 22px 35px rgba(var(--portal-rgb), 0.08),
+        0 0 0 1px rgba(var(--portal-rgb), 0.3),
+        inset 0 1px rgba(255, 255, 255, 0.07);
 }
 
 .system-slide.project-portal::before {
-    content: none;
-    display: none;
+    inset: 15px -14px -18px 14px;
+    border-color: rgba(var(--portal-rgb), 0.24);
+    background:
+        linear-gradient(145deg, rgba(var(--portal-rgb), 0.08), transparent 45%),
+        rgba(3, 9, 16, 0.96);
+    transform: translateZ(-30px);
+    box-shadow: 12px 18px 36px rgba(0, 0, 0, 0.44);
 }
 
 .system-slide .case-visual::after {
@@ -6437,137 +6452,5 @@ body[data-project-perspective='builder'] .project-perspective {
     .perspective-panel.active,
     .has-perspective-switcher [data-perspective-content].perspective-visible {
         animation: none !important;
-    }
-}
-
-.systems-showcase {
-    grid-template-columns: 180px minmax(0, 1fr);
-    gap: clamp(1.5rem, 2.6vw, 2.75rem);
-}
-
-.systems-intro {
-    z-index: 30;
-    padding-top: 3.1rem;
-}
-
-.systems-intro h3 {
-    margin-top: 1.1rem;
-    font-size: clamp(1.7rem, 2.7vw, 2.35rem);
-}
-
-.systems-intro p {
-    min-height: 7.5rem;
-    margin-top: 0.9rem;
-}
-
-.systems-position {
-    margin-top: 1.6rem;
-}
-
-.system-slide.project-portal {
-    flex-basis: clamp(640px, 62vw, 780px);
-    min-height: 760px;
-    grid-template-rows: 450px auto;
-}
-
-.system-slide.project-portal .case-visual {
-    height: 450px;
-    min-height: 450px;
-}
-
-.system-slide.project-portal .case-content {
-    min-height: 310px;
-    padding: 1.7rem 1.85rem 1.85rem;
-}
-
-.system-slide.project-portal.is-selected,
-.system-slide.project-portal.is-selected:hover {
-    transform: translate3d(0, 0, 38px) rotateX(1.35deg) rotateY(-4.25deg) scale(0.995);
-    box-shadow:
-        30px 48px 95px rgba(0, 0, 0, 0.58),
-        12px 16px 0 rgba(3, 9, 16, 0.9),
-        16px 22px 35px rgba(var(--portal-rgb), 0.08),
-        0 0 0 1px rgba(var(--portal-rgb), 0.3),
-        inset 0 1px rgba(255, 255, 255, 0.07);
-}
-
-.system-slide.project-portal::before {
-    inset: 15px -14px -18px 14px;
-    border-color: rgba(var(--portal-rgb), 0.24);
-    background:
-        linear-gradient(145deg, rgba(var(--portal-rgb), 0.08), transparent 45%),
-        rgba(3, 9, 16, 0.96);
-    transform: translateZ(-30px);
-    box-shadow: 12px 18px 36px rgba(0, 0, 0, 0.44);
-}
-
-.system-slide .case-meta {
-    justify-content: flex-start;
-}
-
-.system-slide .case-link {
-    display: none;
-}
-
-.system-slide .project-title {
-    font-size: clamp(1.65rem, 2.8vw, 2.25rem);
-}
-
-.system-slide .project-description {
-    max-width: 72ch;
-    font-size: 0.96rem;
-}
-
-@media (max-width: 980px) {
-    .systems-showcase {
-        grid-template-columns: 1fr;
-    }
-
-    .systems-intro {
-        grid-template-columns: minmax(0, 1fr) auto;
-        gap: 0.75rem 1.5rem;
-    }
-
-    .systems-intro p {
-        min-height: 0;
-    }
-
-    .system-slide.project-portal {
-        flex-basis: min(82vw, 760px);
-    }
-}
-
-@media (max-width: 680px) {
-    .systems-intro {
-        display: block;
-    }
-
-    .system-slide.project-portal {
-        flex-basis: calc(100vw - 3rem);
-        min-height: 640px;
-        grid-template-rows: 330px auto;
-    }
-
-    .system-slide.project-portal .case-visual {
-        height: 330px;
-        min-height: 330px;
-    }
-
-    .system-slide.project-portal .case-content {
-        min-height: 310px;
-        padding: 1.25rem;
-    }
-}
-
-@media (max-width: 420px) {
-    .system-slide.project-portal {
-        flex-basis: calc(100vw - 2rem);
-        min-height: 610px;
-        grid-template-rows: 300px auto;
-    }
-
-    .system-slide.project-portal .case-visual {
-        height: 300px;
-        min-height: 300px;
     }
 }

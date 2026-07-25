@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat Application | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=portfolio-experience-v17">
+    <link rel="stylesheet" href="style.css?v=portfolio-experience-v18">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -217,14 +217,12 @@
                             <span class="perspective-panel-kicker">Purpose · trust · workflow</span>
                             <h3>Private conversation without trusting the relay</h3>
                             <p class="project-text">
-                                I built Secure Chat as an educational demonstration of how encrypted messaging works. The goal was not just to make messages unreadable to the server, but to show the process in a way that someone less technical could follow.
+                                Secure Chat demonstrates encrypted messaging without asking users to trust the relay with plaintext.
                             </p>
                             <ol class="project-list plain-steps">
-                                <li>Each person has a public lock and a private key.</li>
-                                <li>The sender uses the recipient's public lock to protect a temporary message key.</li>
-                                <li>The actual chat message is locked with that temporary key.</li>
-                                <li>The server only passes the locked package along.</li>
-                                <li>The recipient unlocks it locally with their private key.</li>
+                                <li>Endpoints exchange public keys while private keys remain local.</li>
+                                <li>The sender protects an AES key with the recipient's RSA public key.</li>
+                                <li>The relay forwards ciphertext that only the recipient can verify and decrypt.</li>
                             </ol>
                         </div>
 
@@ -232,53 +230,35 @@
                             <span class="perspective-panel-kicker">Boundary · protocol · cryptography</span>
                             <h3>Hybrid encryption across isolated endpoints</h3>
                             <p class="project-text">
-                                Secure Chat implements a hybrid-encryption flow in Python. Clients generate or load RSA keypairs, exchange public keys through a relay server, wrap a per-message/session symmetric key with RSA-OAEP, and encrypt message payloads with AES-256-GCM before transport.
+                                Python clients combine RSA-OAEP key wrapping, AES-256-GCM payload encryption, and a framed TCP protocol behind a Tkinter workflow.
                             </p>
                             <ol class="project-list">
-                                <li>RSA-OAEP handles asymmetric key wrapping for the AES key.</li>
-                                <li>AES-GCM provides confidentiality and authentication for message payloads.</li>
-                                <li>A shared protocol frames message type and payload length for socket transport.</li>
-                                <li>The relay server coordinates clients and forwards ciphertext without decrypting content.</li>
-                                <li>The Tkinter UI exposes the chat workflow and key fingerprint context.</li>
+                                <li>Clients generate or load persistent RSA keypairs and exchange only public keys.</li>
+                                <li>AES-GCM provides message confidentiality, integrity, and tamper detection.</li>
+                                <li>Typed, length-prefixed frames keep socket transport deterministic.</li>
                             </ol>
                         </div>
                     </div>
                 </div>
 
-                <!-- Overview -->
-                <div class="project-section" data-perspective-content="operator">
-                    <h2 class="section-title">Overview</h2>
-                    <p class="project-text">
-                        The Secure Chat Application is a complete educational demo of encrypted messaging. The server coordinates connections and relays packets, while clients handle key generation, key exchange, encryption, decryption, and the user-facing chat workflow.
-                    </p>
-                    <p class="project-text">
-                        It is intentionally small enough to inspect, but it still shows several real system concerns: binary message framing, persistent RSA keys, authenticated encryption, GUI state, and component-level test scripts.
-                    </p>
-                </div>
-
                 <!-- Features -->
                 <div class="project-section" data-perspective-content="operator">
-                    <h2 class="section-title">Key Features</h2>
+                    <h2 class="section-title">System Proof</h2>
                     <div class="features-grid">
                         <div class="feature-item">
                             <div class="feature-icon">ENC</div>
-                            <h3>Hybrid Encryption</h3>
-                            <p>RSA-2048 protects session-key exchange while AES-256-GCM handles efficient authenticated message encryption.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">KEY</div>
-                            <h3>Secure Key Management</h3>
-                            <p>Clients generate and persist RSA keypairs, then expose public key fingerprints for identity visibility.</p>
+                            <h3>Endpoint Cryptography</h3>
+                            <p>RSA-2048 protects key exchange while AES-256-GCM encrypts and authenticates messages.</p>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">AUTH</div>
-                            <h3>Authenticated Encryption</h3>
-                            <p>AES-GCM includes integrity checks so modified ciphertext fails during decryption.</p>
+                            <h3>Tamper Detection</h3>
+                            <p>Modified ciphertext fails authentication instead of producing silently corrupted plaintext.</p>
                         </div>
                         <div class="feature-item">
-                            <div class="feature-icon">E2E</div>
-                            <h3>End-to-End Security</h3>
-                            <p>The relay server routes protocol messages without decrypting chat content.</p>
+                            <div class="feature-icon">TCP</div>
+                            <h3>Forwarding-Only Relay</h3>
+                            <p>The server coordinates clients and routes framed packets without decrypting chat content.</p>
                         </div>
                     </div>
                 </div>
@@ -289,30 +269,13 @@
                     <div class="tech-details">
                         <h3>Encryption Architecture</h3>
                         <p class="project-text">
-                            The application separates cryptography, networking, protocol framing, and UI work into focused modules. The typical message flow is:
+                            Cryptography, networking, framing, and UI state are separated into focused modules:
                         </p>
                         <ol class="project-list">
-                            <li>Each client loads or generates an RSA keypair.</li>
-                            <li>The server relays public keys between connected clients.</li>
-                            <li>A session key is generated and wrapped with RSA-OAEP.</li>
-                            <li>Messages are encrypted with AES-GCM and sent through the shared protocol.</li>
-                            <li>The recipient verifies and decrypts the ciphertext locally.</li>
+                            <li>Endpoints exchange public keys through the relay.</li>
+                            <li>The sender wraps an AES key with RSA-OAEP and encrypts the payload with AES-GCM.</li>
+                            <li>The recipient authenticates and decrypts the framed message locally.</li>
                         </ol>
-                        <div class="project-snippet">
-                            <div class="code-header">
-                                <span class="code-dot"></span>
-                                <span class="code-dot"></span>
-                                <span class="code-dot"></span>
-                                <span class="code-filename">shared/protocol.py</span>
-                            </div>
-                            <pre><code>PUBLIC_KEY  = 1
-SESSION_KEY = 2
-MESSAGE     = 3
-
-def pack_message(msg_type, payload):
-    header = struct.pack("&gt;BI", msg_type, len(payload))
-    return header + payload</code></pre>
-                        </div>
                     </div>
                 </div>
 
@@ -321,24 +284,16 @@ def pack_message(msg_type, payload):
                     <h2 class="section-title">Security Boundaries</h2>
                     <div class="security-list">
                         <div class="security-item">
-                            <h3>What the Server Can See</h3>
-                            <p>The relay server coordinates clients and forwards framed protocol messages, but chat contents are encrypted before they leave the client.</p>
+                            <h3>Relay Boundary</h3>
+                            <p>The server sees connection and framing metadata, but message contents are encrypted before transport.</p>
                         </div>
                         <div class="security-item">
-                            <h3>Message Integrity</h3>
-                            <p>AES-GCM gives each encrypted message an authentication check, so tampered ciphertext fails instead of silently decrypting into bad data.</p>
+                            <h3>Identity Assumption</h3>
+                            <p>Public keys travel through the relay; a production version should require peer fingerprint confirmation.</p>
                         </div>
                         <div class="security-item">
-                            <h3>Current Trust Assumption</h3>
-                            <p>Public keys are exchanged through the relay, so a production version would need peer fingerprint confirmation to reduce impersonation risk.</p>
-                        </div>
-                        <div class="security-item">
-                            <h3>Demo Storage Tradeoff</h3>
-                            <p>Private keys are stored unencrypted for development convenience. A hardened version should protect them with a passphrase or OS key store.</p>
-                        </div>
-                        <div class="security-item">
-                            <h3>Next Hardening Steps</h3>
-                            <p>TLS transport, reconnect handling, encrypted key storage, peer verification, and pytest automation are the clearest next upgrades.</p>
+                            <h3>Hardening Path</h3>
+                            <p>Peer verification, protected key storage, TLS, reconnect handling, and automated integration tests are the next upgrades.</p>
                         </div>
                     </div>
                 </div>
@@ -348,21 +303,15 @@ def pack_message(msg_type, payload):
                     <h2 class="section-title">Technologies & Tools</h2>
                     <div class="tech-stack">
                         <div class="tech-category">
-                            <h3>Cryptography</h3>
-                            <div class="tech-tags">
-                                <span class="tag">RSA-2048</span>
-                                <span class="tag">AES-256-GCM</span>
-                                <span class="tag">OAEP Padding</span>
-                                <span class="tag">SHA-256</span>
-                            </div>
-                        </div>
-                        <div class="tech-category">
-                            <h3>Programming</h3>
+                            <h3>Core Stack</h3>
                             <div class="tech-tags">
                                 <span class="tag">Python 3</span>
-                                <span class="tag">Cryptography Library</span>
-                                <span class="tag">Socket Programming</span>
+                                <span class="tag">RSA-2048</span>
+                                <span class="tag">AES-256-GCM</span>
+                                <span class="tag">RSA-OAEP</span>
+                                <span class="tag">TCP Sockets</span>
                                 <span class="tag">Threading</span>
+                                <span class="tag">Tkinter</span>
                             </div>
                         </div>
                     </div>
