@@ -78,6 +78,16 @@ CONTACT = (
     '<link href="https://www.linkedin.com/in/aj-mendes-b49709341" color="#20252A">LinkedIn</link>'
 )
 
+DATA_CONTACT = (
+    '<b>Email:</b> <link href="mailto:ajmendes17@gmail.com" color="#20252A">'
+    "ajmendes17@gmail.com</link><br/>"
+    "<b>Phone:</b> (720) 442-4724 | Golden, CO<br/>"
+    '<b>Portfolio:</b> <link href="https://ajmendes17.github.io" color="#20252A">'
+    "ajmendes17.github.io</link><br/>"
+    '<b>LinkedIn:</b> <link href="https://www.linkedin.com/in/aj-mendes-b49709341" '
+    'color="#20252A">linkedin.com/in/aj-mendes-b49709341</link>'
+)
+
 
 EDUCATION = (
     "Colorado School of Mines",
@@ -120,6 +130,10 @@ CALL_FOR_FIRE_BULLETS = [
     "Created a browser-only React and TypeScript training application with structured command parsing, scenario generation, guided correction loops, scoring, and saved session history.",
 ]
 
+HANDSHAKE_BULLETS = [
+    "Create and source-verify complex research tasks used to evaluate advanced AI systems; analyze model responses for factual accuracy, research quality, and failure patterns.",
+]
+
 
 def styles_for(theme: Theme) -> dict[str, ParagraphStyle]:
     base = getSampleStyleSheet()
@@ -155,6 +169,16 @@ def styles_for(theme: Theme) -> dict[str, ParagraphStyle]:
             textColor=colors.HexColor("#20252A"),
             alignment=header_alignment,
             spaceAfter=3,
+        ),
+        "contact_vertical": ParagraphStyle(
+            "ContactVertical",
+            parent=base["Normal"],
+            fontName="Helvetica",
+            fontSize=7.85,
+            leading=9.2,
+            textColor=colors.HexColor("#20252A"),
+            alignment=header_alignment,
+            spaceAfter=2,
         ),
         "summary": ParagraphStyle(
             "Summary",
@@ -254,13 +278,13 @@ def build_doc(path: Path, theme: Theme, label: str, story: list) -> None:
     doc.build(story)
 
 
-def header(story: list, s: dict, tagline: str) -> None:
+def header(story: list, s: dict, tagline: str, contact: str = CONTACT, vertical: bool = False) -> None:
     story.extend(
         [
             Spacer(1, 4),
             Paragraph("AJ MENDES", s["name"]),
             Paragraph(tagline.upper(), s["tagline"]),
-            Paragraph(CONTACT, s["contact"]),
+            Paragraph(contact, s["contact_vertical"] if vertical else s["contact"]),
         ]
     )
 
@@ -358,7 +382,13 @@ def software_story(theme: Theme) -> list:
 def data_story(theme: Theme) -> list:
     s = styles_for(theme)
     story: list = []
-    header(story, s, "Data science | machine learning | cybersecurity analytics")
+    header(
+        story,
+        s,
+        "Data science | machine learning | cybersecurity analytics",
+        contact=DATA_CONTACT,
+        vertical=True,
+    )
     section(story, s, theme, "Profile")
     story.append(
         Paragraph(
@@ -368,12 +398,13 @@ def data_story(theme: Theme) -> list:
     )
     section(story, s, theme, "Research Experience")
     entry(story, s, "Undergraduate Data Science Researcher", "The Data Mine, Purdue University | CrowdStrike project | Jan 2026 - May 2026", DATA_MINE_BULLETS)
-    section(story, s, theme, "Data and Security Projects")
+    section(story, s, theme, "Projects")
     entry(story, s, "MarketPulse AI", "Python | pandas | scikit-learn | TensorFlow/Keras | Streamlit", MARKETPULSE_BULLETS)
     entry(story, s, "Secure Chat Application", "Python | RSA-OAEP | AES-256-GCM | TCP", SECURE_CHAT_BULLETS[:1])
     section(story, s, theme, "Education")
     education(story, s)
     section(story, s, theme, "Additional Experience")
+    entry(story, s, "AI Research Contributor", "Handshake AI | 2026 - Present", HANDSHAKE_BULLETS)
     entry(story, s, "Electrical Control Panel Technician", "Xpect Solutions, Longmont, CO | Jun 2025 - Aug 2025", XPECT_BULLETS[:1])
     entry(story, s, "Construction and General Labor", "Formit Right Concrete, Longmont, CO | Summers 2020 - 2024", FORMIT_BULLETS)
     section(story, s, theme, "Technical Skills")
@@ -383,7 +414,16 @@ def data_story(theme: Theme) -> list:
         [
             ("Languages", "Python, SQL, R, Java, C++, TypeScript/JavaScript"),
             ("Data/ML", "pandas, NumPy, scikit-learn, TensorFlow/Keras, PCA, t-SNE, clustering, backtesting"),
-            ("Tools", "Git, Linux, Streamlit, Matplotlib; Army ROTC; Secret security clearance"),
+            ("Tools", "Git, Linux, Streamlit, Matplotlib"),
+        ],
+    )
+    section(story, s, theme, "Leadership and Credentials")
+    skills(
+        story,
+        s,
+        [
+            ("Leadership", "Army ROTC Cadet, Colorado School of Mines"),
+            ("Credential", "Secret security clearance"),
         ],
     )
     return story
