@@ -92,7 +92,7 @@ DATA_CONTACT = (
 EDUCATION = (
     "Colorado School of Mines",
     "B.S. Computer Science | Minor in Military Science | Pursuing Cyber Defense Certificate",
-    "Expected May 2027 | GPA: 3.4",
+    "Expected May 2027 | GPA: 3.5",
 )
 
 
@@ -396,13 +396,13 @@ def data_story(theme: Theme) -> list:
             s["summary"],
         )
     )
+    section(story, s, theme, "Education")
+    education(story, s)
     section(story, s, theme, "Research Experience")
     entry(story, s, "Undergraduate Data Science Researcher", "The Data Mine, Purdue University | CrowdStrike project | Jan 2026 - May 2026", DATA_MINE_BULLETS)
     section(story, s, theme, "Projects")
     entry(story, s, "MarketPulse AI", "Python | pandas | scikit-learn | TensorFlow/Keras | Streamlit", MARKETPULSE_BULLETS)
     entry(story, s, "Secure Chat Application", "Python | RSA-OAEP | AES-256-GCM | TCP", SECURE_CHAT_BULLETS[:1])
-    section(story, s, theme, "Education")
-    education(story, s)
     section(story, s, theme, "Additional Experience")
     entry(story, s, "AI Research Contributor", "Handshake AI | 2026 - Present", HANDSHAKE_BULLETS)
     entry(story, s, "Electrical Control Panel Technician", "Xpect Solutions, Longmont, CO | Jun 2025 - Aug 2025", XPECT_BULLETS[:1])
