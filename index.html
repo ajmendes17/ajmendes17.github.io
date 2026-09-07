@@ -1,525 +1,393 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJ Mendes | Secure Software & Applied CS</title>
-    <meta name="description" content="AJ Mendes is a Colorado School of Mines computer science student building secure software, tested systems, and data-analysis tools.">
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=portfolio-experience-v18">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
-</head>
-<body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a class="nav-logo-link" href="#home" aria-label="AJ Mendes home">
-                    <span class="logo-text">AJ</span>
-                </a>
-            </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open navigation menu" aria-controls="nav-menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AJ Mendes — Software, systems & curiosity</title>
+    <meta
+      name="description"
+      content="AJ Mendes is a computer science student at Colorado School of Mines exploring secure software, applied research, and systems that work in the real world."
+    />
+    <meta name="theme-color" content="#f3f0e8" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;650;700&family=Manrope:wght@400;500;600;650;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="portfolio.css?v=1" />
+    <script src="portfolio.js?v=1" defer></script>
+  </head>
+  <body id="home">
+    <a class="skip" href="#main-content">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="index.html" aria-label="AJ Mendes home"
+        >ajm<span class="orange">.</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="index.html#projects">Work <span>05</span></a
+        ><a href="index.html#about">About</a
+        ><a href="index.html#contact"
+          >Let’s talk <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+    <main id="main-content">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="hero-top">
+          <p class="eyebrow">
+            <span class="status-dot"></span> COMPUTER SCIENCE × REAL-WORLD
+            SYSTEMS
+          </p>
+          <span class="eyebrow hero-location">GOLDEN, COLORADO</span>
         </div>
-    </nav>
-
-    <main id="main-content" tabindex="-1">
-    <!-- Hero Section -->
-    <section id="home" class="hero home-hero">
-        <div class="hero-background">
-            <div class="grid-overlay"></div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title">
+              Curiosity.<br />Craft.<br /><span class="orange"
+                >Working code.</span
+              >
+            </h1>
+            <p class="hero-description">
+              I’m AJ Mendes. I build thoughtful software at the intersection of
+              security, data, and the real world.
+            </p>
+            <a class="pill dark" href="#projects"
+              >Explore my work <span aria-hidden="true">↘</span></a
+            >
+          </div>
+          <figure class="hero-art">
+            <img
+              src="assets/orbital-study.webp"
+              alt="Sculptural orange and titanium orbits surrounding an ivory sphere"
+              width="1024"
+              height="1024"
+              fetchpriority="high"
+            />
+            <figcaption>
+              <span>FIG. 01 — CONNECTED BY CURIOSITY</span><span>↗</span>
+            </figcaption>
+          </figure>
         </div>
-        <div class="hero-content home-hero-content">
-            <div class="hero-text">
-                <p class="hero-kicker">Mines CS · secure software · data systems</p>
-                <h1 class="hero-title">
-                    <span class="line">AJ Mendes</span>
-                </h1>
-                <p class="hero-subtitle">Colorado School of Mines computer science student bringing care, curiosity, and follow-through to secure software and data systems.</p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">Explore Work</a>
-                    <a href="output/pdf/aj-mendes-resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary" aria-label="View AJ Mendes resume PDF">View Resume</a>
-                </div>
-            </div>
+        <div class="hero-bottom">
+          <span
+            >Colorado School of Mines
+            <span class="muted">/ B.S. Computer Science ’27</span></span
+          ><a
+            href="output/pdf/aj-mendes-resume.pdf"
+            target="_blank"
+            rel="noopener"
+            >View résumé ↗</a
+          >
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">01</span>
-                <h2 class="section-title">About</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p class="about-intro">
-                        I build software with an operator's respect for real systems. My experience spans cybersecurity
-                        clustering research with CrowdStrike collaborators, encrypted client-server applications,
-                        tested Java systems, machine-learning pipelines, and industrial control-panel assembly from schematics.
-                    </p>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">01</div>
-                            <h3>Applied Research</h3>
-                            <p>Clustering evaluation, ARI/NMI, controlled experiments, dimensionality reduction, technical presentation</p>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">02</div>
-                            <h3>Secure Software</h3>
-                            <p>RSA-OAEP, AES-GCM, key management, protocol framing, client-server messaging</p>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">03</div>
-                            <h3>Tested Systems</h3>
-                            <p>Python, Java, TypeScript, JUnit, state-based testing, exception handling, data-driven design</p>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">04</div>
-                            <h3>Industrial Fluency</h3>
-                            <p>Electrical schematics, control-panel wiring, NEC-aware workmanship, quality control, field teamwork</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </section>
+      <section
+        class="work-section wrap"
+        id="projects"
+        aria-labelledby="work-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / SELECTED WORK</p>
+            <h2 id="work-title">
+              Ideas, put to work<span class="orange">.</span>
+            </h2>
+          </div>
+          <p>
+            A few things I’ve been building,<br />questioning, and figuring out.
+          </p>
         </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">02</span>
-                <h2 class="section-title">Experience</h2>
+        <a href="acme-integration.html" class="featured project-link"
+          ><div class="feature-copy">
+            <span class="eyebrow"
+              ><span class="status-dot"></span> CURRENT PROJECT / 2026</span
+            >
+            <h3>Making manufacturing<br />make sense.</h3>
+            <p>
+              Connecting production data and procedure execution for ACME
+              Satellite Manufacturing.
+            </p>
+            <div class="tags">
+              <span>Systems integration</span><span>Python</span
+              ><span>Grafana</span>
             </div>
-            <div class="experience-layout">
-                <div class="experience-intro">
-                    <span class="experience-kicker">Research to field work</span>
-                    <h3>Software grounded in evidence and real systems.</h3>
-                    <p>My strongest differentiator is range: I can evaluate an algorithm, explain the result, and work carefully from a physical engineering drawing.</p>
-                    <dl class="experience-facts">
-                        <dt>Education</dt><dd>B.S. Computer Science, May 2027</dd>
-                        <dt>Focus</dt><dd>Secure software and data systems</dd>
-                        <dt>Leadership</dt><dd>Army ROTC</dd>
-                    </dl>
+            <span class="text-link"
+              >Explore the project <span aria-hidden="true">↗</span></span
+            >
+          </div>
+          <div class="integration-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
+            <span class="system-label top-label">01 / MANUFACTURING DATA</span>
+            <div class="system-node node-one">Costpoint<span>PLAN</span></div>
+            <div class="system-core">ECI<span>CONNECT</span></div>
+            <div class="system-node node-two">Epsilon3<span>EXECUTE</span></div>
+            <span class="system-label bottom-label"
+              >FROM SEPARATE SYSTEMS TO A SHARED PICTURE</span
+            >
+          </div></a
+        >
+        <div class="project-grid">
+          <a href="secure-chat-app.html" class="project-link"
+            ><div class="project-art chat-art" aria-hidden="true">
+              <span class="art-caption">PRIVATE BY DESIGN</span>
+              <div class="chat-window">
+                <div class="window-top">
+                  <i></i><i></i><i></i><span>secure_channel</span>
                 </div>
-                <div class="experience-timeline">
-                    <article class="experience-entry">
-                        <div class="experience-date">JAN - MAY 2026</div>
-                        <div>
-                            <p class="experience-org">The Data Mine · Purdue University</p>
-                            <h3>Undergraduate Data Science Researcher</h3>
-                            <p>Built Python evaluation tooling for a CrowdStrike cybersecurity clustering project, measuring accuracy, adjusted Rand index, and normalized mutual information across controlled noise and cluster-count experiments.</p>
-                            <ul class="experience-tags" aria-label="Research methods">
-                                <li>Python</li><li>K-means</li><li>PCA / UMAP / t-SNE</li><li>ARI / NMI</li>
-                            </ul>
-                        </div>
-                    </article>
-                    <article class="experience-entry">
-                        <div class="experience-date">SUMMER 2025</div>
-                        <div>
-                            <p class="experience-org">Xpect Solutions · Longmont, CO</p>
-                            <h3>Electrical Control Panel Technician</h3>
-                            <p>Assembled and wired industrial control panels from schematics and technical drawings, routing, terminating, and labeling conductors to NEC and company standards.</p>
-                        </div>
-                    </article>
-                    <article class="experience-entry">
-                        <div class="experience-date">2020 - 2024</div>
-                        <div>
-                            <p class="experience-org">Formit Right Concrete · Longmont, CO</p>
-                            <h3>Construction and General Labor</h3>
-                            <p>Completed five summers of full-time concrete, site-preparation, material-handling, and landscaping work in fast-changing jobsite conditions.</p>
-                        </div>
-                    </article>
+                <div class="bubble">A conversation worth protecting.</div>
+                <div class="bubble encrypted">a8f2 · 9c01 · e7b4 · 3d6a</div>
+                <div class="secure-note">
+                  <span>⊕</span> ENCRYPTED END TO END
                 </div>
+              </div>
+              <span class="art-index">01 / 03</span
+              ><span class="art-arrow">↗</span>
             </div>
+            <div class="project-meta">
+              <div>
+                <h3>Secure Chat</h3>
+                <p>Private conversations. Thoughtful architecture.</p>
+              </div>
+              <span class="eyebrow">PYTHON / SECURITY</span>
+            </div></a
+          >
+          <a href="marketpulse-ai.html" class="project-link"
+            ><div class="project-art ml-art" aria-hidden="true">
+              <span class="art-caption">ASK BETTER QUESTIONS OF DATA</span>
+              <div class="plot">
+                <span class="plot-label">MODEL COMPARISON</span>
+                <div class="bars">
+                  <i style="--bar: 48%"></i><i style="--bar: 67%"></i
+                  ><i style="--bar: 58%"></i><i style="--bar: 79%"></i
+                  ><i style="--bar: 63%"></i><i style="--bar: 88%"></i
+                  ><i style="--bar: 73%"></i><i style="--bar: 95%"></i>
+                </div>
+                <span class="plot-foot">FEATURES → MODELS → EVALUATION</span>
+              </div>
+              <span class="art-index">02 / 03 · CONCEPT VISUAL</span
+              ><span class="art-arrow">↗</span>
+            </div>
+            <div class="project-meta">
+              <div>
+                <h3>MarketPulse AI</h3>
+                <p>A laboratory for learning how models behave.</p>
+              </div>
+              <span class="eyebrow">PYTHON / MACHINE LEARNING</span>
+            </div></a
+          >
+          <a href="clue-game.html" class="project-link project-wide"
+            ><div class="project-art clue-art" aria-hidden="true">
+              <span class="art-caption">EVERY MOVE HAS A REASON</span>
+              <div class="clue-board">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i
+                ><i></i><b class="piece piece-one"></b
+                ><b class="piece piece-two"></b
+                ><b class="piece piece-three"></b>
+              </div>
+              <div class="clue-type">
+                A little mystery.<br />A lot of logic.
+              </div>
+              <span class="art-index">03 / 03</span
+              ><span class="art-arrow">↗</span>
+            </div>
+            <div class="project-meta">
+              <div>
+                <h3>ClueGame</h3>
+                <p>Graph-driven movement. Configuration-first game design.</p>
+              </div>
+              <span class="eyebrow">JAVA / SWING / JUNIT</span>
+            </div></a
+          >
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects project-stage" data-active-project="1">
-        <div class="container">
-            <div class="systems-showcase" data-project-stage>
-                <aside class="systems-intro">
-                    <div class="systems-section-label">
-                        <span>03</span>
-                        <h2>Projects</h2>
-                    </div>
-                    <span class="systems-eyebrow">Selected system</span>
-                    <div class="systems-intro-copy" aria-live="polite" aria-atomic="true">
-                        <span class="systems-kicker" data-carousel-kicker>Encrypted communication</span>
-                        <h3 data-carousel-title>Secure Chat Application</h3>
-                        <p data-carousel-summary>Hybrid encryption keeps private keys at the endpoints while a relay forwards ciphertext.</p>
-                    </div>
-                    <a class="systems-view-link" data-carousel-link href="secure-chat-app.html" aria-label="View Secure Chat Application project">
-                        <span>View system</span>
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" /></svg>
-                    </a>
-                    <div class="systems-position" aria-live="polite">
-                        <strong data-carousel-current>01</strong>
-                        <span>/</span>
-                        <span data-carousel-total>03</span>
-                    </div>
-                </aside>
-
-                <div class="systems-carousel" data-project-carousel>
-                    <div class="systems-carousel-header">
-                        <span>Drag · swipe · arrow keys</span>
-                        <div class="systems-carousel-controls">
-                            <button type="button" data-carousel-previous aria-label="Show previous project">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
-                            </button>
-                            <button type="button" data-carousel-next aria-label="Show next project">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="systems-carousel-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Selected software projects">
-                        <div class="selected-work systems-carousel-track">
-                <article class="case-study project-card project-portal secure-portal system-slide is-selected" data-project="1" data-project-url="secure-chat-app.html" data-carousel-kicker="Encrypted communication" data-carousel-summary="Hybrid encryption keeps private keys at the endpoints while a relay forwards ciphertext." data-carousel-slide aria-current="true" aria-hidden="false">
-                    <div class="case-visual portal-visual secure-case">
-                        <div class="portal-depth" aria-hidden="true">
-                            <div class="portal-layer portal-grid-layer"></div>
-                            <div class="portal-layer portal-media-layer">
-                                <img src="assets/secure-chat-flow.png" alt="" class="project-thumb" loading="lazy">
-                            </div>
-                            <div class="portal-layer secure-system-layer">
-                                <div class="secure-endpoint endpoint-a">
-                                    <span class="endpoint-screen"><span class="endpoint-lock"></span></span>
-                                    <span>Endpoint A</span>
-                                </div>
-                                <div class="secure-channel" aria-hidden="true">
-                                    <span class="packet packet-one"></span>
-                                    <span class="packet packet-two"></span>
-                                    <span class="packet packet-three"></span>
-                                </div>
-                                <div class="secure-relay">
-                                    <span class="relay-core"></span>
-                                    <span>Relay</span>
-                                </div>
-                                <div class="secure-endpoint endpoint-b">
-                                    <span class="endpoint-screen"><span class="endpoint-lock"></span></span>
-                                    <span>Endpoint B</span>
-                                </div>
-                            </div>
-                            <div class="portal-layer portal-frame-layer">
-                                <span class="portal-index">01 / Secure system</span>
-                                <span class="portal-status"><span></span>Encrypted endpoints</span>
-                            </div>
-                        </div>
-                        <ol class="portal-callouts" aria-label="Secure Chat system details">
-                            <li style="--callout-y: 22%"><b>01</b><span><strong>Interface frame</strong><small>Application shell</small></span></li>
-                            <li style="--callout-y: 50%"><b>02</b><span><strong>Encrypted path</strong><small>Packets in transit</small></span></li>
-                            <li style="--callout-y: 76%"><b>03</b><span><strong>Endpoint boundary</strong><small>Keys stay isolated</small></span></li>
-                        </ol>
-                        <button type="button" class="portal-toggle" aria-expanded="false" aria-controls="portal-details-1">
-                            <span class="portal-toggle-label">Explore layers</span>
-                            <span class="portal-toggle-icon" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="case-content" id="portal-details-1">
-                        <div class="case-meta">
-                            <span class="project-category">Cybersecurity</span>
-                        </div>
-                        <h3 class="project-title">Secure Chat Application</h3>
-                        <p class="project-description">A Python client-server chat app that demonstrates RSA-OAEP key exchange, AES-256-GCM message encryption, framed protocol packets, and a Tkinter desktop workflow.</p>
-                        <div class="portal-layer-key" aria-label="Secure Chat portal layers">
-                            <span><i>01</i> Interface shell</span>
-                            <span><i>02</i> Encrypted transport</span>
-                            <span><i>03</i> Endpoint boundary</span>
-                        </div>
-                        <div class="case-proof-grid">
-                            <div>
-                                <span>Role</span>
-                                <strong>Architecture, crypto flow, UI</strong>
-                            </div>
-                            <div>
-                                <span>Stack</span>
-                                <strong>Python, sockets, cryptography</strong>
-                            </div>
-                            <div>
-                                <span>Evidence</span>
-                                <strong>Server cannot read chat contents</strong>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">RSA-OAEP</span>
-                            <span class="tag">AES-GCM</span>
-                            <span class="tag">Client-Server</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="case-study project-card project-portal clue-portal system-slide" data-project="2" data-project-url="clue-game.html" data-carousel-kicker="Rule-driven game system" data-carousel-summary="A configuration-first board engine combining graph movement, computer players, and tested behavior." data-carousel-slide aria-current="false" aria-hidden="true" inert>
-                    <div class="case-visual portal-visual clue-case">
-                        <div class="portal-depth" aria-hidden="true">
-                            <div class="portal-layer portal-grid-layer"></div>
-                            <div class="portal-layer portal-board-layer">
-                                <div class="project-board-thumb">
-                                    <span class="room">Study</span>
-                                    <span class="walkway"></span>
-                                    <span class="room">Hall</span>
-                                    <span class="walkway"></span>
-                                    <span class="room">Lounge</span>
-                                    <span class="walkway"></span>
-                                    <span class="target-cell"></span>
-                                    <span class="walkway"></span>
-                                    <span class="target-cell"></span>
-                                    <span class="walkway"></span>
-                                    <span class="room">Library</span>
-                                    <span class="walkway"></span>
-                                    <span class="room">Billiard</span>
-                                    <span class="walkway"></span>
-                                    <span class="room">Dining</span>
-                                    <span class="player-token token-green"></span>
-                                    <span class="walkway"></span>
-                                    <span class="player-token token-blue"></span>
-                                    <span class="walkway"></span>
-                                    <span class="player-token token-red"></span>
-                                    <span class="room">Conservatory</span>
-                                    <span class="walkway"></span>
-                                    <span class="room">Ballroom</span>
-                                    <span class="walkway"></span>
-                                    <span class="room">Kitchen</span>
-                                </div>
-                            </div>
-                            <div class="portal-layer portal-frame-layer">
-                                <span class="portal-index">02 / Game system</span>
-                                <span class="portal-status"><span></span>Config-driven board</span>
-                            </div>
-                        </div>
-                        <ol class="portal-callouts" aria-label="ClueGame system details">
-                            <li style="--callout-y: 23%"><b>01</b><span><strong>Configured board</strong><small>Data-defined rooms</small></span></li>
-                            <li style="--callout-y: 51%"><b>02</b><span><strong>Movement graph</strong><small>Reachable paths</small></span></li>
-                            <li style="--callout-y: 76%"><b>03</b><span><strong>Rule state</strong><small>Behavior under test</small></span></li>
-                        </ol>
-                        <button type="button" class="portal-toggle" aria-expanded="false" aria-controls="portal-details-2">
-                            <span class="portal-toggle-label">Explore layers</span>
-                            <span class="portal-toggle-icon" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="case-content" id="portal-details-2">
-                        <div class="case-meta">
-                            <span class="project-category">Software Engineering</span>
-                        </div>
-                        <h3 class="project-title">ClueGame</h3>
-                        <p class="project-description">A Java Swing implementation of Clue with config-driven board loading, graph-based movement, card dealing, suggestions, accusations, and computer-player decision logic.</p>
-                        <div class="portal-layer-key" aria-label="ClueGame portal layers">
-                            <span><i>01</i> Configured board</span>
-                            <span><i>02</i> Movement graph</span>
-                            <span><i>03</i> Tested rules</span>
-                        </div>
-                        <div class="case-proof-grid">
-                            <div>
-                                <span>Role</span>
-                                <strong>Board model, rules, UI, tests</strong>
-                            </div>
-                            <div>
-                                <span>Stack</span>
-                                <strong>Java, Swing, JUnit 5</strong>
-                            </div>
-                            <div>
-                                <span>Evidence</span>
-                                <strong>80 JUnit tests against game behavior</strong>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">TDD</span>
-                            <span class="tag">OOP</span>
-                            <span class="tag">Pathfinding</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="case-study project-card project-portal call-fire-portal system-slide" data-project="3" data-project-url="call-for-fire-trainer.html" data-carousel-kicker="Guided training system" data-carousel-summary="A privacy-treated training aid built to expand independent practice when instructor availability became a bottleneck." data-carousel-slide aria-current="false" aria-hidden="true" inert>
-                    <div class="case-visual portal-visual call-fire-case">
-                        <div class="portal-depth" aria-hidden="true">
-                            <div class="portal-layer portal-grid-layer"></div>
-                            <div class="portal-layer portal-media-layer call-fire-media">
-                                <img src="assets/call-for-fire-dashboard-snapshot-v2.png" alt="" class="project-thumb" loading="lazy">
-                            </div>
-                            <div class="portal-layer training-focus-layer">
-                                <span class="training-reticle"></span>
-                                <span class="training-axis axis-x"></span>
-                                <span class="training-axis axis-y"></span>
-                            </div>
-                            <div class="portal-layer portal-frame-layer">
-                                <span class="portal-index">03 / Training system</span>
-                                <span class="portal-status"><span></span>Details abstracted</span>
-                            </div>
-                        </div>
-                        <ol class="portal-callouts" aria-label="Call for Fire Trainer system details">
-                            <li style="--callout-y: 22%"><b>01</b><span><strong>Guided input</strong><small>Focused practice flow</small></span></li>
-                            <li style="--callout-y: 50%"><b>02</b><span><strong>Feedback loop</strong><small>Immediate correction</small></span></li>
-                            <li style="--callout-y: 76%"><b>03</b><span><strong>Privacy layer</strong><small>Details abstracted</small></span></li>
-                        </ol>
-                        <button type="button" class="portal-toggle" aria-expanded="false" aria-controls="portal-details-3">
-                            <span class="portal-toggle-label">Explore layers</span>
-                            <span class="portal-toggle-icon" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="case-content" id="portal-details-3">
-                        <div class="case-meta">
-                            <span class="project-category">Training Systems</span>
-                        </div>
-                        <h3 class="project-title">Call for Fire Trainer</h3>
-                        <p class="project-description">A focused training aid created to make repeatable practice possible when instructor availability became a bottleneck. The project emphasizes clear pacing, feedback, and independent rehearsal without exposing operational details.</p>
-                        <div class="portal-layer-key" aria-label="Call for Fire Trainer portal layers">
-                            <span><i>01</i> Guided interface</span>
-                            <span><i>02</i> Feedback model</span>
-                            <span><i>03</i> Privacy treatment</span>
-                        </div>
-                        <div class="case-proof-grid">
-                            <div>
-                                <span>Challenge</span>
-                                <strong>Limited instructor bandwidth</strong>
-                            </div>
-                            <div>
-                                <span>Focus</span>
-                                <strong>Repeatable guided practice</strong>
-                            </div>
-                            <div>
-                                <span>Output</span>
-                                <strong>Private project snapshot</strong>
-                            </div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Training Aid</span>
-                            <span class="tag">Feedback Loop</span>
-                            <span class="tag">Dashboard UI</span>
-                            <span class="tag">Human-Centered</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="case-study project-card project-portal market-portal system-slide" data-project="4" data-project-url="marketpulse-ai.html" data-carousel-kicker="ML model experiments" data-carousel-summary="An educational machine-learning lab comparing classical classifiers and a dense neural network on a shared market dataset." data-carousel-slide aria-current="false" aria-hidden="true" inert>
-                    <div class="case-visual portal-visual market-case">
-                        <div class="portal-depth" aria-hidden="true">
-                            <div class="portal-layer portal-grid-layer"></div>
-                            <div class="portal-layer market-chart-layer">
-                                <img class="market-dashboard-thumb" src="assets/marketpulse-model-comparison.jpg" alt="" loading="lazy">
-                            </div>
-                            <div class="portal-layer portal-frame-layer">
-                                <span class="portal-index">04 / ML laboratory</span>
-                                <span class="portal-status"><span></span>Model comparison</span>
-                            </div>
-                        </div>
-                        <ol class="portal-callouts" aria-label="MarketPulse AI system details">
-                            <li style="--callout-y: 22%"><b>01</b><span><strong>Shared features</strong><small>One dataset, three models</small></span></li>
-                            <li style="--callout-y: 50%"><b>02</b><span><strong>Model comparison</strong><small>Classical and neural</small></span></li>
-                            <li style="--callout-y: 76%"><b>03</b><span><strong>Metric tables</strong><small>Accuracy through ROC AUC</small></span></li>
-                        </ol>
-                        <button type="button" class="portal-toggle" aria-expanded="false" aria-controls="portal-details-4">
-                            <span class="portal-toggle-label">Explore layers</span>
-                            <span class="portal-toggle-icon" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                    <div class="case-content" id="portal-details-4">
-                        <div class="case-meta"><span class="project-category">Machine Learning</span></div>
-                        <h3 class="project-title">MarketPulse AI</h3>
-                        <p class="project-description">An educational Python lab for building and comparing logistic regression, random forest, and dense neural-network models on the same engineered dataset.</p>
-                        <div class="portal-layer-key" aria-label="MarketPulse AI portal layers">
-                            <span><i>01</i> Feature engineering</span>
-                            <span><i>02</i> Model training</span>
-                            <span><i>03</i> Metric comparison</span>
-                        </div>
-                        <div class="case-proof-grid">
-                            <div><span>Models</span><strong>Logistic, forest, dense NN</strong></div>
-                            <div><span>Stack</span><strong>Python, sklearn, Keras</strong></div>
-                            <div><span>Evidence</span><strong>Tests and generated reports</strong></div>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tag">Python</span><span class="tag">ML</span><span class="tag">Backtesting</span><span class="tag">Streamlit</span>
-                        </div>
-                    </div>
-                </article>
-                        </div>
-                    </div>
-
-                    <div class="systems-carousel-dots" role="group" aria-label="Choose a project">
-                        <button type="button" data-carousel-dot="0" aria-label="Show Secure Chat Application" aria-pressed="true"><span>01</span><small>Secure Chat</small></button>
-                        <button type="button" data-carousel-dot="1" aria-label="Show ClueGame" aria-pressed="false"><span>02</span><small>ClueGame</small></button>
-                        <button type="button" data-carousel-dot="2" aria-label="Show Call for Fire Trainer" aria-pressed="false"><span>03</span><small>Trainer</small></button>
-                        <button type="button" data-carousel-dot="3" aria-label="Show MarketPulse AI" aria-pressed="false"><span>04</span><small>MarketPulse</small></button>
-                    </div>
-                </div>
+        <a class="archive-link" href="call-for-fire-trainer.html"
+          ><span
+            ><span class="eyebrow">ALSO EXPLORING</span> Call for Fire Trainer
+            <span class="muted">— A study in focused learning tools</span></span
+          ><span aria-hidden="true">↗</span></a
+        >
+      </section>
+      <section class="about-section" id="about">
+        <div class="wrap about-grid">
+          <div>
+            <p class="eyebrow">02 / THE PERSON BEHIND THE PROJECTS</p>
+            <h2>
+              Engineer’s mind.<br />Builder’s instinct<span class="orange"
+                >.</span
+              >
+            </h2>
+            <div class="about-stamp" aria-hidden="true">
+              AJ<span>ALWAYS<br />LEARNING.</span><b>↗</b>
             </div>
+          </div>
+          <div class="about-copy">
+            <p class="large-copy">
+              I like understanding how things work.<br />Then making them work
+              better.
+            </p>
+            <p>
+              I’m a computer science student at Colorado School of Mines. My
+              work spans cybersecurity research, encrypted applications, and
+              software that helps people understand complex systems.
+            </p>
+            <p>
+              Before and alongside code, I’ve wired industrial control panels,
+              worked construction sites, and developed my leadership through
+              Army ROTC. That experience shapes how I build: with care for the
+              details and respect for the people using the result.
+            </p>
+            <div class="capabilities">
+              <span>Secure software</span><span>Applied research</span
+              ><span>Data systems</span><span>Hands-on engineering</span>
+            </div>
+            <a
+              class="text-link"
+              href="output/pdf/aj-mendes-resume.pdf"
+              target="_blank"
+              rel="noopener"
+              >The full story, on paper ↗</a
+            >
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">04</span>
-                <h2 class="section-title">Contact</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-text">
-                    <h3>Let's build something solid</h3>
-                    <p>I'm seeking internships and co-ops in software engineering, data systems, cybersecurity, and technical teams where careful engineering matters.</p>
-                </div>
-                <div class="contact-links">
-                    <div class="contact-email">
-                        <a href="mailto:ajmendes17@gmail.com" class="contact-link">
-                            <span class="contact-icon" aria-hidden="true">
-                                <img src="assets/icon-mail.svg" alt="">
-                            </span>
-                            <span>Email</span>
-                        </a>
-                        <button type="button" class="copy-email-button" id="copy-email" data-email="ajmendes17@gmail.com">
-                            Copy address
-                        </button>
-                    </div>
-                    <a href="https://github.com/ajmendes17" target="_blank" rel="noopener" class="contact-link">
-                        <span class="contact-icon" aria-hidden="true">
-                            <img src="assets/icon-github.svg" alt="">
-                        </span>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/aj-mendes-b49709341" target="_blank" rel="noopener" class="contact-link">
-                        <span class="contact-icon" aria-hidden="true">
-                            <img src="assets/icon-linkedin.svg" alt="">
-                        </span>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="output/pdf/aj-mendes-resume.pdf" target="_blank" rel="noopener" class="contact-link" aria-label="View AJ Mendes resume PDF">
-                        <span class="contact-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7zM14 3v5h5M10 12h5M10 16h5" /></svg>
-                        </span>
-                        <span>Resume</span>
-                    </a>
-                </div>
-                <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
-            </div>
+        <div class="wrap skills-overview">
+          <div>
+            <span class="eyebrow">SOFTWARE ENGINEERING</span>
+            <h3>Build it thoughtfully.</h3>
+            <p>
+              Python · Java · TypeScript<br />Client-server systems · JUnit ·
+              Testing
+            </p>
+          </div>
+          <div>
+            <span class="eyebrow">SECURITY</span>
+            <h3>Understand the boundaries.</h3>
+            <p>RSA-OAEP · AES-GCM<br />Key management · Protocol design</p>
+          </div>
+          <div>
+            <span class="eyebrow">DATA & RESEARCH</span>
+            <h3>Question the results.</h3>
+            <p>
+              Clustering · Model evaluation<br />PCA · UMAP · t-SNE · ARI / NMI
+            </p>
+          </div>
+          <div>
+            <span class="eyebrow">REAL-WORLD SYSTEMS</span>
+            <h3>Connect theory to practice.</h3>
+            <p>
+              Electrical schematics · Control panels<br />Client communication ·
+              Team leadership
+            </p>
+          </div>
         </div>
-    </section>
+      </section>
+      <section class="experience-section wrap" id="experience">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">03 / EXPERIENCE</p>
+            <h2>Different settings.<br />Same attention to detail.</h2>
+          </div>
+        </div>
+        <div class="experience-row">
+          <span class="eyebrow">CURRENT / COURSE PROJECT</span>
+          <div>
+            <h3>Software development & client liaison</h3>
+            <p>ACME Satellite Manufacturing · CSCI-370</p>
+          </div>
+          <p>
+            Connecting client needs with a student team’s work on manufacturing
+            data integration and run-step timelines.
+          </p>
+        </div>
+        <div class="experience-row">
+          <span class="eyebrow">JAN — MAY 2026</span>
+          <div>
+            <h3>Undergraduate data science research</h3>
+            <p>The Data Mine · Purdue University</p>
+          </div>
+          <p>
+            Python evaluation tooling and controlled clustering experiments for
+            a cybersecurity project with CrowdStrike collaborators.
+          </p>
+        </div>
+        <div class="experience-row">
+          <span class="eyebrow">SUMMER 2025</span>
+          <div>
+            <h3>Electrical control panel technician</h3>
+            <p>Xpect Solutions · Longmont, CO</p>
+          </div>
+          <p>
+            Turning engineering schematics into carefully assembled, wired, and
+            labeled industrial control panels.
+          </p>
+        </div>
+        <div class="experience-row">
+          <span class="eyebrow">2020 — 2024</span>
+          <div>
+            <h3>Construction & general labor</h3>
+            <p>Formit Right Concrete · Longmont, CO</p>
+          </div>
+          <p>
+            Five summers of hands-on work, teamwork, and follow-through in
+            changing jobsite conditions.
+          </p>
+        </div>
+      </section>
+      <section class="contact-section" id="contact">
+        <div class="wrap">
+          <p class="eyebrow">04 / WHAT’S NEXT?</p>
+          <div class="contact-heading">
+            <h2>Good things start<br />with a conversation.</h2>
+            <a
+              class="contact-circle"
+              href="mailto:ajmendes17@gmail.com"
+              aria-label="Email AJ Mendes"
+              >↗</a
+            >
+          </div>
+          <div class="contact-bottom">
+            <p>
+              Open to internships, co-ops, and interesting<br />conversations
+              about software, security, and data.
+            </p>
+            <div>
+              <a href="mailto:ajmendes17@gmail.com">ajmendes17@gmail.com ↗</a
+              ><button
+                class="copy-button"
+                type="button"
+                data-copy-email
+                aria-label="Copy email address"
+              >
+                Copy email</button
+              ><span role="status" class="copy-status"></span>
+            </div>
+            <div class="social-links">
+              <a
+                href="https://github.com/ajmendes17"
+                target="_blank"
+                rel="noopener"
+                >GitHub ↗</a
+              ><a
+                href="https://www.linkedin.com/in/aj-mendes-b49709341"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn ↗</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 AJ Mendes.</p>
-        </div>
+    <footer class="wrap site-footer">
+      <a class="wordmark" href="index.html">ajm<span class="orange">.</span></a
+      ><span>© 2026 AJ Mendes</span><a href="#home">Back to top ↑</a>
     </footer>
-
-    <script src="script.js?v=portfolio-experience-v17"></script>
-</body>
+  </body>
 </html>
