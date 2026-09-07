@@ -1,0 +1,125 @@
+/* Shared illustrated board for the gallery and ClueGame case study. */
+.clue-board,
+.mansion-preview {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: block;
+  aspect-ratio: 1;
+  height: auto;
+  background: transparent;
+  box-shadow: 12px 18px 22px #483b252b;
+}
+.clue-board img,
+.mansion-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.clue-art {
+  height: 420px;
+  background: #d8c895;
+}
+.clue-art .clue-board {
+  position: absolute;
+  width: 345px;
+  left: 9%;
+  top: 38px;
+  transform: rotate(-7deg);
+}
+.clue-type {
+  left: 57%;
+  top: 36%;
+}
+.mansion-pawn {
+  --pawn-color: #a93f32;
+  position: absolute;
+  width: 3.5%;
+  height: 4.6%;
+  border-radius: 50% 50% 28% 28%;
+  background: var(--pawn-color);
+  border: 1px solid #443927;
+  box-shadow:
+    2px 3px 2px #33241745,
+    inset 2px 0 2px #fff5;
+}
+.mansion-pawn::before {
+  content: "";
+  position: absolute;
+  width: 78%;
+  aspect-ratio: 1;
+  top: -39%;
+  left: 11%;
+  border-radius: 50%;
+  background: var(--pawn-color);
+  border: 1px solid #443927;
+  box-shadow: inset 2px 1px 2px #fff5;
+}
+.pawn-scarlet {
+  left: 30.5%;
+  top: 35%;
+}
+.pawn-green {
+  --pawn-color: #426f51;
+  left: 66%;
+  top: 73%;
+}
+.pawn-plum {
+  --pawn-color: #765773;
+  left: 47%;
+  top: 65%;
+}
+.project-detail-page .clue-showcase {
+  min-height: 0;
+  padding: 22px 22px 46px;
+  background: #d8c895;
+  border-color: #c1ad7d;
+  overflow: visible;
+}
+.mansion-preview figcaption {
+  position: absolute;
+  top: calc(100% + 12px);
+  width: 100%;
+  text-align: center;
+  font:
+    9px "DM Sans",
+    sans-serif;
+  letter-spacing: 1.4px;
+  color: #594c33;
+}
+@media (max-width: 1050px) {
+  .clue-art .clue-board {
+    left: 5%;
+    width: 330px;
+  }
+  .clue-type {
+    left: 56%;
+    font-size: 32px;
+  }
+}
+@media (max-width: 760px) {
+  .clue-art {
+    height: 480px;
+  }
+  .clue-art .clue-board {
+    width: min(78%, 305px);
+    left: 50%;
+    top: 55px;
+    transform: translateX(-50%) rotate(-5deg);
+  }
+  .clue-type {
+    left: 25px;
+    top: auto;
+    bottom: 51px;
+    padding: 0;
+    background: none;
+    font-size: 26px;
+    letter-spacing: -1px;
+  }
+  .clue-type br {
+    display: none;
+  }
+  .mansion-preview figcaption {
+    font-size: 8px;
+  }
+}

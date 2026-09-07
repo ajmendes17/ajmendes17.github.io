@@ -101,7 +101,7 @@ button:focus-visible {
   font-size: 37px;
   line-height: 1;
   font-weight: 800;
-  letter-spacing: -3px;
+  letter-spacing: -2px;
 }
 .site-header nav {
   display: flex;
@@ -749,7 +749,190 @@ button:focus-visible {
   transition: transform 0.2s;
 }
 .contact-circle:hover {
-  transform: rotate(45deg);
+  transform: translateY(-3px);
+}
+.contact-circle svg {
+  width: 48%;
+  height: 48%;
+}
+
+/* Quiet link treatments and kinetic editorial illustrations. */
+.site-header nav a:hover,
+.hero-bottom a:hover,
+.social-links a:hover,
+.project-link:hover .project-meta h3,
+.project-link:focus-visible .project-meta h3 {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+.hero-art figcaption {
+  align-items: center;
+  gap: 10px;
+}
+.motion-toggle {
+  border: 0;
+  border-bottom: 1px solid #b6afa0;
+  background: transparent;
+  color: #625e53;
+  font: 10px var(--body);
+  white-space: nowrap;
+  padding: 8px 0;
+  min-height: 44px;
+  cursor: pointer;
+}
+.motion-toggle[hidden] {
+  display: none;
+}
+.motion-toggle:disabled {
+  cursor: default;
+  border-color: transparent;
+}
+.kinetic-figure {
+  width: min(320px, 100%);
+  margin-top: 30px;
+}
+.kinetic-figure svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.kinetic-figure figcaption {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: #6c6658;
+}
+.motion-enabled .hero-art img {
+  animation: sculpture-float 8s ease-in-out infinite;
+}
+.motion-enabled .kinetic-balance {
+  transform-origin: 160px 104px;
+  animation: balance-sway 7s ease-in-out infinite;
+}
+.motion-enabled .kinetic-star {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: star-turn 24s linear infinite;
+}
+.motion-enabled .orbit-two {
+  animation: orbit-trace 32s linear infinite;
+}
+.motion-enabled .orbit-three {
+  animation: orbit-trace 42s linear infinite reverse;
+}
+.motion-enabled .chat-window {
+  animation: paper-float 8s ease-in-out infinite;
+}
+.motion-enabled .bars i {
+  transform-origin: bottom;
+  animation: chart-breathe 6s ease-in-out infinite alternate;
+}
+.motion-enabled .bars i:nth-child(2n) {
+  animation-delay: -2s;
+}
+.motion-enabled .bars i:nth-child(3n) {
+  animation-delay: -4s;
+}
+.motion-enabled .pawn-scarlet {
+  animation: pawn-walk 14s ease-in-out infinite;
+}
+.motion-enabled .pawn-plum {
+  animation: pawn-cross 17s ease-in-out infinite;
+}
+.motion-enabled .motion-scene:not(.is-inview) * {
+  animation-play-state: paused;
+}
+.motion-enabled .motion-scene.is-inview * {
+  animation-play-state: running;
+}
+.motion-paused .motion-scene * {
+  animation-play-state: paused !important;
+}
+@keyframes sculpture-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+@keyframes balance-sway {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+}
+@keyframes star-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes orbit-trace {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@keyframes paper-float {
+  0%,
+  100% {
+    transform: rotate(-5deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-3deg) translateY(-5px);
+  }
+}
+@keyframes chart-breathe {
+  from {
+    transform: scaleY(0.78);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes pawn-walk {
+  0%,
+  12%,
+  92%,
+  100% {
+    transform: translateY(0);
+  }
+  42%,
+  65% {
+    transform: translateY(380%);
+  }
+}
+@keyframes pawn-cross {
+  0%,
+  22%,
+  95%,
+  100% {
+    transform: translateX(0);
+  }
+  48%,
+  72% {
+    transform: translateX(350%);
+  }
+}
+@media (max-width: 760px) {
+  .kinetic-figure {
+    width: 230px;
+    margin: 24px auto 0;
+  }
+  .hero-art figcaption > span {
+    font-size: 7px;
+    letter-spacing: 0.8px;
+  }
+  .motion-toggle {
+    font-size: 9px;
+  }
 }
 .contact-bottom {
   border-top: 1px solid #555246;

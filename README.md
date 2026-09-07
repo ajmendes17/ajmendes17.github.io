@@ -12,6 +12,8 @@ The homepage uses `portfolio.css` and `portfolio.js`: an ivory, charcoal, and bu
 
 The custom hero artwork is `assets/orbital-study.webp` (approximately 93 KB), generated with the built-in image generation tool. Its full prompt and provenance are saved in `assets/orbital-study.prompt.txt`. The other homepage project illustrations are CSS compositions, not product screenshots or measured results.
 
+`assets/clue-mansion.svg` is a shared board illustration with furnished rooms and corridors, styled through `mansion.css`. The homepage includes a kinetic SVG sculpture and subtle animated project figures. Motion pauses outside the viewport, can be paused with the hero control, and respects the operating system's reduced-motion setting.
+
 ## Live site
 
 This portfolio is hosted with GitHub Pages and available at [ajmendes17.github.io](https://ajmendes17.github.io/).
