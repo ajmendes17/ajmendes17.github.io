@@ -6,18 +6,20 @@
     <title>ClueGame | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="style.css?v=portfolio-experience-v18">
+    <link rel="stylesheet" href="case-study.css?v=1">
+    <link rel="stylesheet" href="mansion.css?v=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 </head>
-<body class="project-detail-page">
+<body id="home" class="project-detail-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <span class="logo-text">AJ</span>
+                    <span class="logo-text">AJM<span style="color:#bf451f">.</span></span>
                 </a>
             </div>
             <ul class="nav-menu" id="nav-menu">
@@ -39,7 +41,7 @@
     <section class="project-header">
         <div class="container">
             <a href="index.html?project=2#projects" class="back-link">
-                ← Back to Projects
+                Back to Projects
             </a>
             <div class="project-header-layout">
                 <div class="project-header-content">
@@ -56,33 +58,13 @@
                 </div>
 
                 <div class="project-showcase clue-showcase" aria-label="ClueGame board preview">
-                    <div class="board-preview">
-                        <div class="room">Study</div>
-                        <div class="walkway"></div>
-                        <div class="room">Hall</div>
-                        <div class="walkway"></div>
-                        <div class="room">Lounge</div>
-                        <div class="walkway"></div>
-                        <div class="target-cell"></div>
-                        <div class="walkway"></div>
-                        <div class="target-cell"></div>
-                        <div class="walkway"></div>
-                        <div class="room">Library</div>
-                        <div class="walkway"></div>
-                        <div class="room">Billiard</div>
-                        <div class="walkway"></div>
-                        <div class="room">Dining</div>
-                        <div class="player-token token-green"></div>
-                        <div class="walkway"></div>
-                        <div class="player-token token-blue"></div>
-                        <div class="walkway"></div>
-                        <div class="player-token token-red"></div>
-                        <div class="room">Conservatory</div>
-                        <div class="walkway"></div>
-                        <div class="room">Ballroom</div>
-                        <div class="walkway"></div>
-                        <div class="room">Kitchen</div>
-                    </div>
+                    <figure class="mansion-preview">
+                        <img src="assets/clue-mansion.svg" width="600" height="600" alt="Illustrated Clue-style mansion with nine furnished rooms connected by tiled corridors." />
+                        <span class="mansion-pawn pawn-scarlet" aria-hidden="true"></span>
+                        <span class="mansion-pawn pawn-green" aria-hidden="true"></span>
+                        <span class="mansion-pawn pawn-plum" aria-hidden="true"></span>
+                        <figcaption>THE MANSION / BOARD ILLUSTRATION</figcaption>
+                    </figure>
                 </div>
             </div>
             <div class="project-stats">
@@ -219,7 +201,7 @@
                     <h2 class="section-title">Project Links</h2>
                     <div class="project-links">
                         <a href="https://github.com/ajmendes17/ClueGame" target="_blank" rel="noopener" class="project-link-btn">
-                            <span>View on GitHub →</span>
+                            <span>View on GitHub</span>
                         </a>
                         <a href="index.html?project=2#projects" class="project-link-btn secondary">
                             <span>Back to Projects</span>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <defs>
+    <pattern id="tiles" width="19" height="19" patternUnits="userSpaceOnUse">
+      <path fill="#e8d6a6" d="M0 0h19v19H0z"/>
+      <path stroke="#b9a270" stroke-width=".8" d="M0 19V0h19"/>
+      <path fill="#c8b582" d="M7.5 7.5h4v4h-4z"/>
+    </pattern>
+    <pattern id="wood" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path fill="#c48e67" d="M0 0h20v20H0z"/>
+      <path stroke="#a77353" stroke-width=".7" d="M0 0h20M0 10h20M10 0v10M0 10v10"/>
+    </pattern>
+  </defs>
+  <rect x="3" y="3" width="594" height="594" rx="7" fill="#443e31"/>
+  <rect x="13" y="13" width="574" height="574" rx="2" stroke="#b49c6a" stroke-width="2"/>
+  <rect x="25" y="25" width="550" height="550" fill="url(#tiles)"/>
+  <!-- Nine rooms, separated by walkable tiled corridors. -->
+  <g stroke="#534737" stroke-width="5">
+    <path fill="url(#wood)" d="M25 25h146v158H25z"/>
+    <path fill="#d4c5aa" d="M215 25h170v158H215z"/>
+    <path fill="#b78370" d="M429 25h146v158H429z"/>
+    <path fill="#acba9a" d="M25 227h146v143H25z"/>
+    <path fill="#c4b89a" d="M215 227h170v143H215z"/>
+    <path fill="url(#wood)" d="M429 227h146v143H429z"/>
+    <path fill="#b3c3ac" d="M25 414h146v161H25z"/>
+    <path fill="url(#wood)" d="M215 414h170v161H215z"/>
+    <path fill="#d5c9ae" d="M429 414h146v161H429z"/>
+  </g>
+  <!-- Door openings and swing arcs. -->
+  <g stroke="#ead9ae" stroke-width="7">
+    <path d="M121 183h27M275 183h29M429 129v29M171 283v28M266 227h29M429 291v29M118 414h28M287 414h29M455 414h29"/>
+  </g>
+  <g stroke="#695940" stroke-width="1.4">
+    <path d="M121 182v-26q27 0 27 26M275 182v-26q29 0 29 26M430 129h26q0 29-26 29M170 283h-26q0 28 26 28M266 228v26q29 0 29-26M430 291h26q0 29-26 29M118 415v26q28 0 28-26M287 415v26q29 0 29-26M455 415v26q29 0 29-26"/>
+  </g>
+  <!-- Study: desk, chair, bookcase, and rug. -->
+  <rect x="53" y="74" width="83" height="73" rx="2" fill="#995c4b" stroke="#e0b483" stroke-width="3"/>
+  <rect x="67" y="85" width="69" height="23" rx="2" fill="#67513c" stroke="#443a2a" stroke-width="2"/>
+  <rect x="82" y="114" width="23" height="19" rx="7" fill="#605c43"/>
+  <path stroke="#57412f" stroke-width="10" d="M38 65v91"/>
+  <path stroke="#cdaf78" stroke-width="2" d="M33 75h10M33 87h10M33 99h10M33 111h10M33 123h10M33 135h10M33 147h10"/>
+  <!-- Hall: a broad staircase. -->
+  <rect x="249" y="76" width="101" height="77" fill="#b4a387" stroke="#756750" stroke-width="2"/>
+  <path stroke="#756750" stroke-width="2" d="M249 87h101M249 98h101M249 109h101M249 120h101M249 131h101M249 142h101"/>
+  <path stroke="#614e39" stroke-width="5" d="M243 75v79M356 75v79"/>
+  <!-- Lounge: sofa and coffee table. -->
+  <rect x="453" y="78" width="96" height="72" rx="22" fill="#cd9f84"/>
+  <path stroke="#655544" stroke-width="15" stroke-linejoin="round" d="M461 84v49h76V84"/>
+  <ellipse cx="499" cy="99" rx="23" ry="15" fill="#d9c4a0" stroke="#8f7355" stroke-width="2"/>
+  <!-- Library: shelves and reading table. -->
+  <g stroke="#61513a" stroke-width="12"><path d="M39 244v104M62 353h90"/></g>
+  <path stroke="#e2c994" stroke-width="2" d="M33 253h12M33 265h12M33 277h12M33 289h12M33 301h12M33 313h12M33 325h12M33 337h12M75 347v12M87 347v12M99 347v12M111 347v12M123 347v12M135 347v12"/>
+  <ellipse cx="109" cy="302" rx="31" ry="24" fill="#dfd0a7" stroke="#75684a" stroke-width="3"/>
+  <path stroke="#75684a" stroke-width="2" d="M98 291l14 4 11-4v19l-11 4-14-4zM112 295v19"/>
+  <!-- Billiard room: felt table and six pockets. -->
+  <rect x="241" y="279" width="116" height="64" rx="9" fill="#65513d"/>
+  <rect x="249" y="286" width="100" height="50" rx="5" fill="#587565"/>
+  <g fill="#363d30"><circle cx="251" cy="288" r="4"/><circle cx="299" cy="287" r="4"/><circle cx="346" cy="288" r="4"/><circle cx="251" cy="333" r="4"/><circle cx="299" cy="335" r="4"/><circle cx="346" cy="333" r="4"/></g>
+  <path stroke="#e2c691" stroke-width="2" d="M266 321l58-22"/>
+  <circle cx="291" cy="304" r="3" fill="#f2e7cd"/><circle cx="324" cy="317" r="3" fill="#a84936"/>
+  <!-- Dining room: table and six chairs. -->
+  <g fill="#67513d"><rect x="458" y="284" width="17" height="17" rx="4"/><rect x="458" y="319" width="17" height="17" rx="4"/><rect x="534" y="284" width="17" height="17" rx="4"/><rect x="534" y="319" width="17" height="17" rx="4"/><rect x="496" y="270" width="17" height="17" rx="4"/><rect x="496" y="337" width="17" height="17" rx="4"/></g>
+  <rect x="478" y="280" width="52" height="64" rx="16" fill="#dac6a1" stroke="#766047" stroke-width="3"/>
+  <path stroke="#b49c72" d="M487 285v54M521 285v54"/>
+  <ellipse cx="504" cy="311" rx="8" ry="13" fill="#9b7153"/>
+  <!-- Conservatory: glass roof and planters. -->
+  <path stroke="#e7ecce" stroke-width="3" d="M35 456l127 105M162 456L35 561M99 456v108M35 508h127"/>
+  <g fill="#657b55" stroke="#4e6845" stroke-width="2"><circle cx="52" cy="472" r="15"/><circle cx="143" cy="480" r="13"/><circle cx="54" cy="547" r="12"/><circle cx="139" cy="549" r="15"/></g>
+  <circle cx="97" cy="510" r="19" fill="#d7cfab" stroke="#7b8664" stroke-width="3"/>
+  <!-- Ballroom: parquet dance floor and piano. -->
+  <path fill="#dcb58b" stroke="#896343" stroke-width="2" d="M247 465h107v85H247z"/>
+  <path stroke="#bc9068" d="M247 486h107M247 508h107M247 529h107M273 465v85M300 465v85M327 465v85"/>
+  <path fill="#4e483b" d="M229 471h32q27 0 27 21t-28 21h-31z"/>
+  <path stroke="#ede1bf" stroke-width="6" d="M234 480v25"/>
+  <circle cx="300" cy="548" r="8" fill="#f1daa0" stroke="#aa8750" stroke-width="2"/>
+  <!-- Kitchen: counters, stove, and island. -->
+  <path fill="#eee2c5" stroke="#a99b7e" stroke-width="2" d="M443 465h117v96h-22v-73h-95z"/>
+  <rect x="477" y="510" width="43" height="35" fill="#b3a17c" stroke="#817253" stroke-width="2"/>
+  <rect x="453" y="468" width="34" height="17" rx="3" fill="#b1b6a6" stroke="#839080"/>
+  <g stroke="#7c7663" stroke-width="2"><circle cx="545" cy="505" r="4"/><circle cx="555" cy="505" r="4"/><circle cx="545" cy="516" r="4"/><circle cx="555" cy="516" r="4"/></g>
+  <!-- Room nameplates. -->
+  <g fill="#f1e6cc" opacity=".94">
+    <path d="M36 36h124v29H36zM228 36h144v29H228zM440 36h124v29H440zM36 237h124v29H36zM228 237h144v29H228zM440 237h124v29H440zM30 423h136v29H30zM228 423h144v29H228zM440 423h124v29H440z"/>
+  </g>
+  <g fill="#41392c" font-family="Georgia,serif" font-size="18" text-anchor="middle">
+    <text x="98" y="57">Study</text><text x="300" y="57">Hall</text><text x="502" y="57">Lounge</text>
+    <text x="98" y="258">Library</text><text x="300" y="258">Billiard Room</text><text x="502" y="258">Dining Room</text>
+    <text x="98" y="444" font-size="17">Conservatory</text><text x="300" y="444">Ballroom</text><text x="502" y="444">Kitchen</text>
+  </g>
+  <!-- Discreet corner secret passages. -->
+  <path stroke="#bfa573" stroke-width="2" stroke-dasharray="3 3" d="M27 170l13-13M560 170l13 13M27 429l13 13M560 429l13-13"/>
+</svg>

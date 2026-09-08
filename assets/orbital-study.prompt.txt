@@ -1,0 +1,5 @@
+Mode: built-in image_gen
+Final asset: assets/orbital-study.webp
+The generated source was converted to a 1200px WebP for the portfolio.
+
+Use case: stylized-concept. Asset type: editorial software engineer portfolio hero artwork. Create a sophisticated abstract physical sculpture: two intersecting orbital bands, one brushed dark titanium and one vivid burnt orange anodized metal, enclosing a small ivory sphere. A few fine metallic concentric wire arcs suggest systems and connections. Sculptural industrial design, photorealistic studio rendering with tactile metal grain, soft directional shadows and warm ivory seamless backdrop (#f3f0e8). Square composition, entire sculpture within frame with breathing room, monumental yet restrained, art-book photography, no text, no logos, no interface, no watermark. The sculpture should be beautifully unconventional, precise and minimal.
