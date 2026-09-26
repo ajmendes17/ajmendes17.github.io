@@ -13,6 +13,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 35px;
+  overflow-x: clip;
 }
 body {
   margin: 0;
@@ -21,6 +22,7 @@ body {
   font-family: var(--body);
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: clip;
 }
 a {
   color: inherit;
@@ -277,6 +279,7 @@ button:focus-visible {
 .integration-art {
   position: relative;
   overflow: hidden;
+  contain: paint;
   background: #dfddd2;
   background-image: radial-gradient(#b9b6a6 0.7px, transparent 0.7px);
   background-size: 14px 14px;
@@ -1372,4 +1375,152 @@ button:focus-visible {
   .hero-art {
     margin-top: 18px;
   }
+}
+
+/* A little more depth, while keeping the portfolio's editorial palette. */
+.hero-grid {
+  gap: clamp(24px, 4vw, 72px);
+  padding-block: 52px 58px;
+}
+.hero-copy {
+  padding-block: 22px;
+}
+.hero-art {
+  isolation: isolate;
+}
+.hero-art::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 8% -7% 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, #da8b5a57 0%, #dfb07d26 43%, transparent 70%);
+  filter: blur(23px);
+}
+.hero-art::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 9% -3% 14% 7%;
+  border: 1px solid #b65a373d;
+  border-radius: 50%;
+  transform: rotate(-24deg);
+}
+.hero-art img {
+  transform: scale(1.07);
+  -webkit-mask-image: radial-gradient(ellipse 66% 68% at 50% 48%, #000 70%, transparent 100%);
+  mask-image: radial-gradient(ellipse 66% 68% at 50% 48%, #000 70%, transparent 100%);
+}
+.motion-enabled .hero-art img {
+  animation: sculpture-float 8s ease-in-out infinite;
+}
+@keyframes sculpture-float {
+  0%, 100% { transform: scale(1.07) translateY(0); }
+  50% { transform: scale(1.07) translateY(-8px); }
+}
+
+.work-section,
+.experience-section {
+  position: relative;
+}
+.work-section::before,
+.experience-section::before {
+  content: "";
+  position: absolute;
+  top: 91px;
+  bottom: 95px;
+  left: -24px;
+  width: 1px;
+  background: linear-gradient(var(--orange) 0 58px, var(--line) 58px 100%);
+}
+.section-heading .eyebrow,
+.about-grid > div:first-child > .eyebrow,
+.contact-section > .wrap > .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+.section-heading .eyebrow::before,
+.about-grid > div:first-child > .eyebrow::before,
+.contact-section > .wrap > .eyebrow::before {
+  content: "";
+  width: 19px;
+  height: 1px;
+  background: var(--orange);
+}
+.featured,
+.project-art {
+  box-shadow: 0 18px 40px #40352b0e;
+}
+.project-art::after,
+.featured::after {
+  content: "↗";
+  position: absolute;
+  right: 23px;
+  bottom: 20px;
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+  transition: transform .25s ease, background .25s ease, color .25s ease;
+}
+.featured {
+  position: relative;
+}
+.featured::after {
+  z-index: 2;
+  color: var(--ink);
+}
+.project-link:hover .project-art::after,
+.project-link:focus-visible .project-art::after,
+.featured:hover::after,
+.featured:focus-visible::after {
+  transform: translate(3px, -3px);
+  background: var(--ink);
+  color: var(--paper);
+}
+.chat-art {
+  background: radial-gradient(circle at 78% 23%, #eff4d9 0, transparent 42%), linear-gradient(135deg, #b8cdbb, #d8e2d1 70%);
+}
+.ml-art {
+  background: radial-gradient(circle at 24% 76%, #edab8359 0, transparent 47%), linear-gradient(135deg, #edd8c4, #d9c3b9);
+}
+.clue-art {
+  background: radial-gradient(circle at 79% 24%, #fbe3a1 0, transparent 39%), linear-gradient(120deg, #ccaa4c, #e9ce78);
+}
+.chat-window,
+.plot,
+.clue-board {
+  transition: translate .3s ease, box-shadow .3s ease;
+}
+.project-link:hover .chat-window,
+.project-link:hover .plot,
+.project-link:hover .clue-board,
+.project-link:focus-visible .chat-window,
+.project-link:focus-visible .plot,
+.project-link:focus-visible .clue-board {
+  translate: 0 -5px;
+  box-shadow: 12px 24px 22px #40352b24;
+}
+
+@media (max-width: 760px) {
+  .hero-grid { gap: 10px; padding: 30px 0 25px; }
+  .hero-copy { padding: 0; }
+  .hero-art { margin-top: 18px; }
+  .hero-art img { transform: scale(1.02); }
+  .work-section::before,
+  .experience-section::before { display: none; }
+  .featured::after { bottom: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-link:hover .chat-window,
+  .project-link:hover .plot,
+  .project-link:hover .clue-board,
+  .project-link:focus-visible .chat-window,
+  .project-link:focus-visible .plot,
+  .project-link:focus-visible .clue-board { translate: none; }
 }
