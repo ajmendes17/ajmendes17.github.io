@@ -68,6 +68,9 @@ body.project-detail-page {
   padding: 45px 0 65px;
   background: #f3f0e8;
 }
+.secure-chat-page .secure-chat-header-layout {
+  display: block;
+}
 .project-detail-page .project-header::before {
   display: none;
 }

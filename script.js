@@ -416,17 +416,17 @@ function initProjectCarousel() {
 
     viewport.addEventListener('pointerup', finishDrag);
     viewport.addEventListener('pointercancel', finishDrag);
-    const requestedProject = Number(new URLSearchParams(window.location.search).get('project'));
-    const initialIndex = Number.isInteger(requestedProject) && requestedProject >= 1 && requestedProject <= slides.length
-        ? requestedProject - 1
-        : 0;
-    updateSelection(initialIndex, 1);
+    function selectProjectFromUrl() {
+        const requestedProject = Number(new URLSearchParams(window.location.search).get('project'));
+        const projectIndex = Number.isInteger(requestedProject) && requestedProject >= 1 && requestedProject <= slides.length
+            ? requestedProject - 1
+            : 0;
+        updateSelection(projectIndex, 1);
+    }
 
-    // Re-align deep links after responsive layout and web fonts settle. Without
-    // this pass, mobile browsers can stop inside the preceding experience
-    // section because the anchor is resolved before its final height is known.
-    if (window.location.hash === '#projects') {
-        const alignProjectSection = () => {
+    function alignProjectSection() {
+        if (window.location.hash !== '#projects') return;
+        const align = () => {
             if (!projectSection) return;
             const root = document.documentElement;
             const previousScrollBehavior = root.style.scrollBehavior;
@@ -434,10 +434,25 @@ function initProjectCarousel() {
             projectSection.scrollIntoView({ block: 'start' });
             root.style.scrollBehavior = previousScrollBehavior;
         };
-        alignProjectSection();
-        requestAnimationFrame(() => requestAnimationFrame(alignProjectSection));
-        document.fonts?.ready.then(alignProjectSection);
+        align();
+        requestAnimationFrame(() => requestAnimationFrame(align));
+        document.fonts?.ready.then(align);
     }
+
+    selectProjectFromUrl();
+    alignProjectSection();
+    // Back/Forward may restore this page from the BFCache without rerunning
+    // initialization. Re-read the URL so the selected card and return target
+    // stay synchronized with the history entry.
+    window.addEventListener('popstate', () => {
+        selectProjectFromUrl();
+        alignProjectSection();
+    });
+    window.addEventListener('pageshow', event => {
+        if (!event.persisted) return;
+        selectProjectFromUrl();
+        alignProjectSection();
+    });
 }
 
 // The script is loaded after the page markup, so initialize synchronously.
@@ -902,19 +917,12 @@ function initPerspectiveSwitchers() {
     const validPerspectives = ['operator', 'builder'];
     const url = new URL(window.location.href);
     const requestedPerspective = url.searchParams.get('lens');
-    let storedPerspective = null;
-
-    try {
-        storedPerspective = window.sessionStorage.getItem('portfolio-project-perspective');
-    } catch (error) {
-        storedPerspective = null;
-    }
-
+    // Direct links have a predictable default. Only an explicit, valid lens
+    // parameter can choose the initial perspective; a prior session choice
+    // must not silently change what a shared URL displays.
     const initialPerspective = validPerspectives.includes(requestedPerspective)
         ? requestedPerspective
-        : validPerspectives.includes(storedPerspective)
-            ? storedPerspective
-            : 'operator';
+        : 'operator';
 
     document.body.classList.add('has-perspective-switcher');
 
@@ -987,6 +995,13 @@ function initPerspectiveSwitchers() {
     });
 
     setPerspective(initialPerspective, false);
+
+    // Keep browser history navigation consistent with direct links. An absent
+    // or invalid lens resolves to the same operator default as initial load.
+    window.addEventListener('popstate', () => {
+        const lens = new URL(window.location.href).searchParams.get('lens');
+        setPerspective(validPerspectives.includes(lens) ? lens : 'operator', false);
+    });
 }
 
 if (document.readyState === 'loading') {
