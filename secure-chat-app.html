@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure Chat Application | AJ Mendes</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-    <link rel="stylesheet" href="style.css?v=portfolio-experience-v18">
+    <link rel="stylesheet" href="style.css?v=secure-chat-live-demo-v8">
     <link rel="stylesheet" href="case-study.css?v=1">
     <link rel="stylesheet" href="portfolio.css?v=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,320 +15,181 @@
 <body id="home" class="secure-chat-page project-detail-page">
     <a class="skip" href="#main-content">Skip to content</a>
     <header class="site-header wrap">
-      <a class="wordmark" href="index.html" aria-label="AJ Mendes home">AJM<span class="orange">.</span></a>
-      <nav aria-label="Main navigation">
-        <a href="index.html#projects">Work <span>05</span></a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Let’s talk</a>
-      </nav>
+        <a class="wordmark" href="index.html" aria-label="AJ Mendes home">AJM<span class="orange">.</span></a>
+        <nav aria-label="Main navigation">
+            <a href="index.html#projects">Work <span>05</span></a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Let’s talk</a>
+        </nav>
     </header>
 
     <main id="main-content" tabindex="-1">
-    <!-- Project Header -->
-    <section class="project-header">
-        <div class="container">
-            <a href="index.html?project=1#projects" class="back-link">
-                Back to Projects
-            </a>
-            <div class="project-header-layout secure-chat-header-layout">
-                <div class="project-header-content">
-                    <span class="project-category">Cybersecurity</span>
-                    <h1 class="project-main-title">Secure Chat Application</h1>
-                    <p class="project-subtitle">An educational Python chat application built to make encrypted messaging easier to understand, from the plain-English idea to the cryptographic implementation details.</p>
-                    <div class="project-header-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Cryptography</span>
-                        <span class="tag">Socket Programming</span>
-                        <span class="tag">Client-Server</span>
-                        <span class="tag">GUI</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Project Details -->
-    <section class="project-details">
-        <div class="container">
-            <div class="project-content">
-                <div class="project-summary-grid">
-                    <div class="summary-item">
-                        <span class="summary-label">Purpose</span>
-                        <strong>Make encryption understandable</strong>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Plain English</span>
-                        <strong>A locked-message chat demo</strong>
-                    </div>
-                    <div class="summary-item">
-                        <span class="summary-label">Technical Layer</span>
-                        <strong>RSA-OAEP + AES-256-GCM</strong>
-                    </div>
-                </div>
-
-                <!-- Educational Summary -->
-                <div class="project-section project-perspective" data-perspective-switcher data-project-id="secure-chat">
-                    <div class="perspective-heading">
-                        <div>
-                            <span class="summary-label">Project Perspective</span>
-                            <h2 class="section-title">Choose the level of abstraction</h2>
-                            <p>Start with what the system enables, or inspect how it was built and validated.</p>
+        <section class="project-header">
+            <div class="container">
+                <a href="index.html?project=1#projects" class="back-link">Back to Projects</a>
+                <div class="project-header-layout secure-chat-header-layout">
+                    <div class="project-header-content">
+                        <span class="project-category">Cybersecurity</span>
+                        <h1 class="project-main-title">Secure Chat Application</h1>
+                        <p class="project-subtitle">An educational Python chat application built to make encrypted messaging easier to understand, from the plain-English idea to the cryptographic implementation details.</p>
+                        <div class="project-header-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Cryptography</span>
+                            <span class="tag">Socket Programming</span>
+                            <span class="tag">Client-Server</span>
+                            <span class="tag">GUI</span>
                         </div>
-                        <div class="perspective-toggle" role="tablist" aria-label="Secure Chat project perspective">
-                            <button type="button" class="perspective-toggle-btn active" role="tab" aria-selected="true" aria-controls="secure-operator-perspective" data-perspective-target="operator"><span>01</span>Operator</button>
-                            <button type="button" class="perspective-toggle-btn" role="tab" aria-selected="false" aria-controls="secure-builder-perspective" data-perspective-target="builder"><span>02</span>Builder</button>
-                        </div>
-                    </div>
-
-                    <div class="perspective-panels" aria-live="polite">
-                        <div class="perspective-panel active" id="secure-operator-perspective" role="tabpanel" data-perspective-panel="operator">
-                            <span class="perspective-panel-kicker">Purpose · trust · workflow</span>
-                            <h3>Private conversation without trusting the relay</h3>
-                            <p class="project-text">
-                                Secure Chat demonstrates encrypted messaging without asking users to trust the relay with plaintext.
-                            </p>
-                            <ol class="project-list plain-steps">
-                                <li>Endpoints exchange public keys while private keys remain local.</li>
-                                <li>The sender protects an AES key with the recipient's RSA public key.</li>
-                                <li>The relay forwards ciphertext that only the recipient can verify and decrypt.</li>
-                            </ol>
-                        </div>
-
-                        <div class="perspective-panel" id="secure-builder-perspective" role="tabpanel" hidden data-perspective-panel="builder">
-                            <span class="perspective-panel-kicker">Boundary · protocol · cryptography</span>
-                            <h3>Hybrid encryption across isolated endpoints</h3>
-                            <p class="project-text">
-                                Python clients combine RSA-OAEP key wrapping, AES-256-GCM payload encryption, and a framed TCP protocol behind a Tkinter workflow.
-                            </p>
-                            <ol class="project-list">
-                                <li>Clients generate or load persistent RSA keypairs and exchange only public keys.</li>
-                                <li>AES-GCM provides message confidentiality, integrity, and tamper detection.</li>
-                                <li>Typed, length-prefixed frames keep socket transport deterministic.</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-showcase secure-chat-showcase secure-endpoint-model" data-secure-endpoint-model data-model-stage="keys" aria-labelledby="secure-model-title">
-                    <div class="secure-model-topline">
-                        <div>
-                            <span class="secure-model-eyebrow">Live architecture model</span>
-                            <h2 id="secure-model-title">Encrypted endpoint flow</h2>
-                        </div>
-                    </div>
-
-                    <div class="secure-model-scene secure-3d-viewport" data-secure-viewport role="img" aria-label="Three-dimensional model of two encrypted chat endpoints exchanging keys and messages through a forwarding-only TCP relay.">
-                        <div class="secure-sequence-readout" aria-hidden="true">
-                            <span data-secure-sequence-index>01 / IDENTITY</span>
-                            <strong data-secure-sequence-steps>PUBLISH → EXCHANGE → STORE</strong>
-                        </div>
-
-                        <div class="secure-3d-world" aria-hidden="true">
-                            <div class="secure-world-floor"></div>
-                            <div class="secure-zone secure-zone-a"><span>Trusted zone A</span></div>
-                            <div class="secure-zone secure-zone-b"><span>Trusted zone B</span></div>
-
-                            <div class="secure-terminal secure-terminal-a">
-                                <div class="secure-terminal-surface">
-                                    <span class="secure-terminal-kicker">CLIENT 01</span>
-                                    <svg class="secure-terminal-lock" viewBox="0 0 24 24">
-                                        <rect x="5" y="10" width="14" height="10" rx="2" />
-                                        <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
-                                    </svg>
-                                    <strong>Endpoint A</strong>
-                                    <span data-secure-endpoint-a-state>Share public key</span>
-                                </div>
-                                <span class="secure-private-key">PRIVATE KEY<br>LOCAL ONLY</span>
-                            </div>
-
-                            <div class="secure-route-3d secure-route-3d-left">
-                                <span class="secure-route-beam"></span>
-                                <span class="secure-packet-3d secure-packet-3d-left secure-packet-primary">
-                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
-                                </span>
-                                <span class="secure-packet-3d secure-packet-3d-left secure-packet-exchange">
-                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
-                                </span>
-                            </div>
-
-                            <div class="secure-relay-3d">
-                                <span class="secure-relay-orbit secure-relay-orbit-one"></span>
-                                <span class="secure-relay-orbit secure-relay-orbit-two"></span>
-                                <div class="secure-relay-core">
-                                    <svg viewBox="0 0 24 24">
-                                        <rect x="4" y="4" width="16" height="5" rx="1" />
-                                        <rect x="4" y="15" width="16" height="5" rx="1" />
-                                        <path d="M8 9v6M16 9v6M8 6.5h.01M8 17.5h.01" />
-                                    </svg>
-                                </div>
-                                <strong>TCP Relay</strong>
-                                <span data-secure-relay-state>Forwards public keys</span>
-                            </div>
-
-                            <div class="secure-route-3d secure-route-3d-right">
-                                <span class="secure-route-beam"></span>
-                                <span class="secure-packet-3d secure-packet-3d-right secure-packet-primary">
-                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
-                                </span>
-                                <span class="secure-packet-3d secure-packet-3d-right secure-packet-exchange">
-                                    <span class="secure-packet-top" data-secure-packet-short>PUB</span>
-                                </span>
-                            </div>
-
-                            <div class="secure-terminal secure-terminal-b">
-                                <div class="secure-terminal-surface">
-                                    <span class="secure-terminal-kicker">CLIENT 02</span>
-                                    <svg class="secure-terminal-lock" viewBox="0 0 24 24">
-                                        <rect x="5" y="10" width="14" height="10" rx="2" />
-                                        <path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v2" />
-                                    </svg>
-                                    <strong>Endpoint B</strong>
-                                    <span data-secure-endpoint-b-state>Load peer key</span>
-                                </div>
-                                <span class="secure-private-key">PRIVATE KEY<br>LOCAL ONLY</span>
-                            </div>
-                        </div>
-
-                        <div class="secure-frame-inspector" aria-hidden="true">
-                            <span class="secure-frame-label">TCP frame</span>
-                            <div class="secure-frame-parts" data-secure-frame-parts>
-                                <span>TYPE 01 · 1B</span>
-                                <span>LENGTH · 4B</span>
-                                <span>PUBLIC KEY · PEM</span>
-                            </div>
-                        </div>
-
-                        <div class="secure-boundary-readout" aria-hidden="true">
-                            <span class="secure-boundary-label">Untrusted transport boundary</span>
-                            <span class="secure-payload-label" data-secure-payload-label>RSA public key · PEM payload</span>
-                        </div>
-                    </div>
-
-                    <div class="secure-model-stage-controls" role="group" aria-label="Choose a communication stage">
-                        <button type="button" data-secure-stage="keys" aria-pressed="true">
-                            <span>01</span>
-                            <strong>Public keys</strong>
-                        </button>
-                        <button type="button" data-secure-stage="session" aria-pressed="false">
-                            <span>02</span>
-                            <strong>Session setup</strong>
-                        </button>
-                        <button type="button" data-secure-stage="message" aria-pressed="false">
-                            <span>03</span>
-                            <strong>Encrypted message</strong>
-                        </button>
-                    </div>
-
-                    <div class="secure-model-caption" aria-live="polite">
-                        <div class="secure-caption-index" data-secure-caption-index>Stage 01</div>
-                        <div>
-                            <strong data-secure-caption-title>Public key exchange</strong>
-                            <p data-secure-caption-copy>Each client sends its RSA-2048 public key through the TCP relay. The corresponding private key stays on disk at its own endpoint.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Features -->
-                <div class="project-section" data-perspective-content="operator">
-                    <h2 class="section-title">System Proof</h2>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">ENC</div>
-                            <h3>Endpoint Cryptography</h3>
-                            <p>RSA-2048 protects key exchange while AES-256-GCM encrypts and authenticates messages.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">AUTH</div>
-                            <h3>Tamper Detection</h3>
-                            <p>Modified ciphertext fails authentication instead of producing silently corrupted plaintext.</p>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">TCP</div>
-                            <h3>Forwarding-Only Relay</h3>
-                            <p>The server coordinates clients and routes framed packets without decrypting chat content.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Technical Implementation -->
-                <div class="project-section" data-perspective-content="builder">
-                    <h2 class="section-title">Technical Implementation</h2>
-                    <div class="tech-details">
-                        <h3>Encryption Architecture</h3>
-                        <p class="project-text">
-                            Cryptography, networking, framing, and UI state are separated into focused modules:
-                        </p>
-                        <ol class="project-list">
-                            <li>Endpoints exchange public keys through the relay.</li>
-                            <li>The sender wraps an AES key with RSA-OAEP and encrypts the payload with AES-GCM.</li>
-                            <li>The recipient authenticates and decrypts the framed message locally.</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <!-- Security Considerations -->
-                <div class="project-section" data-perspective-content="builder">
-                    <h2 class="section-title">Security Boundaries</h2>
-                    <div class="security-list">
-                        <div class="security-item">
-                            <h3>Relay Boundary</h3>
-                            <p>The server sees connection and framing metadata, but message contents are encrypted before transport.</p>
-                        </div>
-                        <div class="security-item">
-                            <h3>Identity Assumption</h3>
-                            <p>Public keys travel through the relay; a production version should require peer fingerprint confirmation.</p>
-                        </div>
-                        <div class="security-item">
-                            <h3>Hardening Path</h3>
-                            <p>Peer verification, protected key storage, TLS, reconnect handling, and automated integration tests are the next upgrades.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Technologies Used -->
-                <div class="project-section" data-perspective-content="builder">
-                    <h2 class="section-title">Technologies & Tools</h2>
-                    <div class="tech-stack">
-                        <div class="tech-category">
-                            <h3>Core Stack</h3>
-                            <div class="tech-tags">
-                                <span class="tag">Python 3</span>
-                                <span class="tag">RSA-2048</span>
-                                <span class="tag">AES-256-GCM</span>
-                                <span class="tag">RSA-OAEP</span>
-                                <span class="tag">TCP Sockets</span>
-                                <span class="tag">Threading</span>
-                                <span class="tag">Tkinter</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Links -->
-                <div class="project-section" data-perspective-content="both">
-                    <h2 class="section-title">Project Links</h2>
-                    <div class="project-links">
-                        <a href="https://github.com/ajmendes17/Secure-Chat-App" target="_blank" rel="noopener" class="project-link-btn">
-                            <span>View on GitHub</span>
-                        </a>
-                        <a href="index.html?project=1#projects" class="project-link-btn secondary">
-                            <span>Back to Projects</span>
-                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="secure-live-demo" data-secure-demo data-demo-stage="key-exchange" aria-labelledby="secure-demo-title">
+            <div class="container">
+                <div class="secure-demo-heading">
+                    <div>
+                        <span class="secure-demo-kicker">A live example</span>
+                        <h2 id="secure-demo-title">Julia and Jake message privately</h2>
+                    </div>
+                    <button class="secure-demo-toggle" type="button" data-demo-toggle aria-label="Pause the demonstration">Pause</button>
+                </div>
+
+                <div class="secure-demo-explainer">
+                    <span class="secure-demo-step" data-demo-step>KEY EXCHANGE</span>
+                    <p data-demo-caption aria-live="off">Julia and Jake exchange public keys. Their private keys stay on their own devices.</p>
+                    <span class="secure-demo-sr-only" data-demo-announcement aria-live="polite" aria-atomic="true"></span>
+                </div>
+
+                <div class="secure-demo-scene" role="group" aria-label="Julia and Jake exchange encrypted messages through a relay">
+                    <nav class="secure-demo-step-nav" aria-label="Demonstration steps">
+                        <button type="button" data-demo-prev aria-label="Previous step">←</button>
+                        <div class="secure-demo-progress" data-demo-progress role="progressbar" aria-label="Demonstration progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Step 1 of 6: Key exchange">
+                            <svg viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                                <circle class="secure-demo-progress-track" cx="20" cy="20" r="16" />
+                                <circle class="secure-demo-progress-ring" data-demo-progress-ring cx="20" cy="20" r="16" />
+                            </svg>
+                            <span data-demo-progress-step aria-hidden="true">1</span>
+                        </div>
+                        <button type="button" data-demo-next aria-label="Next step">→</button>
+                    </nav>
+                    <svg class="secure-demo-network" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                        <defs>
+                            <marker id="secure-demo-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto-start-reverse">
+                                <path d="M0 0 8 4 0 8Z" fill="#a75a36" />
+                            </marker>
+                        </defs>
+                        <path d="M500 205 250 300 M500 205 750 300" marker-start="url(#secure-demo-arrow)" marker-end="url(#secure-demo-arrow)" />
+                    </svg>
+
+                    <article class="secure-demo-relay">
+                        <span class="secure-demo-relay-icon" aria-hidden="true">↔</span>
+                        <span class="secure-demo-relay-label">UNTRUSTED MIDDLE</span>
+                        <h3>Relay</h3>
+                        <p data-relay-state>Passing public keys</p>
+                        <span class="secure-demo-relay-foot">CANNOT READ MESSAGES</span>
+                    </article>
+
+                    <article class="secure-demo-person secure-demo-julia">
+                        <div class="secure-demo-person-heading">
+                            <span class="secure-demo-avatar" aria-hidden="true"><i></i></span>
+                            <div><h3>Julia</h3><span>Her device</span></div>
+                        </div>
+                        <div class="secure-demo-chat">
+                            <span class="secure-demo-chat-label">MESSAGE</span>
+                            <p data-julia-message aria-live="off">Hi Jake, are you free Saturday?</p>
+                            <span class="secure-demo-device-state" data-julia-state>Sharing public key</span>
+                        </div>
+                    </article>
+
+                    <article class="secure-demo-person secure-demo-jake">
+                        <div class="secure-demo-person-heading">
+                            <span class="secure-demo-avatar" aria-hidden="true"><i></i></span>
+                            <div><h3>Jake</h3><span>His device</span></div>
+                        </div>
+                        <div class="secure-demo-chat">
+                            <span class="secure-demo-chat-label">INBOX</span>
+                            <p data-jake-message aria-live="off">Waiting for Julia…</p>
+                            <span class="secure-demo-device-state" data-jake-state>Saving Julia’s public key</span>
+                        </div>
+                    </article>
+                    <span class="secure-demo-packet" data-demo-packet aria-hidden="true">PUBLIC KEY</span>
+                </div>
+                <span class="secure-demo-sr-only" data-message-announcement aria-live="polite" aria-atomic="true"></span>
+                <p class="secure-demo-note">Illustrative sequence based on the project’s design.</p>
+            </div>
+        </section>
+
+        <section class="project-details">
+            <div class="container">
+                <div class="project-content">
+                    <section class="project-section" aria-labelledby="secure-description-title">
+                        <span class="summary-label">Project Description</span>
+                        <h2 id="secure-description-title" class="section-title">A private message, explained at two levels</h2>
+                        <div class="project-perspective" data-perspective-switcher data-project-id="secure-chat">
+                            <div class="perspective-heading">
+                                <div>
+                                    <span class="summary-label">Project Perspective</span>
+                                    <h3 class="section-title">Choose the level of abstraction</h3>
+                                    <p>Start with what the system enables, or inspect how it was built and validated.</p>
+                                </div>
+                                <div class="perspective-toggle" role="tablist" aria-label="Secure Chat project perspective">
+                                    <button type="button" class="perspective-toggle-btn active" role="tab" aria-selected="true" aria-controls="secure-operator-perspective" data-perspective-target="operator"><span>01</span>Operator</button>
+                                    <button type="button" class="perspective-toggle-btn" role="tab" aria-selected="false" aria-controls="secure-builder-perspective" data-perspective-target="builder"><span>02</span>Builder</button>
+                                </div>
+                            </div>
+                            <div class="perspective-panels" aria-live="polite">
+                                <div class="perspective-panel active" id="secure-operator-perspective" role="tabpanel" data-perspective-panel="operator">
+                                    <span class="perspective-panel-kicker">Purpose · trust · workflow</span>
+                                    <h3>Private conversation without trusting the relay</h3>
+                                    <p class="project-text">Secure Chat demonstrates encrypted messaging without asking users to trust the relay with plaintext.</p>
+                                    <ol class="project-list plain-steps">
+                                        <li>Endpoints exchange public keys while private keys remain local.</li>
+                                        <li>The sender protects an AES key with the recipient's RSA public key.</li>
+                                        <li>The relay forwards ciphertext that only the recipient can verify and decrypt.</li>
+                                    </ol>
+                                </div>
+                                <div class="perspective-panel" id="secure-builder-perspective" role="tabpanel" hidden data-perspective-panel="builder">
+                                    <span class="perspective-panel-kicker">Boundary · protocol · cryptography</span>
+                                    <h3>Hybrid encryption across isolated endpoints</h3>
+                                    <p class="project-text">Python clients combine RSA-OAEP key wrapping, AES-256-GCM payload encryption, and a framed TCP protocol behind a Tkinter workflow.</p>
+                                    <ol class="project-list">
+                                        <li>Clients generate or load persistent RSA keypairs and exchange only public keys.</li>
+                                        <li>AES-GCM provides message confidentiality, integrity, and tamper detection.</li>
+                                        <li>Typed, length-prefixed frames keep socket transport deterministic.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="project-section" data-perspective-content="operator" aria-labelledby="secure-proof-title">
+                        <h2 id="secure-proof-title" class="section-title">System Proof</h2>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">ENC</div>
+                                <h3>Endpoint Cryptography</h3>
+                                <p>RSA-2048 protects key exchange while AES-256-GCM encrypts and authenticates messages.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">AUTH</div>
+                                <h3>Tamper Detection</h3>
+                                <p>Modified ciphertext fails authentication instead of producing silently corrupted plaintext.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">TCP</div>
+                                <h3>Forwarding-Only Relay</h3>
+                                <p>The server coordinates clients and routes framed packets without decrypting chat content.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 AJ Mendes.</p>
-        </div>
+        <div class="container"><p>&copy; 2026 AJ Mendes.</p></div>
     </footer>
-
-    <script src="script.js?v=portfolio-experience-v17"></script>
+    <script src="script.js?v=secure-chat-live-demo-v3"></script>
 </body>
 </html>

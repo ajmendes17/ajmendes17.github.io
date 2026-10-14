@@ -6,6 +6,7 @@ const navLinks = document.querySelectorAll('.nav-link');
 const mobileNavQuery = window.matchMedia('(max-width: 768px)');
 
 function syncMobileMenuAccessibility() {
+    if (!navMenu) return;
     const isClosedMobileMenu = mobileNavQuery.matches && !navMenu.classList.contains('active');
     navMenu.inert = isClosedMobileMenu;
     navMenu.setAttribute('aria-hidden', String(isClosedMobileMenu));
@@ -14,6 +15,7 @@ function syncMobileMenuAccessibility() {
 // Navbar scroll effect
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
+    if (!navbar) return;
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {
@@ -27,6 +29,7 @@ window.addEventListener('scroll', () => {
 
 // Mobile menu toggle
 function closeMobileMenu() {
+    if (!navMenu || !navToggle) return;
     navMenu.classList.remove('active');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
@@ -34,7 +37,7 @@ function closeMobileMenu() {
     syncMobileMenuAccessibility();
 }
 
-navToggle.addEventListener('click', () => {
+navToggle?.addEventListener('click', () => {
     const isOpening = !navMenu.classList.contains('active');
     navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
@@ -44,9 +47,9 @@ navToggle.addEventListener('click', () => {
 });
 
 document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+    if (event.key === 'Escape' && navMenu?.classList.contains('active')) {
         closeMobileMenu();
-        navToggle.focus();
+        navToggle?.focus();
     }
 });
 
@@ -1251,149 +1254,270 @@ if (document.readyState === 'loading') {
     initProjectPageTransitions();
 }
 
-// Interactive encrypted-endpoint architecture model
-function initSecureEndpointModel() {
-    const model = document.querySelector('[data-secure-endpoint-model]');
-    if (!model) return;
+function initSecureChatDemo() {
+    const demo = document.querySelector('[data-secure-demo]');
+    if (!demo) return;
 
-    const stageButtons = model.querySelectorAll('[data-secure-stage]');
-    const captionIndex = model.querySelector('[data-secure-caption-index]');
-    const captionTitle = model.querySelector('[data-secure-caption-title]');
-    const captionCopy = model.querySelector('[data-secure-caption-copy]');
-    const payloadLabel = model.querySelector('[data-secure-payload-label]');
-    const packetLabels = model.querySelectorAll('[data-secure-packet-short]');
-    const frameParts = model.querySelector('[data-secure-frame-parts]');
-    const relayState = model.querySelector('[data-secure-relay-state]');
-    const endpointAState = model.querySelector('[data-secure-endpoint-a-state]');
-    const endpointBState = model.querySelector('[data-secure-endpoint-b-state]');
-    const sequenceIndex = model.querySelector('[data-secure-sequence-index]');
-    const sequenceSteps = model.querySelector('[data-secure-sequence-steps]');
-    let animationTimer;
-    let ambientTimer;
-
-    const stageContent = {
-        keys: {
-            index: 'Stage 01',
-            title: 'Public key exchange',
-            copy: 'Each client sends its RSA-2048 public key through the TCP relay. The corresponding private key stays on disk at its own endpoint.',
-            payload: 'RSA public key · PEM payload',
-            packet: 'PUB',
-            frame: ['TYPE 01 · 1B', 'LENGTH · 4B', 'PUBLIC KEY · PEM'],
-            relay: 'Forwards public keys',
-            endpointA: 'Share public key',
-            endpointB: 'Load peer key',
-            sequenceIndex: '01 / IDENTITY',
-            sequenceSteps: 'PUBLISH → EXCHANGE → STORE',
-            duration: 3600
+    const button = demo.querySelector('[data-demo-toggle]');
+    const prevButton = demo.querySelector('[data-demo-prev]');
+    const nextButton = demo.querySelector('[data-demo-next]');
+    const progress = demo.querySelector('[data-demo-progress]');
+    const progressRing = demo.querySelector('[data-demo-progress-ring]');
+    const progressStep = demo.querySelector('[data-demo-progress-step]');
+    const stepLabel = demo.querySelector('[data-demo-step]');
+    const caption = demo.querySelector('[data-demo-caption]');
+    const announcement = demo.querySelector('[data-demo-announcement]');
+    const packet = demo.querySelector('[data-demo-packet]');
+    const juliaMessage = demo.querySelector('[data-julia-message]');
+    const jakeMessage = demo.querySelector('[data-jake-message]');
+    const messageAnnouncement = demo.querySelector('[data-message-announcement]');
+    const juliaState = demo.querySelector('[data-julia-state]');
+    const jakeState = demo.querySelector('[data-jake-state]');
+    const relayState = demo.querySelector('[data-relay-state]');
+    const stages = [
+        {
+            name: 'key-exchange', duration: 4400, packet: 'PUBLIC KEY', step: 'KEY EXCHANGE',
+            caption: 'Julia and Jake exchange public keys through the relay. Their private keys stay on their own devices.',
+            julia: 'Hi Jake, are you free Saturday?', jake: 'Waiting for Julia…',
+            juliaState: 'Sharing public key', jakeState: 'Saving Julia’s public key', relay: 'Passing public keys'
         },
-        session: {
-            index: 'Stage 02',
-            title: 'Session key setup',
-            copy: 'Endpoint A generates a random 32-byte AES key and wraps it with Endpoint B’s public key using RSA-OAEP with SHA-256.',
-            payload: 'RSA-OAEP wrapped AES key',
-            packet: 'KEY',
-            frame: ['TYPE 02 · 1B', 'LENGTH · 4B', 'WRAPPED KEY · 256B'],
-            relay: 'Cannot unwrap key',
-            endpointA: 'Generate AES-256 key',
-            endpointB: 'Unwrap with private key',
-            sequenceIndex: '02 / SESSION',
-            sequenceSteps: 'GENERATE → WRAP → UNWRAP',
-            duration: 3600
+        {
+            name: 'julia-sends', duration: 1800, packet: 'SEALED', step: 'JULIA SENDS',
+            caption: 'Julia encrypts her message with a fresh AES-256-GCM session key, then sends the sealed packet to the relay.',
+            julia: 'Hi Jake, are you free Saturday?', jake: 'Encrypted message arriving…',
+            juliaState: 'Encrypting on her device', jakeState: 'Waiting for encrypted message', relay: 'Receiving a sealed packet'
         },
-        message: {
-            index: 'Stage 03',
-            title: 'Encrypted message',
-            copy: 'AES-256-GCM creates a unique 12-byte nonce, ciphertext, and 16-byte authentication tag. The relay forwards the serialized frame; Endpoint B verifies and decrypts it locally.',
-            payload: 'AES-256-GCM encrypted payload',
-            packet: 'MSG',
-            frame: ['TYPE 03 · 1B', 'LENGTH · 4B', 'NONCE · 12B', 'CIPHERTEXT', 'TAG · 16B'],
-            relay: 'Ciphertext only',
-            endpointA: 'Encrypt + authenticate',
-            endpointB: 'Verify + decrypt',
-            sequenceIndex: '03 / MESSAGE',
-            sequenceSteps: 'BUILD FRAME → RELAY → VERIFY',
-            duration: 4400
+        {
+            name: 'relay-forwards', duration: 1800, packet: 'CIPHERTEXT', step: 'RELAY FORWARDS',
+            caption: 'The relay forwards that same ciphertext to Jake. It can route the packet, but cannot read Julia’s message.',
+            julia: 'Hi Jake, are you free Saturday?', jake: 'Encrypted message arriving…',
+            juliaState: 'Message sent', jakeState: 'Waiting for packet', relay: 'Forwarding ciphertext',
+            receive: { recipient: 'jake', text: 'Hi Jake, are you free Saturday?' }
+        },
+        {
+            name: 'jake-opens', duration: 900, packet: 'VERIFIED', step: 'JAKE OPENS',
+            caption: 'Jake’s device verifies the authentication tag, then decrypts the message locally.',
+            julia: 'Hi Jake, are you free Saturday?', jake: 'Hi Jake, are you free Saturday?',
+            juliaState: 'Message sent', jakeState: 'Verified and opened here', relay: 'Never sees plaintext', jakeCipher: true, decode: 'jake'
+        },
+        {
+            name: 'jake-replies', duration: 1800, packet: 'SEALED REPLY', step: 'JAKE REPLIES',
+            caption: 'Jake encrypts his reply and sends the sealed packet to the relay.',
+            julia: 'Waiting for encrypted reply…', jake: 'Absolutely! See you there.',
+            juliaState: 'Waiting for encrypted reply', jakeState: 'Encrypting on his device', relay: 'Receiving sealed reply',
+            relayReceive: { recipient: 'julia', text: 'Absolutely! See you there.' }
+        },
+        {
+            name: 'julia-opens', duration: 1800, packet: 'CIPHERTEXT', step: 'JULIA OPENS',
+            caption: 'The relay forwards the same ciphertext to Julia. Her device verifies and decrypts it locally.',
+            julia: 'Encrypted reply arriving…', jake: 'Absolutely! See you there.', plaintext: 'Absolutely! See you there.',
+            juliaState: 'Waiting for encrypted reply', jakeState: 'Reply sent', relay: 'Forwarding ciphertext',
+            receive: { recipient: 'julia', text: 'Absolutely! See you there.' }, decode: 'julia'
         }
-    };
+    ];
 
-    function scheduleAmbientSequence() {
-        window.clearTimeout(ambientTimer);
-        if (reducedMotionQuery.matches) return;
-
-        const quietInterval = 8500 + Math.round(Math.random() * 3500);
-        ambientTimer = window.setTimeout(runSequence, quietInterval);
+    let currentStage = 0;
+    let timer = 0;
+    let animationTimer = 0;
+    let typingTimer = 0;
+    let decodeTimer = 0;
+    let decodeInterval = 0;
+    let running = true;
+    let inView = false;
+    const cipherSymbols = '!#$%&*+-/:<=>?@^_~';
+    const cipherCache = { julia: '', jake: '' };
+    const ringCircumference = 2 * Math.PI * 16;
+    if (progressRing) {
+        progressRing.style.strokeDasharray = String(ringCircumference);
+        progressRing.style.strokeDashoffset = String(ringCircumference);
     }
 
-    function runSequence() {
-        window.clearTimeout(animationTimer);
-        window.clearTimeout(ambientTimer);
-        model.classList.remove('is-animating');
+    function makeCipher(text) {
+        return Array.from(text, (character) => character === ' ' ? ' ' : cipherSymbols[Math.floor(Math.random() * cipherSymbols.length)]).join('');
+    }
 
-        if (reducedMotionQuery.matches || document.hidden) return;
+    function getCipher(recipient, text) {
+        if (!cipherCache[recipient]) cipherCache[recipient] = makeCipher(text);
+        return cipherCache[recipient];
+    }
 
-        const activeStage = stageContent[model.dataset.modelStage] || stageContent.keys;
+    function deliverCipher(receive) {
+        if (!receive) return;
+        const element = receive.recipient === 'jake' ? jakeMessage : juliaMessage;
+        const state = receive.recipient === 'jake' ? jakeState : juliaState;
+        if (element) element.textContent = getCipher(receive.recipient, receive.text);
+        if (state) state.textContent = 'Ciphertext received';
+    }
 
-        window.requestAnimationFrame(() => {
-            window.requestAnimationFrame(() => {
-                model.classList.add('is-animating');
-                animationTimer = window.setTimeout(() => {
-                    model.classList.remove('is-animating');
-                    scheduleAmbientSequence();
-                }, activeStage.duration);
+    function showReducedMotionOutcome(stage) {
+        if (stage.decode) {
+            const recipient = stage.decode === 'jake' ? 'Jake' : 'Julia';
+            const element = stage.decode === 'jake' ? jakeMessage : juliaMessage;
+            const state = stage.decode === 'jake' ? jakeState : juliaState;
+            const text = stage.plaintext || (stage.decode === 'jake' ? stage.jake : stage.julia);
+            if (element) element.textContent = text;
+            if (state) state.textContent = 'Verified and opened here';
+            if (messageAnnouncement) messageAnnouncement.textContent = `${recipient} decrypted the message: ${text}`;
+        } else if (stage.receive) {
+            deliverCipher(stage.receive);
+        }
+    }
+
+    function beginDecryption(stage) {
+        if (!stage.decode) return;
+        const recipient = stage.decode === 'jake' ? 'Jake' : 'Julia';
+        const element = stage.decode === 'jake' ? jakeMessage : juliaMessage;
+        const text = stage.plaintext || (stage.decode === 'jake' ? stage.jake : stage.julia);
+        decodeTimer = window.setTimeout(() => decodeMessage(element, text, recipient), 350);
+    }
+
+    packet?.addEventListener('animationend', (event) => {
+        const stage = stages[currentStage];
+        if (stage.relayReceive && event.animationName === 'secure-jake-to-relay' && relayState) {
+            relayState.textContent = getCipher(stage.relayReceive.recipient, stage.relayReceive.text);
+            relayState.classList.add('is-ciphertext');
+        }
+        if (stage.receive && ['secure-relay-to-jake', 'secure-relay-to-julia'].includes(event.animationName)) {
+            deliverCipher(stage.receive);
+            beginDecryption(stage);
+        } else if (stage.decode && event.animationName === 'secure-packet-arrives') {
+            beginDecryption(stage);
+        }
+    });
+
+    function decodeMessage(element, text, recipient) {
+        if (!element) return;
+        const characters = Array.from(text);
+        let revealed = 0;
+        element.classList.add('is-decoding');
+        decodeInterval = window.setInterval(() => {
+            if (revealed >= characters.length) {
+                window.clearInterval(decodeInterval);
+                element.textContent = text;
+                element.classList.remove('is-decoding');
+                const state = recipient === 'Jake' ? jakeState : juliaState;
+                if (state) state.textContent = 'Verified and opened here';
+                if (messageAnnouncement) messageAnnouncement.textContent = `${recipient} decrypted the message: ${text}`;
+                return;
+            }
+            const display = characters.map((character, index) => {
+                if (character === ' ') return ' ';
+                return index < revealed ? character : cipherSymbols[Math.floor(Math.random() * cipherSymbols.length)];
             });
-        });
+            element.textContent = display.join('');
+            revealed += 1;
+        }, 42);
     }
 
-    function setStage(stage) {
-        const content = stageContent[stage];
-        if (!content) return;
-
-        model.dataset.modelStage = stage;
-        stageButtons.forEach(button => {
-            button.setAttribute('aria-pressed', String(button.dataset.secureStage === stage));
-        });
-
-        if (captionIndex) captionIndex.textContent = content.index;
-        if (captionTitle) captionTitle.textContent = content.title;
-        if (captionCopy) captionCopy.textContent = content.copy;
-        if (payloadLabel) payloadLabel.textContent = content.payload;
-        packetLabels.forEach(label => { label.textContent = content.packet; });
-        if (frameParts) {
-            frameParts.replaceChildren(...content.frame.map(part => {
-                const span = document.createElement('span');
-                span.textContent = part;
-                return span;
-            }));
+    function showStage(index, animateAfterCopy = true) {
+        const stage = stages[index];
+        window.clearTimeout(animationTimer);
+        window.clearTimeout(decodeTimer);
+        window.clearInterval(typingTimer);
+        window.clearInterval(decodeInterval);
+        juliaMessage?.classList.remove('is-decoding');
+        jakeMessage?.classList.remove('is-decoding');
+        demo.dataset.demoStage = 'preparing';
+        if (stepLabel) stepLabel.textContent = stage.step;
+        if (announcement) announcement.textContent = stage.caption;
+        const reducedMotion = reducedMotionQuery.matches;
+        if (caption) {
+            caption.textContent = reducedMotion ? stage.caption : '';
+            caption.classList.toggle('is-typing', !reducedMotion);
         }
-        if (relayState) relayState.textContent = content.relay;
-        if (endpointAState) endpointAState.textContent = content.endpointA;
-        if (endpointBState) endpointBState.textContent = content.endpointB;
-        if (sequenceIndex) sequenceIndex.textContent = content.sequenceIndex;
-        if (sequenceSteps) sequenceSteps.textContent = content.sequenceSteps;
-
-        runSequence();
+        if (progress) {
+            progress.setAttribute('aria-valuenow', String(index + 1));
+            progress.setAttribute('aria-valuemax', String(stages.length));
+            progress.setAttribute('aria-valuetext', `Step ${index + 1} of ${stages.length}: ${stage.step.toLowerCase()}`);
+        }
+        if (progressStep) progressStep.textContent = String(index + 1);
+        if (progressRing) progressRing.style.strokeDashoffset = String(ringCircumference * (1 - (index + 1) / stages.length));
+        if (packet) packet.textContent = stage.packet;
+        if (juliaMessage) juliaMessage.textContent = reducedMotion && stage.decode === 'julia' ? (stage.plaintext || stage.julia) : stage.juliaCipher ? getCipher('julia', stage.julia) : stage.julia;
+        if (jakeMessage) jakeMessage.textContent = reducedMotion && stage.decode === 'jake' ? (stage.plaintext || stage.jake) : stage.jakeCipher ? getCipher('jake', stage.jake) : stage.jake;
+        if (juliaState) juliaState.textContent = stage.juliaState;
+        if (jakeState) jakeState.textContent = stage.jakeState;
+        if (relayState) {
+            relayState.textContent = stage.receive ? getCipher(stage.receive.recipient, stage.receive.text) : stage.relay;
+            relayState.classList.toggle('is-ciphertext', Boolean(stage.receive));
+        }
+        if (caption && !reducedMotion) {
+            let position = 0;
+            typingTimer = window.setInterval(() => {
+                position += 1;
+                caption.textContent = stage.caption.slice(0, position);
+                if (position >= stage.caption.length) {
+                    window.clearInterval(typingTimer);
+                    caption.classList.remove('is-typing');
+                    if (animateAfterCopy) {
+                        animationTimer = window.setTimeout(() => {
+                            demo.dataset.demoStage = stage.name;
+                            if (reducedMotion) showReducedMotionOutcome(stage);
+                        }, 180);
+                    }
+                }
+            }, 16);
+        } else if (animateAfterCopy) {
+            animationTimer = window.setTimeout(() => {
+                demo.dataset.demoStage = stage.name;
+                if (reducedMotion) showReducedMotionOutcome(stage);
+            }, 180);
+        }
     }
 
-    stageButtons.forEach(button => {
-        button.addEventListener('click', () => setStage(button.dataset.secureStage));
+    showStage(currentStage);
+
+    function scheduleNext() {
+        window.clearTimeout(timer);
+        if (!running || !inView || document.hidden) return;
+        timer = window.setTimeout(() => {
+            currentStage = (currentStage + 1) % stages.length;
+            showStage(currentStage);
+            scheduleNext();
+        }, stages[currentStage].duration + stages[currentStage].caption.length * (reducedMotionQuery.matches ? 0 : 16) + 450 + (stages[currentStage].decode && !reducedMotionQuery.matches ? ((stages[currentStage].plaintext || (stages[currentStage].decode === 'jake' ? stages[currentStage].jake : stages[currentStage].julia)).length * 42) + 500 : 0));
+    }
+
+    button?.addEventListener('click', () => {
+        running = !running;
+        demo.classList.toggle('is-paused', !running);
+        button.textContent = running ? 'Pause' : 'Play';
+        button.setAttribute('aria-label', running ? 'Pause the demonstration' : 'Play the demonstration');
+        if (running) scheduleNext();
+        else window.clearTimeout(timer);
     });
 
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            window.clearTimeout(ambientTimer);
-            window.clearTimeout(animationTimer);
-            model.classList.remove('is-animating');
-            return;
+    function selectStep(offset) {
+        currentStage = (currentStage + offset + stages.length) % stages.length;
+        running = false;
+        window.clearTimeout(timer);
+        demo.classList.remove('is-paused');
+        if (button) {
+            button.textContent = 'Play';
+            button.setAttribute('aria-label', 'Play the demonstration');
         }
+        showStage(currentStage);
+    }
 
-        scheduleAmbientSequence();
-    });
+    prevButton?.addEventListener('click', () => selectStep(-1));
+    nextButton?.addEventListener('click', () => selectStep(1));
 
-    setStage(model.dataset.modelStage || 'keys');
+    document.addEventListener('visibilitychange', scheduleNext);
+    if (reducedMotionQuery.matches) return;
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(([entry]) => {
+            inView = entry.isIntersecting;
+            scheduleNext();
+        }, { threshold: 0.18 });
+        observer.observe(demo);
+    } else {
+        inView = true;
+        scheduleNext();
+    }
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSecureEndpointModel);
+    document.addEventListener('DOMContentLoaded', initSecureChatDemo);
 } else {
-    initSecureEndpointModel();
+    initSecureChatDemo();
 }
