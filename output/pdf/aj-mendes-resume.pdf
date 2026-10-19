@@ -1,116 +1,630 @@
 %PDF-1.4
-%“Œ‹ž ReportLab Generated PDF document (opensource)
+%âãÏÓ
 1 0 obj
 <<
-/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 8 0 R /F5 9 0 R
+/Producer (ReportLab PDF Library \055 \050opensource\051)
+/Author (\050anonymous\051)
+/CreationDate (D\07220261019134800\05506\04700\047)
+/Creator (\050unspecified\051)
+/Keywords ()
+/ModDate (D\07220261019134800\05506\04700\047)
+/Subject (\050unspecified\051)
+/Title (\050anonymous\051)
+/Trapped (\057False)
 >>
 endobj
 2 0 obj
 <<
-/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
 >>
 endobj
 3 0 obj
 <<
-/BaseFont /Times-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+/Type /Catalog
+/Pages 2 0 R
 >>
 endobj
 4 0 obj
 <<
-/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+/Contents 5 0 R
+/MediaBox [ 0 0 612 792 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 7 0 R
+/F2 8 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
 >>
 endobj
 5 0 obj
 <<
-/A <<
-/S /URI /Type /Action /URI (mailto:ajmendes17@gmail.com)
->> /Border [ 0 0 0 ] /Rect [ 72.54015 716.6 159.0315 726.02 ] /Subtype /Link /Type /Annot
+/Length 9535
 >>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 49 725 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 3 Tm /F2 22 Tf 25 TL (AJ MENDES) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 711 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2.8 Tm /F2 9.2 Tf 12 TL (COMPUTER SCIENCE | CYBERSECURITY | QUANTUM ENGINEERING) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 695.5 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 8.7 Tf 10.5 TL (Golden, CO | \(720\) 442-4724 | ajmendes17@gmail.com) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 685 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 8.7 Tf 10.5 TL (ajmendes17.github.io | linkedin.com/in/aj-mendes-b49709341) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 663 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2.8 Tm /F2 10.2 Tf 13 TL (EDUCATION) Tj T* ET
+Q
+Q
+q
+1 0 0 1 43 658.5 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 5 Tm  T* ET
+q
+1 J
+1 j
+0 0 0 RG
+.6 w
+n 0 0 m 526 0 l S
+Q
+Q
+Q
+q
+1 0 0 1 43 647.5 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 0 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.7 Tm /F2 9.3 Tf 11 TL (Colorado School of Mines) Tj T* ET
+Q
+Q
+q
+1 0 0 1 371 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL 78.1094 0 Td (Expected May 2027) Tj T* -78.1094 0 Td ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 49 637.3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (B.S. Computer Science | Minor in Military Science | Minor in Quantum Engineering | Cyber Defense Education Certificate | GPA: 3.5) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 615.3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2.8 Tm /F2 10.2 Tf 13 TL (RESEARCH EXPERIENCE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 43 610.8 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 5 Tm  T* ET
+q
+1 J
+1 j
+0 0 0 RG
+.6 w
+n 0 0 m 526 0 l S
+Q
+Q
+Q
+q
+1 0 0 1 43 599.8 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 0 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.7 Tm /F2 9.3 Tf 11 TL (Undergraduate Researcher) Tj T* ET
+Q
+Q
+q
+1 0 0 1 371 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 49 589.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (AI Engine, Purdue University) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 578.5 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 1.7 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Participate in a team research project exploring satellite cybersecurity and anomaly identification through telemetry analysis.) Tj T* 8 0 Td ET
+Q
+Q
+q
+1 0 0 1 49 566.9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 1.7 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Study synthetic telemetry and simulated scenarios to learn normal satellite behavior and potential attack indicators.) Tj T* 8 0 Td ET
+Q
+Q
+q
+1 0 0 1 43 554.4 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 0 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.7 Tm /F2 9.3 Tf 11 TL (Undergraduate Data Science Researcher) Tj T* ET
+Q
+Q
+q
+1 0 0 1 371 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 49 544.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (The Data Mine, Purdue University | CrowdStrike project | Jan 2026 - May 2026) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 523 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 11.8 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Built Python tools to evaluate K-means clustering on labeled synthetic cybersecurity data using accuracy, adjusted Rand index, and) Tj T* 8 0 Td (normalized mutual information.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 501.3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 11.8 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Tested noise, cluster-count, and feature variations; observed approximately 98% cluster-assignment accuracy in labeled tests with up to) Tj T* 8 0 Td (20 clusters.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 479.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 11.8 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Developed centroid-matching and drift visualizations with PCA, UMAP, and t-SNE; presented findings to Purdue, Data Mine of the) Tj T* 8 0 Td (Rockies, and CrowdStrike collaborators.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 457.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2.8 Tm /F2 10.2 Tf 13 TL (PROJECTS) Tj T* ET
+Q
+Q
+q
+1 0 0 1 43 453.1 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 5 Tm  T* ET
+q
+1 J
+1 j
+0 0 0 RG
+.6 w
+n 0 0 m 526 0 l S
+Q
+Q
+Q
+q
+1 0 0 1 49 439.1 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.6 Tm /F2 9.4 Tf 11 TL (Local Learning Studio) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 427.9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (React | TypeScript | Fastify | SQLite | Codex CLI) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 416.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 1.7 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Exports source-linked course notes and progress to an Obsidian knowledge base.) Tj T* 8 0 Td ET
+Q
+Q
+q
+1 0 0 1 49 405.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 1.7 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Tracks saved study sessions and quiz attempts with transparent practice progress.) Tj T* 8 0 Td ET
+Q
+Q
+q
+1 0 0 1 49 393.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 1.7 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Uses authenticated Codex CLI workflows, avoiding separate pay-as-you-go API setup by default.) Tj T* 8 0 Td ET
+Q
+Q
+q
+1 0 0 1 49 379.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.6 Tm /F2 9.4 Tf 11 TL (Secure Chat Application) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 368.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (Python | RSA-OAEP | AES-256-GCM | TCP) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 347.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 11.8 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Built a TCP client-server chat application with RSA-2048/OAEP key exchange and AES-256-GCM authenticated encryption; the relay) Tj T* 8 0 Td (forwards ciphertext without access to plaintext.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 333.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.6 Tm /F2 9.4 Tf 11 TL (MarketPulse AI) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 322 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (Python | pandas | scikit-learn | TensorFlow/Keras | Streamlit) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 300.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 11.8 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Built an ML research pipeline with return, volatility, moving-average, volume, RSI, and MACD features for seven equities benchmarked) Tj T* 8 0 Td (against SPY.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 279.1 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 11.8 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Compared logistic regression, random forest, and neural-network models using time-aware backtests, transaction costs, threshold) Tj T* 8 0 Td (sweeps, automated reports, and a Streamlit dashboard.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 257.1 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2.8 Tm /F2 10.2 Tf 13 TL (ADDITIONAL EXPERIENCE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 43 252.6 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 5 Tm  T* ET
+q
+1 J
+1 j
+0 0 0 RG
+.6 w
+n 0 0 m 526 0 l S
+Q
+Q
+Q
+q
+1 0 0 1 43 241.6 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 0 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.7 Tm /F2 9.3 Tf 11 TL (AI Research Contributor) Tj T* ET
+Q
+Q
+q
+1 0 0 1 371 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL 97.9367 0 Td (2026 - Present) Tj T* -97.9367 0 Td ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 49 231.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (Handshake AI) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 210.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 11.8 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Create and source-verify complex research tasks to evaluate advanced AI systems; analyze responses for factual accuracy, research) Tj T* 8 0 Td (quality, and failure patterns.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 43 197.7 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 0 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.7 Tm /F2 9.3 Tf 11 TL (Electrical Control Panel Technician) Tj T* ET
+Q
+Q
+q
+1 0 0 1 371 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL 74.2292 0 Td (Jun 2025 - Aug 2025) Tj T* -74.2292 0 Td ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 49 187.5 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (Xpect Solutions | Longmont, CO) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 176.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 1.7 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Assembled and wired industrial electrical control panels from schematics, wiring diagrams, and technical drawings.) Tj T* 8 0 Td ET
+Q
+Q
+q
+1 0 0 1 43 163.9 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 0 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.7 Tm /F2 9.3 Tf 11 TL (Construction and General Labor) Tj T* ET
+Q
+Q
+q
+1 0 0 1 371 0 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL 68.9309 0 Td (Summers 2020 - 2024) Tj T* -68.9309 0 Td ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 49 153.7 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (Formit Right Concrete | Longmont, CO) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 142.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 12 1.7 Tm /F1 8.4 Tf 10.1 TL -8 0 Td (\177 Completed five summers of full-time concrete, site-preparation, material-handling, and landscaping work.) Tj T* 8 0 Td ET
+Q
+Q
+q
+1 0 0 1 49 120.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2.8 Tm /F2 10.2 Tf 13 TL (TECHNICAL SKILLS) Tj T* ET
+Q
+Q
+q
+1 0 0 1 43 116.1 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 5 Tm  T* ET
+q
+1 J
+1 j
+0 0 0 RG
+.6 w
+n 0 0 m 526 0 l S
+Q
+Q
+Q
+q
+1 0 0 1 49 105.9 cm
+q
+BT 1 0 0 1 0 1.5 Tm 10.2 TL /F2 8.7 Tf 0 0 0 rg (Languages:) Tj /F1 8.7 Tf ( Python, SQL, R, Java, C++, TypeScript/JavaScript) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 94.7 cm
+q
+BT 1 0 0 1 0 1.5 Tm 10.2 TL /F2 8.7 Tf 0 0 0 rg (Data and ML:) Tj /F1 8.7 Tf ( pandas, NumPy, scikit-learn, TensorFlow/Keras, PCA, UMAP, t-SNE, clustering, backtesting) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 83.5 cm
+q
+BT 1 0 0 1 0 1.5 Tm 10.2 TL /F2 8.7 Tf 0 0 0 rg (Tools:) Tj /F1 8.7 Tf ( Git, Linux, Streamlit, Matplotlib) Tj T* ET
+Q
+Q
+q
+1 0 0 1 49 61.5 cm
+q
+BT 1 0 0 1 0 2.8 Tm 13 TL /F2 10.2 Tf 0 0 0 rg (LEADERSHIP & CREDENTIALS) Tj T* ET
+Q
+Q
+q
+1 0 0 1 43 57 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 6 5 Tm  T* ET
+q
+1 J
+1 j
+0 0 0 RG
+.6 w
+n 0 0 m 526 0 l S
+Q
+Q
+Q
+q
+1 0 0 1 49 46.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.5 Tm /F1 8.7 Tf 10.2 TL (Army ROTC, Colorado School of Mines | Former Cadet Company Commander; currently Assistant Operations Officer \(AS3\)) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 612 792 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+43 696 526 13 re
+f*
+0 0 0 rg
+BT
+/F1-0 8.7 Tf
+10.44 TL
+ET
+BT
+1 0 0 1 49 700 Tm
+(Golden\054 CO  \174  \050720\051 442\0554724  \174  ajmendes17\100gmail\056com  \174  Secret Security Clearance) Tj
+T*
+ET
+Q
+
+
+endstream
 endobj
 6 0 obj
 <<
-/A <<
-/S /URI /Type /Action /URI (https://ajmendes17.github.io)
->> /Border [ 0 0 0 ] /Rect [ 83.8677 698.2 158.482 707.62 ] /Subtype /Link /Type /Annot
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 7 0 obj
 <<
-/A <<
-/S /URI /Type /Action /URI (https://www.linkedin.com/in/aj-mendes-b49709341)
->> /Border [ 0 0 0 ] /Rect [ 83.87555 689 216.5092 698.42 ] /Subtype /Link /Type /Annot
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
 >>
 endobj
 8 0 obj
 <<
-/BaseFont /Times-Roman /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
 >>
-endobj
-9 0 obj
-<<
-/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F5 /Subtype /Type1 /Type /Font
->>
-endobj
-10 0 obj
-<<
-/Annots [ 5 0 R 6 0 R 7 0 R ] /Contents 14 0 R /MediaBox [ 0 0 612 792 ] /Parent 13 0 R /Resources <<
-/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
->> /Rotate 0 
-  /Trans <<
-
->> /Type /Page
->>
-endobj
-11 0 obj
-<<
-/PageMode /UseNone /Pages 13 0 R /Type /Catalog
->>
-endobj
-12 0 obj
-<<
-/Author (AJ Mendes) /CreationDate (D:20260810181715-06'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260810181715-06'00') /Producer (ReportLab PDF Library - \(opensource\)) 
-  /Subject (Computer science internship resume) /Title (AJ Mendes Resume - Data / Cyber Analytics) /Trapped /False
->>
-endobj
-13 0 obj
-<<
-/Count 1 /Kids [ 10 0 R ] /Type /Pages
->>
-endobj
-14 0 obj
-<<
-/Filter [ /ASCII85Decode /FlateDecode ] /Length 3219
->>
-stream
-Gb!;e?'F!^&q0MXka,M]8O+d4#snK0's2<4Y\O<M.^$q;+:U#2Tu$TX2(AS#HWh%(Z*EEcOt+MT!`g5aoQ6]hI<oFdM>pWL)/Y1YRFCgbM_(@[9<oPTU%t(mq3-"u%*S#KqE6T[cHrr?Yktll\<O+eUj1J^L5+qh*tMP`1$hgcC&-eQhsd;h/E-5\!I=X8iS%E!bcTa+\b2f<@%_YHfqS9Hp=a'OfNu1qp<%kV\)H.;3;\9hDe]1qg]-#rp$@6<mancccZFqEBOLR>?J"Ifp88;Pon#=F(iJFYPJ=BbNBd/O(6$,B+J]NilN](4G9Mr5IsO&bH]Cb8RpX%s/.>i\8+S\#htc:ko23kD@t-0hm)I&[)DX"$/fTH?C]N5N)2$'[_m3PQHa+RB*"MJoa6!qq'jZM4Tou%K2*&nX-a'DZF=#d]A/`YHo)?8\O[c-*eK)*fFG['?>,UrH7"8He[e[rSj>_>7nIUfnoNWcK9KNs$qTN2*/!`4nqJ-Kq<iT8g$Ua1MPDrRg0B5q+q72Z'KM$N2f.+HLDnG]'h1[ZWb[Ji&>(Yb%`pdmJeaW9/"_=\A3YnT%kY.kWSrL`ubF3k*n@W@-f;2!mIegP)VpDE61hf=[2*_Y@PgJd`ZouUr*ObMVfR/?7f5U&h2uoT42LBH04:(Rk>8Auh4Amqo,iqIOi"rcM;45UpF:)d8Ai_Oh[7DR^U(ASJOmI+RGA&4q[7Y!hOWmFu\g$qmP#;ud"$e&i.@3m<DTR*J+ZHqtiVTb$lD5%Y[Glu8Y.TX6>%BZcY\o\iGTs2cX<'[O$S8e9<>+oR!`utm;./sSNb(O][?\Ob`1R@#QQf:Vo!hBUA\q6K2+8k?4Fqc?JW/0ZMF9d(Q1C/"2P$DkOsFM11K!?e2d2qmoo@Pos!')-Goc\OdAsmF<R%3l\3.ddTkb)2e!b^_o>iW!J^^sp4`i5jE,IW&Sna$MD\"V(_,pat`gUMe>3gk6P&<9T?f%>8E0%Umd_#gLj4gtMa;Hf1N>X>chlb0?)T0^T?]:C=#Ir(u\:7mbF@Ib!O$j^,gR[,hPZ_<J<eB-/&)G='9QNdVbR1`\F:')-LlMg-p/^P$2JnL(FQ3<oW15GD"A-,[`F(J2B..-'$OVBUK[Zs.[B0tU?sas?Y'C]cQN5BJY^Nq]KM(t5%5Z?p7T5_-H(q^j>.3^`a/rYJ:%NL;#U?mt5`&-*Y>b*:ZWn5,((cm_N+YSVmNmELhZ>(5qGO*tP!4$_Gj2\>NZ)Z'P8)pp\$6GFd&]?1Bo=Y.M/K^:(Ab&j@9KLdr2"f5Wq+PkM`_E=a2fnFF$Z!q!Msd6"fO]/=3O:OU2GU4:T5B/6*cX[5Mr<V=r&T^Lm+s@)sg*J3$#.f:`]IiLi>^L3tQ`9Q7%Q(b1$n2QgZGjhu!#`32H>($N^NNao\sO_j>bQ1/UH-c=,>0qOEe?(@$*u4i@!-s7"6Djf2!-i%pI5^>F(5<=T-j60UkM9T-Ja/u9sm]=SRt;miCk7k(qC;ppS/Ae18(Ck:sI$@\5]NeW2d*9Ihn(O,T2+_'s:RF(<\?bjII*ha@Kg]B?(NW!Ci1$B,Yao+BCi'ooO6uQ5a8;<Rj]C6dJW)_sK3)e"p],*-.b9(kM^J+90:1_`2-@t'Jf=1aT&N&=s?20XnW&=9+LBL\f&3]\n#AM)94lcL0\2m,4j6DRcUoBCBQ#(![.@'iP?0&NHJ\*P0]O-E0]VPjS*:Kh5/m$SnSqA51_5_Z/Z?o_JaomU=+1:IWmN)%DJb%@<oEX(o]HYB,kl6!0e2eY#c67:Op'eaKr`*R\#fL)-%5^t@WM[f,qX0QPY#f(>Z#7V;.9'L1cq,>l6pWS6iAXjE"2K[@pD99F#e0q9BVQZ2?sS?#035BiLK*WeF>g._kLL/]p0:c;_Ak[WNXFm[;AD_`&hB[(]V*s=9hU664FI,9W/lWk>.'_1]i$jlq+RsLO1]3Ad?V[s_nJDKW4`sJ8ir<:*(`)S"nQ-XkVYfgV#OYTke8MgS[uWN;+7%<XtQn3lWP\!F?s3ZY[UaK/n/fF2#+>%6FK<&Yn&jXY8:AQEEciIp@6Mg&p,k/)sMkrl#4$;[ia76M\WCCJB(*(@lj4nYP`?kT7/ccg2=\&4Let^#UV,MfuIU?mhrAPnH8Ig3J+-'kZ6CbUPL-<Nfdu^1jd5#S\]I1SpS##R)I?n,qCO;H4-ZUA&>7.K]Yt'Cq&MoSoOuuK@W^CBGlmX5^a'SWj_,<$MhE71.%=me7*+sos@FY+agI&VqAY1\J";egl2$h_B48M(YUYMa23/5H4=[0eg9Xi5<<nU'QC+G(1<,f^=+-nW.k[*i!Wp@?]08s%*5lSPFU-KYJla?GrUubSeEaWeJ<;5jLWPZ1a)#$Q94U3At-m9a#[L^r18$cG7T#WF5k=:6)5)F_F;_[j4!kGo$@8;+f<n,'UZHQ02XF5-Tnc%B617ZoGrj20)S_-,ZMX^]G1VHPdF-qg\c=g9SSC_!(9#h%-m8G-6gD5kOmf2&hO:(me)Y(e/,p`msGm?1M@mX1=XXT:0/CZ/S4F/O$CePpqm8KrGkp:Cba:[c3kWHYlAF]*gUJ*XInZrZUgPIlVXq46/RCQ'od9$nee1bLk0+r$^kQ1eWWL=aTiCi]S1"/L;Z]c19oLS=s"6Sj%MRU2eRLFd*Hs_1,#[pJ26JkX9B@YpKXR,^'Te0-Ys)83eL(_O_6`05`ndkC0`Ok,Ns4E$0#RYB#EUK:c!Y`HoYOle+1/$Kg5qo3inhK#>'3I:\=,!1.f'YNu;kq=)q<^mM>(gABijHf"6me0#U>?G%XgM/`@$MM(Rbl'&>%69#'kL[sGk(n[u-,1AhP\ngr_AACo)XC0=L9O39r"Z(pCj0.B?P@IW8o'L7N!IN=Eg/Z/eTn"3E"Q=Cm4oCQ$Ofr>':Y-tPFpD<<U7Nb=qRJHi1kn,1BNE#;lm'e_GcORW&%g#o'dn_!Qn$[6PASPFSo@<\MMar)jiLJ@)he5%m0jW[scP^&]6?MFoge:OI:X:4GT,^:Al8,[0jK!?BR+s^oJL@W85I33MX`qU[bk[4pgr>p9d*Pmkjnm?.L[<Bi.(4sb'")DX'9%4QpPS"X^BpgE(S_<4G;g40_jg.554[HKA(^f/hD5Xfk7;FE2)D%a_1-7.4VnAgg[&VMC*$3%@9abcl(t1gSNlK@7[kQDq.2WYpmfUmpqbd.GS:^06Emcoa@:LH5@Q\oVZ~>endstream
 endobj
 xref
-0 15
+0 9
 0000000000 65535 f 
-0000000061 00000 n 
-0000000132 00000 n 
-0000000239 00000 n 
-0000000347 00000 n 
-0000000459 00000 n 
-0000000633 00000 n 
-0000000806 00000 n 
-0000000998 00000 n 
-0000001107 00000 n 
-0000001222 00000 n 
-0000001448 00000 n 
-0000001518 00000 n 
-0000001842 00000 n 
-0000001903 00000 n 
+0000000015 00000 n 
+0000000344 00000 n 
+0000000403 00000 n 
+0000000452 00000 n 
+0000000685 00000 n 
+0000010272 00000 n 
+0000010379 00000 n 
+0000010486 00000 n 
 trailer
 <<
-/ID 
-[<fe742048aae030269045f96ef16def79><fe742048aae030269045f96ef16def79>]
-% ReportLab generated PDF document -- digest (opensource)
-
-/Info 12 0 R
-/Root 11 0 R
-/Size 15
+/Size 9
+/Root 3 0 R
+/Info 1 0 R
 >>
 startxref
-5214
+10598
 %%EOF

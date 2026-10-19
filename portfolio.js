@@ -9,34 +9,19 @@ copyButton?.addEventListener("click", async () => {
   }
 });
 
-// Animate only visible illustrations, with one control and OS motion support.
-const motionButton = document.querySelector(".motion-toggle");
-if (motionButton) {
-  const motionPreference = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  );
-  let paused = false;
-  const syncMotion = () => {
-    const reduced = motionPreference.matches;
-    document.body.classList.toggle("motion-enabled", !reduced);
-    document.body.classList.toggle("motion-paused", paused || reduced);
-    motionButton.hidden = false;
-    motionButton.disabled = reduced;
-    motionButton.setAttribute("aria-pressed", String(paused || reduced));
-    motionButton.textContent = reduced
-      ? "Reduced motion on"
-      : paused
-        ? "Play motion"
-        : "Pause motion";
-  };
-  motionButton.addEventListener("click", () => {
-    paused = !paused;
-    syncMotion();
-  });
-  motionPreference.addEventListener("change", syncMotion);
-  const scenes = document.querySelectorAll(
-    ".hero-art, .integration-art, .chat-art, .ml-art, .clue-art, .kinetic-figure",
-  );
+// Animate project illustrations when visible, respecting the OS motion setting.
+const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+const motionScenes = document.querySelectorAll(
+  ".integration-art, .chat-art, .ml-art, .clue-art, .kinetic-figure",
+);
+const syncMotionPreference = () => {
+  document.body.classList.toggle("motion-enabled", !motionPreference.matches);
+  document.body.classList.toggle("motion-paused", motionPreference.matches);
+};
+syncMotionPreference();
+motionPreference.addEventListener("change", syncMotionPreference);
+
+if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) =>
@@ -45,9 +30,8 @@ if (motionButton) {
     },
     { threshold: 0.15 },
   );
-  scenes.forEach((scene) => {
+  motionScenes.forEach((scene) => {
     scene.classList.add("motion-scene");
     observer.observe(scene);
   });
-  syncMotion();
 }

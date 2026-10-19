@@ -91,7 +91,7 @@ DATA_CONTACT = (
 
 EDUCATION = (
     "Colorado School of Mines",
-    "B.S. Computer Science | Minor in Military Science | Pursuing Cyber Defense Certificate",
+    "B.S. Computer Science | Minors in Military Science and Quantum Engineering | Cyber Defense Education Certificate",
     "Expected May 2027 | GPA: 3.5",
 )
 

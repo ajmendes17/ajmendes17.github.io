@@ -388,14 +388,16 @@ button:focus-visible {
   position: absolute;
   top: 25px;
   left: 25px;
-  font-size: 8px;
+  font-size: 9px;
+  font-weight: 700;
   letter-spacing: 1.6px;
 }
 .art-index {
   position: absolute;
   bottom: 24px;
   left: 25px;
-  font-size: 8px;
+  font-size: 9px;
+  font-weight: 700;
   letter-spacing: 1.2px;
 }
 .art-arrow {
@@ -414,8 +416,9 @@ button:focus-visible {
     background 0.25s;
 }
 .chat-art {
+  --art-ink: #283329;
   background: #d7dfd4;
-  color: #3c493d;
+  color: var(--art-ink);
   display: grid;
   place-items: center;
 }
@@ -472,8 +475,9 @@ button:focus-visible {
   margin-right: 5px;
 }
 .ml-art {
+  --art-ink: #432f24;
   background: #e6d9cf;
-  color: #614735;
+  color: var(--art-ink);
   display: grid;
   place-items: center;
 }
@@ -543,9 +547,10 @@ button:focus-visible {
   grid-column: 1/-1;
 }
 .clue-art {
+  --art-ink: #302a18;
   height: 330px;
   background: #e2c15e;
-  color: #3d3822;
+  color: var(--art-ink);
 }
 .clue-board {
   display: grid;
@@ -603,6 +608,7 @@ button:focus-visible {
   font-size: clamp(25px, 3vw, 43px);
   line-height: 1.2;
   letter-spacing: -1.6px;
+  color: var(--art-ink);
 }
 .archive-link {
   display: flex;
@@ -773,24 +779,6 @@ button:focus-visible {
   align-items: center;
   gap: 10px;
 }
-.motion-toggle {
-  border: 0;
-  border-bottom: 1px solid #b6afa0;
-  background: transparent;
-  color: #625e53;
-  font: 10px var(--body);
-  white-space: nowrap;
-  padding: 8px 0;
-  min-height: 44px;
-  cursor: pointer;
-}
-.motion-toggle[hidden] {
-  display: none;
-}
-.motion-toggle:disabled {
-  cursor: default;
-  border-color: transparent;
-}
 .kinetic-figure {
   width: min(320px, 100%);
   margin-top: 30px;
@@ -805,9 +793,6 @@ button:focus-visible {
   letter-spacing: 1.5px;
   text-align: center;
   color: #6c6658;
-}
-.motion-enabled .hero-art img {
-  animation: sculpture-float 8s ease-in-out infinite;
 }
 .motion-enabled .kinetic-balance {
   transform-origin: 160px 104px;
@@ -851,15 +836,6 @@ button:focus-visible {
 }
 .motion-paused .motion-scene * {
   animation-play-state: paused !important;
-}
-@keyframes sculpture-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-7px);
-  }
 }
 @keyframes balance-sway {
   0%,
@@ -932,9 +908,6 @@ button:focus-visible {
   .hero-art figcaption > span {
     font-size: 7px;
     letter-spacing: 0.8px;
-  }
-  .motion-toggle {
-    font-size: 9px;
   }
 }
 .contact-bottom {
@@ -1221,8 +1194,10 @@ button:focus-visible {
     left: 52%;
     top: 37%;
     z-index: 1;
-    background: #e2c15ee8;
+    background: rgb(242 222 150 / 96%);
     padding: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgb(48 42 24 / 14%);
   }
   .project-meta {
     display: flex;
@@ -1411,14 +1386,6 @@ button:focus-visible {
   -webkit-mask-image: radial-gradient(ellipse 66% 68% at 50% 48%, #000 70%, transparent 100%);
   mask-image: radial-gradient(ellipse 66% 68% at 50% 48%, #000 70%, transparent 100%);
 }
-.motion-enabled .hero-art img {
-  animation: sculpture-float 8s ease-in-out infinite;
-}
-@keyframes sculpture-float {
-  0%, 100% { transform: scale(1.07) translateY(0); }
-  50% { transform: scale(1.07) translateY(-8px); }
-}
-
 .work-section,
 .experience-section {
   position: relative;
@@ -1484,13 +1451,21 @@ button:focus-visible {
   color: var(--paper);
 }
 .chat-art {
+  --art-ink: #283329;
   background: radial-gradient(circle at 78% 23%, #eff4d9 0, transparent 42%), linear-gradient(135deg, #b8cdbb, #d8e2d1 70%);
 }
 .ml-art {
+  --art-ink: #432f24;
   background: radial-gradient(circle at 24% 76%, #edab8359 0, transparent 47%), linear-gradient(135deg, #edd8c4, #d9c3b9);
 }
 .clue-art {
+  --art-ink: #302a18;
   background: radial-gradient(circle at 79% 24%, #fbe3a1 0, transparent 39%), linear-gradient(120deg, #ccaa4c, #e9ce78);
+}
+.art-caption,
+.art-index {
+  color: var(--art-ink, var(--ink));
+  text-shadow: 0 1px 0 rgb(255 255 255 / 30%);
 }
 .chat-window,
 .plot,

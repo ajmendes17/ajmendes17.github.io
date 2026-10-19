@@ -10,7 +10,7 @@ Run `python3 -m http.server 8000` from this directory and open `http://localhost
 
 The homepage uses `portfolio.css` and `portfolio.js`: an ivory, charcoal, and burnt-orange editorial design with a browsable project gallery, skills overview, experience, and contact information. `case-study.css` gives the existing interactive project pages a matching visual theme; their models and perspective controls remain in `script.js` and `style.css`.
 
-The custom hero artwork is `assets/orbital-study.webp` (approximately 93 KB), generated with the built-in image generation tool. Its full prompt and provenance are saved in `assets/orbital-study.prompt.txt`. The other homepage project illustrations are CSS compositions, not product screenshots or measured results.
+The custom hero artwork is `assets/orbital-study.webp` (approximately 93 KB), generated with the built-in image generation tool. Its full prompt and provenance are saved in `assets/orbital-study.prompt.txt`. The hero artwork remains stationary. The other homepage project illustrations are CSS compositions, not product screenshots or measured results.
 
 `assets/clue-mansion.svg` is a shared board illustration with furnished rooms and corridors, styled through `mansion.css`. The homepage includes a kinetic SVG sculpture and subtle animated project figures. Motion pauses outside the viewport, can be paused with the hero control, and respects the operating system's reduced-motion setting.
 
