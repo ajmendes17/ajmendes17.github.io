@@ -98,6 +98,19 @@ body.project-detail-page {
   background: #eae7df;
   border-top: 1px solid #d3cec1;
 }
+.project-detail-page .project-stats {
+  background: #e4dfd3;
+  border-color: #c9c1b2;
+}
+.project-detail-page .project-stats div {
+  border-color: #c9c1b2;
+}
+.project-detail-page .project-stats .stat-value {
+  color: #87391f;
+}
+.project-detail-page .project-stats .stat-label {
+  color: #514d43;
+}
 .project-detail-page .project-content {
   max-width: 1080px;
 }
