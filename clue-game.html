@@ -79,7 +79,7 @@
                         <div>
                             <span class="summary-label">Project Perspective</span>
                             <h2 class="section-title">Choose the level of abstraction</h2>
-                            <p>See the game as a player-facing rules system or inspect the engineering underneath it.</p>
+                            <p>Switch between two useful zoom levels. Operator explains the experience and rules a player encounters; Builder follows the code and tests that make those rules work.</p>
                         </div>
                         <div class="perspective-toggle" role="tablist" aria-label="ClueGame project perspective">
                             <button type="button" class="perspective-toggle-btn active" role="tab" aria-selected="true" aria-controls="clue-operator-perspective" data-perspective-target="operator"><span>01</span>Operator</button>
@@ -88,9 +88,10 @@
                     </div>
                     <div class="perspective-panels" aria-live="polite">
                         <div class="perspective-panel active" id="clue-operator-perspective" role="tabpanel" data-perspective-panel="operator">
-                            <span class="perspective-panel-kicker">Rules · decisions · player state</span>
+                            <span class="perspective-panel-kicker">Player view / rules and decisions</span>
                             <h3>A board game whose moving parts stay coherent</h3>
                             <p class="project-text">The operator view focuses on what the system makes possible: legal moves are clear, suggestions resolve predictably, computer players act within the same rules, and the interface keeps the current turn understandable.</p>
+                            <p class="project-text">A turn connects several decisions: move through the board, enter a room, make a suggestion, compare it with other players’ cards, then use what you learn to decide whether to accuse. The interface presents those choices while the game enforces the same rules for human and computer players.</p>
                             <div class="perspective-brief-grid">
                                 <div><span>Intent</span><strong>Make complex rules playable</strong></div>
                                 <div><span>Interaction</span><strong>Board-led turn decisions</strong></div>
@@ -98,9 +99,10 @@
                             </div>
                         </div>
                         <div class="perspective-panel" id="clue-builder-perspective" role="tabpanel" hidden data-perspective-panel="builder">
-                            <span class="perspective-panel-kicker">Graph · state machine · tests</span>
+                            <span class="perspective-panel-kicker">Implementation view / models and validation</span>
                             <h3>Configuration-driven behavior with tested boundaries</h3>
                             <p class="project-text">The builder view follows the runtime model: external files construct the board, adjacency graphs constrain movement, focused classes coordinate cards and turns, and JUnit tests protect the rules most likely to drift.</p>
+                            <p class="project-text">The board model connects layout data to playable behavior: parsed spaces form a movement graph, turn orchestration applies game rules, and the Swing interface reflects resulting state. Tests exercise those boundaries, including movement, card dealing, suggestion disproof, accusations, and computer-player choices.</p>
                             <div class="perspective-brief-grid">
                                 <div><span>Architecture</span><strong>Model + orchestration + Swing</strong></div>
                                 <div><span>Core logic</span><strong>Graph traversal and rule state</strong></div>

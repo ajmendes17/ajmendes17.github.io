@@ -1,0 +1,149 @@
+/* MarketPulse model explainer: warm editorial palette from the portfolio system. */
+.marketpulse-page {
+  --accent: #b44220;
+  --accent-rgb: 180, 66, 32;
+}
+.marketpulse-page .marketpulse-showcase {
+  background: #eae7df;
+  border: 1px solid #d3cec1;
+  padding: 14px;
+}
+.marketpulse-page .marketpulse-dashboard-image {
+  border: 0;
+  border-radius: 2px;
+}
+.marketpulse-model-section {
+  margin-top: 3.75rem;
+}
+.marketpulse-flow {
+  margin: 1.6rem 0 0;
+  padding: clamp(1rem, 2.5vw, 2rem);
+  color: #26251f;
+  background: #f3f0e8;
+  border: 1px solid #d3cec1;
+  border-top: 3px solid #b44220;
+}
+.marketpulse-flow-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #d3cec1;
+}
+.flow-kicker,
+.flow-target,
+.flow-stage-number {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.flow-kicker,
+.flow-stage-number { color: #914025; }
+.flow-target { color: #625f55; text-align: right; letter-spacing: 0; text-transform: none; }
+.marketpulse-flow-grid {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.9fr) minmax(74px, 0.42fr) minmax(260px, 1.5fr) minmax(74px, 0.42fr) minmax(190px, 1fr);
+  align-items: stretch;
+  gap: 0.8rem;
+  padding: 1.35rem 0 1rem;
+}
+.flow-stage {
+  min-width: 0;
+  padding: 1rem;
+  background: #eae7df;
+  border: 1px solid #d3cec1;
+}
+.flow-stage h3 {
+  margin: 0.55rem 0 0.9rem;
+  font: 600 1rem/1.25 "Manrope", sans-serif;
+  letter-spacing: -0.3px;
+}
+.feature-weight-list { list-style: none; margin: 0; padding: 0; }
+.feature-weight-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #d8d3c8;
+  color: #48463f;
+  font-size: 0.8rem;
+}
+.feature-mark { color: #b44220; font-size: 0.5rem; }
+.flow-note { margin: 0.75rem 0 0; color: #716c60; font-size: 0.72rem; line-height: 1.5; }
+.flow-connector { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 0.55rem; color: #716c60; font: 0.62rem "JetBrains Mono", monospace; text-align: center; }
+.flow-connector i { position: relative; width: 100%; border-top: 1px solid #b44220; }
+.flow-connector i::after { content: ""; position: absolute; right: 0; top: -4px; width: 7px; height: 7px; border-top: 1px solid #b44220; border-right: 1px solid #b44220; transform: rotate(45deg); }
+.flow-models { background: #f3f0e8; }
+.model-weight-card { padding: 0.65rem 0; border-top: 1px solid #d8d3c8; }
+.model-weight-card strong { display: block; margin-bottom: 0.2rem; font-size: 0.8rem; }
+.model-weight-card > span { display: block; color: #625f55; font-size: 0.71rem; line-height: 1.45; }
+.coefficient-glyph { display: flex; align-items: end; gap: 4px; height: 15px; margin-top: 0.45rem; }
+.coefficient-glyph i { width: 7px; height: var(--bar); background: #b44220; opacity: 0.72; }
+.tree-glyph { display: flex; gap: 5px; margin-top: 0.5rem; }
+.tree-glyph i { display: block; width: 13px; height: 9px; border: 1px solid #9a622b; border-top: 2px solid #9a622b; position: relative; }
+.tree-glyph i::before { content: ""; position: absolute; top: -5px; left: 4px; height: 4px; border-left: 1px solid #9a622b; }
+.neuron-glyph { display: flex; justify-content: space-between; max-width: 100px; margin-top: 0.5rem; }
+.neuron-glyph i { width: 8px; height: 8px; border: 1px solid #914025; border-radius: 50%; background: #e8dfd2; }
+.flow-output p { color: #625f55; font-size: 0.75rem; line-height: 1.55; }
+.probability-gauge { padding: 0.75rem; background: #eae7df; border: 1px solid #d3cec1; }
+.probability-gauge > div:first-child { display: grid; gap: 0.25rem; }
+.probability-gauge > div:first-child span { color: #716c60; font-size: 0.65rem; }
+.probability-gauge strong { font: 600 0.72rem "JetBrains Mono", monospace; }
+.probability-gauge > i { display: block; height: 8px; margin: 0.65rem 0 0.25rem; background: linear-gradient(90deg, #d8d3c8, #d8d3c8 50%, #b44220 50%, #b44220); position: relative; }
+.probability-gauge > i b { position: absolute; left: 62%; top: -4px; width: 2px; height: 16px; background: #26251f; }
+.gauge-labels { display: flex; justify-content: space-between; gap: 0.2rem; color: #716c60; font: 0.56rem "JetBrains Mono", monospace; }
+.flow-result { display: block; margin-top: 0.8rem; padding-top: 0.65rem; border-top: 1px solid #d3cec1; color: #914025; font: 0.63rem/1.4 "JetBrains Mono", monospace; }
+.marketpulse-flow figcaption { max-width: 760px; padding-top: 0.8rem; border-top: 1px solid #d3cec1; color: #716c60; font-size: 0.72rem; line-height: 1.55; }
+.marketpulse-page .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (max-width: 900px) {
+  .marketpulse-flow-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .flow-stage { padding: 0.85rem; }
+  .flow-connector { flex-direction: row; grid-column: 1 / -1; }
+  .flow-connector i { width: min(140px, 40%); }
+  .flow-connector-output { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .marketpulse-page .marketpulse-showcase { padding: 8px; }
+  .marketpulse-model-section { margin-top: 2.5rem; }
+  .marketpulse-flow { padding: 1rem; }
+  .marketpulse-flow-heading { align-items: flex-start; flex-direction: column; }
+  .flow-target { text-align: left; }
+  .marketpulse-flow-grid { grid-template-columns: minmax(0, 1fr); gap: 0.55rem; }
+  .flow-connector { min-height: 34px; }
+  .flow-connector i { width: 1px; height: 18px; border-top: 0; border-left: 1px solid #b44220; }
+  .flow-connector i::after { right: -3px; top: 11px; transform: rotate(135deg); }
+  .flow-connector-output { grid-column: 1; }
+}
+.marketpulse-results-section { margin-top: 3.75rem; }
+.marketpulse-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.4rem;
+  border-block: 1px solid #cbc5b8;
+}
+.marketpulse-result-card { padding: 1.2rem 1.3rem 1.25rem; }
+.marketpulse-result-card + .marketpulse-result-card { border-left: 1px solid #cbc5b8; }
+.result-label { display: block; color: #914025; font: 0.66rem "JetBrains Mono", monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+.marketpulse-result-card > strong { display: block; margin: 0.45rem 0; color: #26251f; font: 600 clamp(1.8rem, 3vw, 2.5rem)/1.1 "Manrope", sans-serif; letter-spacing: -1.5px; }
+.marketpulse-result-card p,
+.marketpulse-results-detail p { margin: 0; color: #625f55; font-size: 0.82rem; line-height: 1.55; }
+.marketpulse-results-detail { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 1.5rem; padding: 1.15rem 1.3rem; background: #eae7df; }
+.marketpulse-results-detail strong { display: block; margin: 0.35rem 0; color: #26251f; font: 600 1.05rem "Manrope", sans-serif; }
+.marketpulse-results-caveat { margin: 1rem 0 0; padding-left: 0.9rem; border-left: 2px solid #b44220; color: #625f55; font-size: 0.8rem; line-height: 1.6; }
+@media (max-width: 560px) {
+  .marketpulse-results-section { margin-top: 2.5rem; }
+  .marketpulse-results { grid-template-columns: 1fr; }
+  .marketpulse-result-card { padding: 1rem 0.2rem; }
+  .marketpulse-result-card + .marketpulse-result-card { border-left: 0; border-top: 1px solid #cbc5b8; }
+  .marketpulse-results-detail { grid-template-columns: 1fr; gap: 1rem; padding-inline: 1rem; }
+}
+.marketpulse-purpose-statement {
+  max-width: 860px;
+  margin: 0.8rem 0 1.35rem;
+  color: #37352f;
+  font: 500 clamp(1.12rem, 2vw, 1.35rem)/1.55 "Manrope", sans-serif;
+  letter-spacing: -0.25px;
+}

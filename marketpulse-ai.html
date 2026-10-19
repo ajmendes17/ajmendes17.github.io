@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css?v=portfolio-experience-v18">
     <link rel="stylesheet" href="case-study.css?v=1">
     <link rel="stylesheet" href="portfolio.css?v=1">
+    <link rel="stylesheet" href="marketpulse-ai.css?v=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -68,6 +69,78 @@
                             <li>Run time-aware backtests with transaction costs and decision-threshold sweeps.</li>
                             <li>Save machine-readable reports, figures, and dashboard-ready summaries.</li>
                         </ol>
+                    </div>
+
+                    <div class="project-section marketpulse-model-section">
+                        <h2>From market data to a model signal</h2>
+                        <p class="project-text">Each model receives the same engineered feature set and learns its own way to estimate five-day outperformance versus SPY. The diagram shows the shared experiment flow; it does not represent fitted coefficients or feature-importance values.</p>
+                        <figure class="marketpulse-flow" aria-labelledby="marketpulse-flow-title" aria-describedby="marketpulse-flow-caption">
+                            <div class="marketpulse-flow-heading">
+                                <span class="flow-kicker">MODEL WORKFLOW</span>
+                                <span class="flow-target">Target · outperform SPY over the next 5 days</span>
+                            </div>
+                            <h3 id="marketpulse-flow-title" class="sr-only">MarketPulse model workflow</h3>
+                            <div class="marketpulse-flow-grid">
+                                <section class="flow-stage flow-inputs" aria-label="Engineered input features">
+                                    <span class="flow-stage-number">01 / INPUTS</span>
+                                    <h3>Engineered features</h3>
+                                    <ul class="feature-weight-list">
+                                        <li><span>Returns</span><span class="feature-mark" aria-hidden="true">●</span></li>
+                                        <li><span>Volatility</span><span class="feature-mark" aria-hidden="true">●</span></li>
+                                        <li><span>Moving averages</span><span class="feature-mark" aria-hidden="true">●</span></li>
+                                        <li><span>Volume</span><span class="feature-mark" aria-hidden="true">●</span></li>
+                                        <li><span>RSI</span><span class="feature-mark" aria-hidden="true">●</span></li>
+                                        <li><span>MACD</span><span class="feature-mark" aria-hidden="true">●</span></li>
+                                    </ul>
+                                    <p class="flow-note">Features are scaled where the model requires it.</p>
+                                </section>
+                                <div class="flow-connector" aria-hidden="true"><span>same inputs</span><i></i></div>
+                                <section class="flow-stage flow-models" aria-label="Three model families learn different relationships">
+                                    <span class="flow-stage-number">02 / LEARN</span>
+                                    <h3>Model-specific weights</h3>
+                                    <div class="model-weight-card">
+                                        <strong>Logistic regression</strong>
+                                        <span>One coefficient per feature contributes to a linear log-odds score.</span>
+                                        <div class="coefficient-glyph" aria-hidden="true"><i style="--bar: 42%"></i><i style="--bar: 71%"></i><i style="--bar: 29%"></i><i style="--bar: 58%"></i><i style="--bar: 84%"></i><i style="--bar: 48%"></i></div>
+                                    </div>
+                                    <div class="model-weight-card">
+                                        <strong>Random forest</strong>
+                                        <span>Many decision trees split on features; their votes are combined.</span>
+                                        <div class="tree-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                                    </div>
+                                    <div class="model-weight-card">
+                                        <strong>Dense neural network</strong>
+                                        <span>Learned connections between layers combine features nonlinearly.</span>
+                                        <div class="neuron-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                                    </div>
+                                </section>
+                                <div class="flow-connector flow-connector-output" aria-hidden="true"><span>score</span><i></i></div>
+                                <section class="flow-stage flow-output" aria-label="Probability, threshold, and evaluation">
+                                    <span class="flow-stage-number">03 / EVALUATE</span>
+                                    <h3>Probability → decision</h3>
+                                    <div class="probability-gauge" aria-label="Illustrative probability scale, not a model output"><div><span>Estimated chance</span><strong>p(outperform)</strong></div><i aria-hidden="true"><b></b></i><div class="gauge-labels"><span>0</span><span>threshold sweep</span><span>1</span></div></div>
+                                    <p>Threshold sweeps turn scores into candidate decisions. Time-aware backtests then compare results with transaction costs.</p>
+                                    <span class="flow-result">Metrics · reports · dashboard</span>
+                                </section>
+                            </div>
+                            <figcaption id="marketpulse-flow-caption">Illustrative workflow, not a live prediction. Coefficient bars and network connections are schematic; exact weights and feature importance vary by trained model and run.</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="project-section marketpulse-results-section">
+                        <h2>What the experiment showed</h2>
+                        <p class="marketpulse-purpose-statement">The goal wasn’t to make money. I built this project to practice working with machine learning: engineering features, training different models, and learning how to evaluate their results.</p>
+                        <p class="project-text">A completed batch run compared a dense neural network across seven equities against SPY. It produced useful evidence about how model scores and simulated portfolio outcomes can diverge.</p>
+                        <div class="marketpulse-results" aria-label="Dense neural network experiment results">
+                            <div class="marketpulse-result-card"><span class="result-label">Completed runs</span><strong>7 / 7</strong><p>Equities evaluated with a five-day horizon and time-ordered test data.</p></div>
+                            <div class="marketpulse-result-card"><span class="result-label">Beat SPY</span><strong>4 / 7</strong><p>Simulated strategy return exceeded SPY buy-and-hold at the 0.50 threshold.</p></div>
+                            <div class="marketpulse-result-card"><span class="result-label">Beat own buy-and-hold</span><strong>4 / 7</strong><p>Outcomes varied by ticker; the signal did not win consistently.</p></div>
+                        </div>
+                        <div class="marketpulse-results-detail">
+                            <div><span class="result-label">Mean ROC AUC</span><strong>0.50</strong><p>Across the seven neural-network test runs at the 0.50 decision threshold.</p></div>
+                            <div><span class="result-label">Test window</span><strong>May 23, 2025 – May 8, 2026</strong><p>241 test observations per ticker; the model retrained on time-ordered data.</p></div>
+                        </div>
+                        <p class="marketpulse-results-caveat">These are historical backtest results with 5 basis points of transaction costs and SPY as the fallback allocation. The near-random average ROC AUC and mixed ticker outcomes show that profitable-looking simulations did not establish a dependable predictive edge.</p>
                     </div>
 
                     <div class="project-section">

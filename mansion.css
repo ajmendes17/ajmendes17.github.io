@@ -76,6 +76,46 @@
   border-color: #c1ad7d;
   overflow: visible;
 }
+
+/* Keep ClueGame's light editorial case-study panel readable over shared dark defaults. */
+.project-detail-page .project-perspective {
+  --perspective-rgb: 130, 55, 28;
+  color: #26251f;
+  background: #f3f0e8;
+  border-color: #c9beaa;
+}
+.project-detail-page .project-perspective .section-title,
+.project-detail-page .project-perspective .perspective-panel h3,
+.project-detail-page .project-perspective .perspective-brief-grid strong {
+  color: #26251f;
+}
+.project-detail-page .project-perspective .perspective-heading p,
+.project-detail-page .project-perspective .project-text {
+  color: #514d43;
+}
+.project-detail-page .project-perspective .perspective-toggle {
+  background: #e5dfd3;
+  border-color: #c9beaa;
+}
+.project-detail-page .project-perspective .perspective-toggle-btn {
+  color: #514d43;
+}
+.project-detail-page .project-perspective .perspective-toggle-btn:hover {
+  color: #26251f;
+  background: #dcd4c5;
+}
+.project-detail-page .project-perspective .perspective-toggle-btn.active {
+  color: #71351c;
+  background: #ddd2bf;
+  border-color: #b69f7d;
+}
+.project-detail-page .project-perspective .perspective-panels {
+  border-color: #d3ccbd;
+}
+.project-detail-page .project-perspective .perspective-brief-grid > div {
+  background: #e9e2d5;
+  border-color: #cfc3ad;
+}
 .mansion-preview figcaption {
   position: absolute;
   top: calc(100% + 12px);
